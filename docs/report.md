@@ -86,11 +86,12 @@ In the "Comparisons" section define additional labels using Python or numpy form
 * Document the meaning of each definition in the comment.
 * Omit this section if there are no comparisons relevant to the answer.
 
-> NOTE: in our manual testing, we generated Python arithmetic code. In our prototype, for convenience we generated Javascript arithmetic code. There are many choices here and it is not strictly necessary to generate a general-purpose programming language. See discussion in Appendix.
-
 ## Relevant arithmetic and comparisons
 
 ```
+
+> NOTE: in our manual testing, we generated Python arithmetic code. In our prototype, for convenience we generated Javascript arithmetic code. There are many choices here and it is not strictly necessary to generate a general-purpose programming language. See discussion in Appendix.
+
 
 GPT-4 then writes the arithmetic code and stops.
 
