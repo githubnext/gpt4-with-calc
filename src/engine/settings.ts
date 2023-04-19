@@ -1,5 +1,3 @@
-import { dirname } from "path";
-import * as fs from "fs";
 import { ApiKeyOption } from "./options";
 
 // Our tokenization may not match pefectly, so assume a model is smaller than it is, except when actually performing final check before submission.
@@ -58,22 +56,7 @@ export const models: {
     maxTokens: 32700 - MODEL_SIZE_TOLERANCE,
   },
 };
-export const NO_MAX_TOKENS_ANALYZED = undefined;
 
 export function reqCacheFile(qualifiers: string) {
   return ".prbot-engine/cache" + (qualifiers ? "-" + qualifiers : "");
-}
-
-export function readExtraSettings(fileName: string): Record<string, any> {
-  let extraSettings: Record<string, any> = {};
-  let dir = dirname(fileName);
-  while (dir && dir != "/" && dirname(dir) != dir) {
-    const extraLocalSettingsFile = dir + "/.prbot-engine/settings.json";
-    if (fs.existsSync(extraLocalSettingsFile)) {
-      const moreExtraSettings = JSON.parse(fs.readFileSync(extraLocalSettingsFile, "utf8"));
-      extraSettings = { ...moreExtraSettings, ...extraSettings };
-    }
-    dir = dirname(dir);
-  }
-  return extraSettings;
 }
