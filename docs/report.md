@@ -95,7 +95,9 @@ In the "Comparisons" section define additional labels using Python or numpy form
 
 GPT-4 then writes the arithmetic code and stops.
 
-Steps 2 and 3 evaluate and incorporate this arithmetic code.
+Step 2 evaluates his arithmetic code.
+
+Step 3 combines the original question with both the arithmetic code and answers and generates the answer to the question. (The arithmetic code is included as it contains relevant explanation text - this could be omitted if the explanation text is combined with the answers). 
 
 ## Example 1
 
