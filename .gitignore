@@ -1,3 +1,4 @@
+.prbot-engine
 node_modules
 npm-debug.log
 *.pem
@@ -5,3 +6,4 @@ npm-debug.log
 .env
 coverage
 lib
+prev

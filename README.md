@@ -1,33 +1,52 @@
-# changepilot-bot
+# GPT-4 Equipped
 
-> A GitHub App built with [Probot](https://github.com/probot/probot) that A bot that turns GitHub Issues into PRs
+GPT-4 is terrible at arithmetic. We fix that.
 
-## Setup
+[**Read the report - GPT-4 Equipped with Arithmetic**](docs/report.md#equipping-gpt-4-with-arithmetic)
+
+## Build
 
 ```sh
-# Install dependencies
+sudo apt-get install npm
 npm install
-
-# Run the bot
-npm start
+npm run build
 ```
 
-## Docker
+> Note: **you must use a Node version earlier than v18.1** because of an [issue with tree-sitter](https://github.com/github/copilot/issues/1982). It's not actually used in this project yet but likely will be in future iterations.
 
-```sh
-# 1. Build container
-docker build -t changepilot-bot .
+## Examples
 
-# 2. Start container
-docker run -e APP_ID=<app-id> -e PRIVATE_KEY=<pem-value> changepilot-bot
+Define a key:
+
+```bash
+export NEXT_MODEL2_API_KEY=...
 ```
 
-## Contributing
+Run the examples:
 
-If you have suggestions for how changepilot-bot could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
+```bash
+./gpt4e ask --questionfile test/samples/msft-report-snippet.txt
+./gpt4e ask --questionfile test/samples/msft-report-snippet.txt --arith
 
-For more, check out the [Contributing Guide](CONTRIBUTING.md).
+./gpt4e ask --questionfile test/samples/msft-goog-report-snippets-compared.txt
+./gpt4e ask --questionfile test/samples/msft-goog-report-snippets-compared.txt --arith
 
-## License
+./gpt4e ask --questionfile test/samples/number-years-grow-30.txt
+./gpt4e ask --questionfile test/samples/number-years-grow-30.txt --arith
 
-[ISC](LICENSE) © 2022 Matt Rothenberg
+./gpt4e ask --questionfile test/samples/gap-lulemon-financial-reports-compared.txt
+./gpt4e ask --questionfile test/samples/gap-lulemon-financial-reports-compared.txt --arith
+```
+
+Try your own question:
+
+```bash
+./gpt4e ask --question "What is sin(13.31) where the input is in degrees?"
+./gpt4e ask --question "What is sin(13.31) where the input is in degrees?" --arith
+```
+
+```bash
+./gpt4e ask --question "Fred’s gross salary is \$850 per week. From his salary, 11% is removed for federal deductions; 5.5% for state deductions; and 6.2% for the company’s pension plan. If each of these deductions is taken as a percent of Fred’s gross salary, what is his net salary for a fourweek period?"
+
+./gpt4e ask --question "Fred’s gross salary is \$850 per week. From his salary, 11% is removed for federal deductions; 5.5% for state deductions; and 6.2% for the company’s pension plan. If each of these deductions is taken as a percent of Fred’s gross salary, what is his net salary for a fourweek period?" --arith
+```

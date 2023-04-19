@@ -1,0 +1,97 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "typescript",
+      "name": "Launch Probot",
+      "program": "${workspaceFolder}/node_modules/probot/bin/probot-run.js",
+      "args": ["./lib/src/bot/index.js"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceRoot}/",
+      "outFiles": [],
+      "sourceMaps": true,
+      "env": { "DEBUG": "prbot:*", "DELAY_MULTIPLIER": "0" }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "typescript",
+      "name": "Launch CLI",
+      "program": "./lib/src/cmdline/cmdline.js",
+      "args": ["${input:prbotVerb}", "${input:prbotTarget}", "--verbose", "--ghCache"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceRoot}/",
+      "outFiles": [],
+      "sourceMaps": true,
+      "env": { "DEBUG": "prbot:*", "DELAY_MULTIPLIER": "0" }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "typescript",
+      "name": "Run gentest on local repo checkout",
+      "program": "${workspaceFolder}/lib/src/cmdline/cmdline-engine.js",
+      "args": [
+        "gentest",
+        "--root",
+        "${input:gentestRoot}",
+        "--input",
+        "${input:gentestFile}",
+        "--baselinecommit",
+        "${input:baselinecommit}",
+        "--strategy",
+        "${input:gentestStrategy}",
+        "--model",
+        "boosted"
+      ],
+      "console": "integratedTerminal",
+      "outFiles": [],
+      "sourceMaps": true
+    }
+  ],
+  "inputs": [
+    {
+      "type": "pickString",
+      "id": "prbotVerb",
+      "description": "Choose verb",
+      "options": ["how", "suggest", "describe", "review", "gentest"],
+      "default": "describe"
+    },
+    {
+      "type": "pickString",
+      "id": "prbotTarget",
+      "description": "Choose target",
+      "options": [
+        "https://github.com/githubnext/prbot-samples-vector/pull/1",
+        "https://github.com/githubnext/prbot-samples-torch/issues/1",
+        "https://github.com/githubnext/prbot-test-express-app/issues/1",
+        "https://github.com/make-all/tuya-local/pull/251"
+      ]
+    },
+    {
+      "type": "promptString",
+      "id": "gentestRoot",
+      "description": "Root of local repo checkout"
+    },
+    {
+      "type": "promptString",
+      "id": "gentestFile",
+      "description": "Path of file to run gentest on (relative to root)"
+    },
+    {
+      "type": "promptString",
+      "id": "baselinecommit",
+      "description": "Choose baseline commit",
+      "default": "HEAD~1"
+    },
+    {
+      "type": "pickString",
+      "id": "gentestStrategy",
+      "description": "Choose strategy",
+      "options": ["fromscratch", "insertion", "linebased"],
+      "default": "fromscratch"
+    }
+  ]
+}
