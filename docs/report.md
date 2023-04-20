@@ -97,7 +97,11 @@ GPT-4 then writes the arithmetic code and stops.
 
 Step 2 evaluates his arithmetic code.
 
-Step 3 combines the original question with both the arithmetic code and answers and generates the answer to the question. (The arithmetic code is included as it contains relevant explanation text - this could be omitted if the explanation text is combined with the answers). 
+Step 3 combines the original question with both the arithmetic code and answers and generates the answer to the question.
+
+> NOTE: In Step 3 the arithmetic code is included as it contains relevant explanation text - this could be omitted if the explanation text is combined with the answers.
+
+> NOTE: In Step 3 a prompt directive can be added saying "only use numbers that are exactly present in the question or calculation".
 
 ## Example 1
 
