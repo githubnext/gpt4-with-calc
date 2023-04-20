@@ -22,7 +22,7 @@ GPT-4 is also terrible at comparative logic involving numbers. It quite happily 
 
 Ugh, 2 is not greater than 28. Half right but totally wrong.
 
-In short, GPT-4 can't handle numbers or comparisons of numbers, period. In our opinion, _GPT-4 must never, ever be trusted to write a number that is not present verbatim in the input, nor to reason about numbers in any significant way. Never. Don't even think of allowing GPT-4 to write a number, and beware that every numeric comparison may be flawed._
+In short, GPT-4 can't handle numbers or comparisons of numbers, period. In our opinion, _GPT-4 should not be trusted to write a number that is not present verbatim in the input, nor to reason about numbers in any significant way. In trust scenarios, don't allow GPT-4 to write numbers, and beware that every numeric comparison may be flawed._
 
 ## The Hope
 
