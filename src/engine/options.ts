@@ -1,7 +1,7 @@
 import yargs from "yargs/yargs";
 import { parseBoolean, parseNumber } from "../util/util";
 
-export const botActionChoices = ["ask"] as const;
+export const botActionChoices = ["ask", "eval"] as const;
 
 export type Command = {
   input: string;
@@ -73,7 +73,7 @@ const parallelismArgs = {
     description: "The maximum number of concurrent requests to make to the GitHub API",
     type: "number",
     modes: ["everything", "cli"],
-    defaults: { all: 10 },
+    defaults: { all: 30 },
   },
 };
 
@@ -152,12 +152,33 @@ const askArgs = {
     default: true,
     modes: ["cli"],
   },
+  singleline: {
+    description: "Request a single line answer?",
+    type: "boolean",
+    default: false,
+    modes: ["cli"],
+  },
+};
+
+const evalArgs = {
+  ...commonEngineArgs,
+  arith: {
+    description: "Use arithmetic equip or not",
+    type: "boolean",
+    default: true,
+    modes: ["cli"],
+  },
 };
 
 const modeOptionsTemplate = {
   ask: {
-    description: "ask a quetion",
+    description: "ask a question",
     arguments: askArgs,
+    modes: ["cli", "everything"],
+  },
+  eval: {
+    description: "evaluate ask a quetion",
+    arguments: evalArgs,
     modes: ["cli", "everything"],
   },
   help: {
