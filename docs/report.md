@@ -651,19 +651,25 @@ It's easy to construct quite realistic problem sets where the technique describe
 
 ### ASDiv.xml
 
-This is a problem set of 2300 childrens maths puzzles, up to grade 6 US curriculum. We ran the strategy described here on a modified version of this data set where:
+This is a problem set of 2300 childrens maths puzzles, up to grade 6 US curriculum. It is primarily word problem solving, not calculation. We ran the strategy described here on a modified version of this data set where:
 * some additional instructions were added to the questions specifying exact intended output formats
 * some answers were corrected (the data set contained mistakes)
 * some questions were clarified (they were highly ambiguous and open to interpretation, or assuming prior questions in the data set had been asked).
-All these adjsutments applied to both GPT-4 and GPT4e.
+
+These adjsutments applied to both GPT-4 and GPT-4e.
 
 When run with the technique here, the error rate reduces from 11% to 8%:
 ```
 GPT-4: 254 failures
 GPT-4e: 188 failures
 ```
+
+> Caveat: we're still assessing both sets of failures, as there's some noise, the above is indicative
+
 The different grades of problems are affected as follows:
-grade 1: 2 --> 4
+
+```
+grade 1: 2 --> 2
 grade 2: 8 --> 4
 grade 3: 25 --> 17
 grade 4: 50 --> 28
@@ -671,9 +677,9 @@ grade 5: 29 --> 16
 grade 6: 140 --> 119
 ```
 
-The differrent kinds of problems show some issues we are looking into. The big improvements lie in subtraction, summation, comparison, surplus and common-division. In contrast, some areas such as LCM and GCD have been impaired.
+The differrent kinds of problems are interesting. The big improvements lie in subtraction, summation, comparison, surplus and common-division. In contrast, some areas such as LCM and GCD have been curiously impaired. However these kinds of problems are non-calculational mathematical reasoning and vanishingly rare in real-world chat (except for students doing homework puzzles!).
 
-> NOTE: We're looking into these issues :) 
+> NOTE: We're looking into the impairments 
 
 Improved:
 ```
@@ -688,7 +694,7 @@ Common-Division: 15 --> 4
 
 Regressed:
 ```
-Sequential-Operation: 3 --> 8
+Sequential patterns: 3 --> 8
 LCM: 11 --> 18
 GCD: 10 --> 19
 Ceil-Division: 1 --> 4
@@ -696,7 +702,7 @@ Ceil-Division: 1 --> 4
 
 About the same:
 ```
-Addition: 18 --> 21
+Addition: 18 --> 19  //note, includes may date-time problems
 Ratio: 9 --> 11
 Floor-Division: 6 --> 4
 Algebra-1: 21 --> 19
