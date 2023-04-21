@@ -31,7 +31,7 @@ There is, however, hope, and it is in this simple logic:
 1. GPT-4 is terrible at **arithmetic** but good at **writing arithmetic code**
 2. Python and many other tools are perfect at **evaluating arithmetic code**.
 
-The answer is obvious: get GPT-4 to write the arithmetic code, and get Python or some other tool to evaluate it.
+The answer is obvious: get GPT-4 to write the arithmetic code, and get Python or some other tool to evaluate it, and use GPT-4 for the rest.
 
 ## The Approach
 
@@ -552,6 +552,10 @@ The technique needs rigorous evaluation and refinement and we encourage collabor
 
 There's a recent survey paper on techniques to augment Language Models, see https://arxiv.org/abs/2302.07842. Most the papers used retraining or fine tuning specifically to use such tools, but the survey is comprehensive and a useful guide to equips (augmentations).
 
+Much of the work on math and GPT-4 attempts to improve its more advanced mathematical capabilities, e.g. for algebra, geometry, problem solving, see https://arxiv.org/abs/2303.05398 for a recent paper from MSR.
+
+The basic idea that you can get LLMs to emit Python to handle arithemtic calculation as part of chain-of-reason prompting has been around a long time, e.g. see the prompt here: https://huggingface.co/datasets/LangChainHub-Prompts/LLM_Math.
+
 ## Appendix: Update on Example 4
 
 Adding the following lines in the prompt eliminated the addition of hallucinated assumptions in the arithmetic code:
@@ -616,3 +620,85 @@ For end user-experience it may also be very important to have the models include
 ### Appendix: What format for arithmetic code?
 
 We have left open what format should be used for arithmetic code. For convenience we have shown generating Python and Javascript. However introducing arbitrary code generation and execution in general-purpose languages is not necessary for this technique - instead the prompts should continue to be devloped to demand the generation of highly restricted calculation code. A limited subset of Python+numpy or Javascript or similar could still be used but a processing step should be added to strictly check the conformance of the arithmetic code to a well-defined known subset. Careful sandboxing of the execution (or careful interpretation) will also be required.
+
+## Appendix: Highly preliminary evaluation notes
+
+NOTE: Evaluation is currently being done using Javascript codegen. We will be looking into Python codegen and other options.
+
+The emphasis here is on "calculation" not "math" or "algebra" - we want to reliably perform the simpler, purely calculational end of mathematical reasoning. This means detecting and emitting the calculational subset of reasoning and executing it with 100% accuracy - especially the kind that may easily be present in large quantities in chat discussion about large texts. The financial document comparisons above being good examples. Another aim is to not to try to perform any other kind of reasoning. In this setting, calculations may involve a considerable amount of data processing and reduction.
+
+We want to make sure that the numbers computed are correct - even if the calculation itself is not strictly the right calculation to be doing. Ideally the presence of the calculation code and results will not greatly disturb the other reasoning or textual emit going on.
+
+Because of this, we put a huge caveat on any evaluation: much of the work on math and GPT-4 attempts to improve its more advanced mathematical capabilities, e.g. for algebra, geometry, problem solving, is mostly based on word problems, and the typical evaluation problem sets are oriented in this way. This is understandable for LLM-based research - why would be use an LLM to try to add "16.84812 + 19.29039" let alone to evaluate trigonometric functions? However in real-life chat people will try to do exactly these kinds of problems: there is a strong user expectation that they can throw in any calculation and the chat will get it right, or else refuse to answer.
+
+### Raw Arithmetic Calculation
+
+(TBD)
+
+It's easy to construct quite realistic problem sets where the technique described here takes a 100% failure rate to a 0% failure rate - for example just take a corpus where every question involving a large-number or non-trivial-function (e.g. trigonometric or exponential) calculation, and with GPT-4 all will fail.
+
+### Raw Financial Calculation
+
+(TBD)
+
+### Raw DateTime Calculation
+
+(TBD)
+
+### Raw Data Table Operations
+
+(TBD)
+
+### ASDiv.xml
+
+This is a problem set of 2300 childrens maths puzzles, up to grade 6 US curriculum. We ran the strategy described here on a modified version of this data set where:
+* some additional instructions were added to the questions specifying exact intended output formats
+* some answers were corrected (the data set contained mistakes)
+* some questions were clarified (they were highly ambiguous and open to interpretation, or assuming prior questions in the data set had been asked).
+All these adjsutments applied to both GPT-4 and GPT4e.
+
+When run with the technique here, the error rate reduces from 11% to 8%:
+```
+GPT-4: 254 failures
+GPT-4e: 188 failures
+```
+The different grades of problems are affected as follows:
+grade 1: 2 --> 4
+grade 2: 8 --> 4
+grade 3: 25 --> 17
+grade 4: 50 --> 28
+grade 5: 29 --> 16
+grade 6: 140 --> 119
+```
+
+The differrent kinds of problems show some issues we are looking into. The big improvements lie in subtraction, summation, comparison, surplus and common-division. In contrast, some areas such as LCM and GCD have been impaired.
+
+> NOTE: We're looking into these issues :) 
+
+Improved:
+```
+Subtraction: 28 --> 13
+Sum: 10 --> 2
+Multiplication: 7 --> 3
+Comparison: 24 --> 5
+TVQ-Final: 3 --> 0
+Surplus: 24 --> 8
+Common-Division: 15 --> 4
+```
+
+Regressed:
+```
+Sequential-Operation: 3 --> 8
+LCM: 11 --> 18
+GCD: 10 --> 19
+Ceil-Division: 1 --> 4
+```
+
+About the same:
+```
+Addition: 18 --> 21
+Ratio: 9 --> 11
+Floor-Division: 6 --> 4
+Algebra-1: 21 --> 19
+Algebra-2: 44 --> 38
+```
