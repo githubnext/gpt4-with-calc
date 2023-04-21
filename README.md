@@ -4,6 +4,12 @@ GPT-4 is terrible at arithmetic. We fix that.
 
 [**Read the report - GPT-4 Equipped with Arithmetic**](docs/report.md#equipping-gpt-4-with-arithmetic)
 
+## The Code
+
+**GPT-4 Equipped with Arithmetic**: see [src/jobs/ask.ts]
+
+The rest is stripped-down boilerplate taken from the CoPilot for PRS repo.
+
 ## Build
 
 ```sh
