@@ -751,58 +751,54 @@ We ran the strategy described here on a modified version of this data set where:
 
 These adjustments applied to both GPT-4 and GPT-4e.
 
-When run with the technique here, the error rate reduces from 11% to 8%:
+When run with the technique here, the error rate reduces from 11% to 7%:
 ```
 Without numeric calculation equip: 254 failures
-With numeric calculation equip:    188 failures
+With numeric calculation equip:    159 failures
 ```
-
-> Caveat: we're still assessing both sets of failures, as there's some noise, the above is indicative
 
 The different grades of problems are affected as follows:
 
 ```
-grade 1: 2 --> 2
-grade 2: 8 --> 4
+grade 1: 2 --> 1
+grade 2: 7 --> 2
 grade 3: 25 --> 17
-grade 4: 50 --> 28
-grade 5: 29 --> 16
-grade 6: 140 --> 119
+grade 4: 48 --> 20
+grade 5: 33 --> 13
+grade 6: 137 --> 106
 ```
 
 The differrent kinds of problems are interesting and important. 
 
 Improved:
 ```
-Subtraction: 28 --> 13
-Sum: 10 --> 2
-Multiplication: 7 --> 3
-Comparison: 24 --> 5
+Subtraction: 28 --> 7
+Sum: 10 --> 0
+Multiplication: 8 --> 1
+Floor-Division: 6 --> 3
+Common-Division: 13 --> 7
+Comparison: 21 --> 4
 TVQ-Final: 3 --> 0
-Surplus: 24 --> 8
-Common-Division: 15 --> 4
+Surplus: 23 --> 8
+Algebra-1: 22 --> 15
 ```
 
 Regressed:
 ```
-Sequential patterns: 3 --> 8
-LCM: 11 --> 18
-GCD: 10 --> 19
-Ceil-Division: 1 --> 4
+Ceil-Division: 1 --> 3
+Sequential-Operation: 3 --> 8
+LCM: 10 --> 14
 ```
 
 About the same:
 ```
-Addition: 18 --> 19  //note, includes may date-time problems
-Ratio: 9 --> 11
-Floor-Division: 6 --> 4
-Algebra-1: 21 --> 19
-Algebra-2: 44 --> 38
+Addition: 17 --> 16
+Ratio: 12 --> 11
+GCD: 11 --> 13
+Algebra-2: 43 --> 37
 ```
 
 Notes:
-* The big improvements lie in subtraction, summation, comparison, surplus and common-division.
-* In contrast, some areas such as LCM and GCD have been curiously impaired. Of course, these kinds of problems are largely non-calculational mathematical reasoning and are vanishingly rare in real-world chat (except for students doing homework puzzles!). However it is essential that the technique not impair performance on this kind of problem.
-
-> NOTE: We're looking into the impairments 
+* The big improvements lie in subtraction, summation, multiplication, comparison, surplus and some division problems.
+* In contrast, some areas such as LCM and GCD have been a little impaired. These problems are largely non-calculational mathematical reasoning and are likely vanishingly rare in real-world chat (except for students doing homework puzzles!). However we should continue to investigate the reasons that performance is impaired on this kind of problem, and what can be done to restrict the technique from attempting to work on this kind of problem.
 
