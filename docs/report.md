@@ -635,7 +635,7 @@ Because of this, we put a huge caveat on any evaluation: much of the work on mat
 
 (TBD)
 
-It's easy to construct quite realistic problem sets where the technique described here takes a 100% failure rate to a 0% failure rate - for example just take a corpus where every question involving a large-number or non-trivial-function (e.g. trigonometric or exponential) calculation, and with GPT-4 all will fail.
+> It's easy to construct quite realistic problem sets where the technique described here takes a 100% failure rate to a 0% failure rate - for example just take a corpus where every question involving a large-number or non-trivial-function (e.g. trigonometric or exponential) calculation, and with GPT-4 all will fail.
 
 ### Raw Financial Calculation
 
@@ -669,11 +669,13 @@ It's easy to construct quite realistic problem sets where the technique describe
 
 (TBD)
 
-### ASDiv.xml
+### Mathematical word puzzles
 
-> NOTE: essentially every problem in this data set can be made to fail with raw GPT-4 simply by making the umbers involved sufficeintly large or adding decimal places.  The existing GPT-4 pass rates for this problem set are somewhat deceptive as they assume child-like numbers are involved in real-world problems.
+This is a problem set of 2300 childrens maths puzzles, up to grade 6 US curriculum. The puzzles are primarily word problem solving, not calculation.
 
-This is a problem set of 2300 childrens maths puzzles, up to grade 6 US curriculum. It is primarily word problem solving, not calculation. We ran the strategy described here on a modified version of this data set where:
+> NOTE: essentially every problem in this data set can be made to fail with raw GPT-4 simply by making the numbers involved sufficeintly large or adding decimal places.  The existing GPT-4 pass rates for this problem set are somewhat deceptive as they assume child-like numbers are involved in real-world problems.
+
+We ran the strategy described here on a modified version of this data set where:
 * some additional instructions were added to the questions specifying exact intended output formats
 * some answers were corrected (the data set contained mistakes)
 * some questions were clarified (they were highly ambiguous and open to interpretation, or assuming prior questions in the data set had been asked).
@@ -682,8 +684,8 @@ These adjustments applied to both GPT-4 and GPT-4e.
 
 When run with the technique here, the error rate reduces from 11% to 8%:
 ```
-GPT-4: 254 failures
-GPT-4e: 188 failures
+Without numeric calculation equip: 254 failures
+With numeric calculation equip:    188 failures
 ```
 
 > Caveat: we're still assessing both sets of failures, as there's some noise, the above is indicative
@@ -699,7 +701,9 @@ grade 5: 29 --> 16
 grade 6: 140 --> 119
 ```
 
-The differrent kinds of problems are interesting. The big improvements lie in subtraction, summation, comparison, surplus and common-division. In contrast, some areas such as LCM and GCD have been curiously impaired. However these kinds of problems are non-calculational mathematical reasoning and vanishingly rare in real-world chat (except for students doing homework puzzles!).
+The differrent kinds of problems are interesting and important. 
+* The big improvements lie in subtraction, summation, comparison, surplus and common-division.
+* In contrast, some areas such as LCM and GCD have been curiously impaired. Of course, these kinds of problems are largely non-calculational mathematical reasoning and are vanishingly rare in real-world chat (except for students doing homework puzzles!). However it is essential that the technique not impair performance on this kind of problem.
 
 > NOTE: We're looking into the impairments 
 
