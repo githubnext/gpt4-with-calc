@@ -542,6 +542,12 @@ In the optional "Check" section:
 
 We are assessing the value of this check in eliminating false arithmetic. It appears useful in "word puzzle" problems but it is unclear if it has broader utility for helping to ensure correctness and soundness.
 
+One problem with emitting checks is that the model may attempt to perform the calculation as part of the check, which is agsinst the purpose of this work. Milder checks can be used, e.g. just requesting range checking:
+
+```
+* If possible, define the label \`check\` checking if results lie within expected ranges where known.
+```
+
 ### Avoiding Date and Time calculations
 
 One problem with this technique is it can lead to incorrect code calculating with dates and times. These are a tricky and domain with many pitfalls and possible assumptions: everything from localization formats to incorrect use of decimal reprentations like `18.5` for `6:30pm`.
