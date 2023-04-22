@@ -780,25 +780,25 @@ Common-Division: 13 --> 7
 Comparison: 21 --> 4
 TVQ-Final: 3 --> 0
 Surplus: 23 --> 8
-Algebra-1: 22 --> 15
+Algebra-1: 22 --> 15            // note, largely out of zone, only partially calculational
 ```
 
 Regressed:
 ```
-Ceil-Division: 1 --> 3
-Sequential-Operation: 3 --> 8
-LCM: 10 --> 14
+LCM: 10 --> 14                  // note, largely out of zone, mostly word puzzle curiosities
+Ceil-Division: 1 --> 3          // note, largely out of zone, mostly word puzzle curiosities
+Sequential-Operation: 3 --> 8   // note, largely out of zone, only partially calculational, mostly "spot the numeric pattern"
 ```
 
 About the same:
 ```
-Addition: 17 --> 16
-Ratio: 12 --> 11
-GCD: 11 --> 13
-Algebra-2: 43 --> 37
+Addition: 17 --> 16            // note, remaining are largely date/time calculations
+Ratio: 12 --> 11               // note, ratio reduction involves LCM/GCD which isn't a calculational strength
+GCD: 11 --> 13                 // note, largely out of zone, mostly word puzzle curiosities
+Algebra-2: 43 --> 37           // note, largely out of zone, only partially calculational     
 ```
 
 Notes:
-* The big improvements lie in subtraction, summation, multiplication, comparison, surplus and some division problems.
+* The big improvements lie in the calculational heart: subtraction, summation, multiplication, comparison, surplus and some division problems.
 * In contrast, some areas such as LCM and GCD have been a little impaired. These problems are largely non-calculational mathematical reasoning and are likely vanishingly rare in real-world chat (except for students doing homework puzzles!). However we should continue to investigate the reasons that performance is impaired on this kind of problem, and what can be done to restrict the technique from attempting to work on this kind of problem.
 
