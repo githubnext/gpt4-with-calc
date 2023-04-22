@@ -44,7 +44,7 @@ Without numeric calculation equipping:
 With numeric calculation equipping:
 
 1. **GPT-4**: Question ➡️ Numeric calculation code
-2. **Numeric calculation Evaluator**: Numeric calculation code ➡️ Numeric calculation answers
+2. **Evaluator**: Numeric calculation code ➡️ Numeric calculation answers
 3. **GPT-4**: Question + Numeric calculation code + Numeric calculation answers ➡️ Answer
 
 We call this "equipping" GPT-4 with numeric calculation. GPT-4 has a new tool in the box, and it turns out it loves to use it.
