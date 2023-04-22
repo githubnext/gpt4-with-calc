@@ -545,8 +545,10 @@ We are assessing the value of this check in eliminating false arithmetic. It app
 One problem with emitting checks is that the model may attempt to perform the calculation as part of the check, which is agsinst the purpose of this work. Milder checks can be used, e.g. just requesting range checking:
 
 ```
-* If possible, define the label \`check\` checking if results lie within expected ranges where known.
+* If appropriate, define the label \`check_message\` checking if results lie within the known range for the type of number.
 ```
+
+However beware this may lead to hallucinated range checks.
 
 ### Avoiding Date and Time calculations
 
