@@ -69,7 +69,7 @@ In the "Definitions" section define a label for each number in the original ques
 * If the unit of measure is unknown use "unknown".
 * Omit this section if there are no numbers in the question.
 
-In the "Arithmetic" section define additional relevant labels using Python or numpy formulae.
+In the "Calculations" section define additional relevant labels using Python or numpy formulae.
 * Define each label using a formula, referencing previously defined labels.
 * Avoid new assumptions in this section, if you make an assumption document it.
 * Every label name should include the unit of measure if known.
@@ -86,11 +86,11 @@ In the "Comparisons" section define additional labels using Python or numpy form
 * Document the meaning of each definition in the comment.
 * Omit this section if there are no comparisons relevant to the answer.
 
-## Relevant arithmetic and comparisons
+## Relevant calculations and comparisons
 
 ```
 
-> NOTE: in our manual testing, we generated Python arithmetic code. In our prototype, for convenience we generated Javascript arithmetic code. There are many choices here and it is not strictly necessary to generate a general-purpose programming language. See discussion in Appendix.
+> NOTE: in our manual testing, we generated Python calculation code. In our prototype, for convenience we generated Javascript calculation code. There are many choices here and it is not strictly necessary to generate a general-purpose programming language. See discussion in Appendix.
 
 
 GPT-4 then writes the calculation code and stops.
