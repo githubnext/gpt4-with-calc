@@ -694,7 +694,7 @@ For end user-experience it may also be very important to have the models include
 
 We have left open what format should be used for calculations. For convenience we have shown generating Python and Javascript. However introducing arbitrary code generation and execution in general-purpose languages is not necessary for this technique - instead the prompts should continue to be devloped to demand the generation of highly restricted calculation code. A limited subset of Python+numpy or Javascript or similar could still be used but a processing step should be added to strictly check the conformance of the calculations to a well-defined known subset. Careful sandboxing of the execution (or careful interpretation) will also be required.
 
-## Appendix: Highly preliminary evaluation notes
+## Appendix: Preliminary evaluation notes
 
 > NOTE: Evaluation is currently being done using Javascript codegen. We will be looking into Python codegen and other options.
 
@@ -702,41 +702,9 @@ A caveat on any comparative evaluation: this work is about calculation, not math
 
 ### Raw Numeric Calculation
 
-(TBD)
+TBD: Find or create a corpus of `+`, `-`, `*`, `/`, `mod`, `rem`, trig, exp, pi, log2, log10, logN, ceil, floor, sign, compare, including small integer, large integer, decimal, floating point.
 
 > NOTE: It's easy to construct quite realistic problem sets where the technique described here takes a 100% failure rate to a 0% failure rate - for example just take a corpus where every question involving a large-number or non-trivial-function (e.g. trigonometric or exponential) calculation, and with GPT-4 all will fail.
-
-### Raw Financial Calculation
-
-(TBD)
-
-### Raw DateTime Calculation
-
-(TBD)
-
-### Raw Data Table Operations
-
-(TBD)
-
-### Raw Currency Calculation
-
-(TBD)
-
-### With/Without unit tracking
-
-(TBD)
-
-### With/Without Calculation code in final generation
-
-(TBD)
-
-### With/Without documentation insertion in calculation code
-
-(TBD)
-
-### With/Without good names for labels
-
-(TBD)
 
 ### Mathematical word puzzles
 
@@ -801,4 +769,46 @@ Algebra-2: 43 --> 37           // note, largely out of zone, only partially calc
 Notes:
 * The big improvements lie in the calculational heart: subtraction, summation, multiplication, comparison, surplus and some division problems.
 * In contrast, some areas such as LCM and GCD have been a little impaired. These problems are largely non-calculational mathematical reasoning and are likely vanishingly rare in real-world chat (except for students doing homework puzzles!). However we should continue to investigate the reasons that performance is impaired on this kind of problem, and what can be done to restrict the technique from attempting to work on this kind of problem.
+
+### Raw Financial Calculation
+
+Exact decimal computation (TBD)
+
+### Raw DateTime Calculation
+
+(TBD)
+
+### Calculations in the presence of Data Tables
+
+Word problems: Sum, average, compare, sumprod, .. (TBD)
+
+### Excel Calculations over Data Tables
+
+TBD: Use Excel-named functions in formulae over tables.
+
+Also ask for `sum(data)` etc. 
+
+### Raw Currency Calculation
+
+TBD: Convert between currencies
+
+### Raw Unit Calculation
+
+TBD: Convert between units `10 km/h converted to m/s` etc. Full SI units, some other adhoc units.
+
+### With/Without unit tracking
+
+TBD: Compare performance with/without unit tracking on
+
+### With/Without Calculation code in final generation
+
+TBD: Compare performance with/without including calculation code
+
+### With/Without documentation insertion in calculation code
+
+TBD: Compare performance with/without longer language descriptions in calculation code.
+
+### With/Without good names for labels
+
+TBD: Compare performance with/without longer names for units
 
