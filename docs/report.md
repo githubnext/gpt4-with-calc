@@ -1,4 +1,4 @@
-# Equipping GPT-4 with Arithmetic
+# Equipping GPT-4 with Numeric Calculation
 
 Author: Don Syme, GitHub Next, with input from others at [GitHub Next](https://githubnext.com/). [![image](https://user-images.githubusercontent.com/7204669/233200133-1263d0d1-6be2-494a-abb2-b03b5f1964df.png)](https://githubnext.com/)
 
@@ -10,7 +10,7 @@ Date: 18 April 2023
 
 ## The Problem
 
-GPT-4 is catastrophically terrible at arithmetic. It makes egregious, basic mistakes all the time that lead to terrible user experiences on texts involving even the most basic arithmetic problems.
+GPT-4 is catastrophically terrible at calculating with numbers. It makes egregious, basic mistakes all the time that lead to terrible user experiences on texts involving even the most basic numeric problems.
 
 Take for example [this problem with Bing AI](https://dkb.blog/p/bing-ai-cant-be-trusted#%C2%A7gap-financial-statement-summary). To quote from the author:
 
@@ -28,35 +28,35 @@ In short, GPT-4 can't handle numbers or comparisons of numbers, period. In our o
 
 There is, however, hope, and it is in this simple logic:
 
-1. GPT-4 is terrible at **arithmetic** but good at **writing arithmetic code**
-2. Python and many other tools are perfect at **evaluating arithmetic code**.
+1. GPT-4 is terrible at **numeric calculation** but good at **writing numeric calculation code**
+2. Python and many other tools are perfect at **evaluating numeric calculation code**.
 
-The answer is obvious: get GPT-4 to write the arithmetic code, and get Python or some other tool to evaluate it, and use GPT-4 for the rest.
+The answer is obvious: get GPT-4 to write the numeric calculation code, and get Python or some other tool to evaluate it, and use GPT-4 for the rest.
 
 ## The Approach
 
-Our aim is to “equip” or ["augment"](https://arxiv.org/abs/2302.07842) GPT-4 with an arithmetic calculator. The approach is simple:
+Our aim is to “equip” or ["augment"](https://arxiv.org/abs/2302.07842) GPT-4 with an numeric calculator. The approach is simple:
 
-Without arithmetic equipping:
+Without numeric calculation equipping:
 
 1. **GPT-4**: Question ➡️ Answer
 
-With arithmetic equipping:
+With numeric calculation equipping:
 
-1. **GPT-4**: Question ➡️ Arithmetic code
-2. **Arithmetic Evaluator**: Arithmetic code ➡️ Arithmetic answers
-3. **GPT-4**: Question + Arithmetic code + Arithmetic answers ➡️ Answer
+1. **GPT-4**: Question ➡️ Numeric calculation code
+2. **Numeric calculation Evaluator**: Numeric calculation code ➡️ Numeric calculation answers
+3. **GPT-4**: Question + Numeric calculation code + Numeric calculation answers ➡️ Answer
 
-We call this "equipping" GPT-4 with arithmetic. GPT-4 has a new tool in the box, and it turns out it loves to use it.
+We call this "equipping" GPT-4 with numeric calculation. GPT-4 has a new tool in the box, and it turns out it loves to use it.
 
 ## A sample equipping prompt
 
-In Step 1 we prompt GPT-4 to produce relevant arithmetic code. There are many ways to do this and further experimentation will be needed, but here's an example prompt addition, placed after the question:
+In Step 1 we prompt GPT-4 to produce relevant numeric calculation code. There are many ways to do this and further experimentation will be needed, but here's an example prompt addition, placed after the question:
 
 ```
 # Guidance
 
-Do not answer the question. Instead, your task is to write some arithmetic and comparisons relevant to answering the question.
+Do not answer the question. Instead, your task is to write some numeric calculation and comparisons relevant to answering the question.
 
 After the question write a code block with up to three sections containing content relevant to answering the question.
 
@@ -93,13 +93,13 @@ In the "Comparisons" section define additional labels using Python or numpy form
 > NOTE: in our manual testing, we generated Python arithmetic code. In our prototype, for convenience we generated Javascript arithmetic code. There are many choices here and it is not strictly necessary to generate a general-purpose programming language. See discussion in Appendix.
 
 
-GPT-4 then writes the arithmetic code and stops.
+GPT-4 then writes the calculation code and stops.
 
-Step 2 evaluates his arithmetic code.
+Step 2 evaluates this calculation code.
 
-Step 3 combines the original question with both the arithmetic code and answers and generates the answer to the question.
+Step 3 combines the original question with both the calculation code and answers and generates the answer to the question.
 
-> NOTE: In Step 3 the arithmetic code is included as it contains relevant explanation text - this could be omitted if the explanation text is combined with the answers.
+> NOTE: In Step 3 the calculation code is included as it contains relevant explanation text - this could be omitted if the explanation text is combined with the answers.
 
 > NOTE: In Step 3 a prompt directive can be added saying "only use numbers that are exactly present in the question or calculation".
 
@@ -142,7 +142,7 @@ Nope GPT-4, wrong.
 
 ### New Approach, Step 1
 
-Now take a multi-phase approach. In step 1 we add the prompt from the previous section, and generate the arithmetic:
+Now take a multi-phase approach. In step 1 we add the prompt from the previous section, and generate the calculation code:
 
 ```python
 # Definitions
@@ -153,7 +153,7 @@ amount_2021 = [5270, 5750, 5750, 6200] # millions of dollars
 shares_2020 = [29, 32, 37, 28] # millions of shares
 amount_2020 = [4000, 4600, 6000, 5088] # millions of dollars
 
-# Arithmetic
+# Calculations
 total_shares = shares_2022 + shares_2021 + shares_2020 # millions of shares
 total_amount = amount_2022 + amount_2021 + amount_2020 # millions of dollars
 average_amount = np.mean(total_amount) # millions of dollars
@@ -170,7 +170,7 @@ lowest_amount_quarter = total_amount.index(lowest_amount) + 1 # quarter number
 
 ### New Approach, Step 2
 
-We evaluate the arithmetic using Python by adding `import numpy as np`, evaluating and printing:
+We evaluate the calculations using Python by adding `import numpy as np`, evaluating and printing:
 
 ```
 shares_2022 [21, 20, 26, 28]
@@ -193,21 +193,21 @@ lowest_amount_quarter 9
 
 ### New Approach, Step 3
 
-We now take the result text and add both the arithmetic and its solutions to the original problem:
+We now take the result text and add both the calculations and its solutions to the original problem:
 
 ````md
 # Question
 
 ... <as above> ...
 
-## Relevant arithmetic and comparisons
+## Relevant calculations and comparisons
 
 ```python
 shares_2022 = [21, 20, 26, 28] # millions of shares
 ... <as above> ...
 ```
 
-## Evaluation of relevant arithmetic and comparisons
+## Evaluation of relevant calculations and comparisons
 
 ```
 more_shares_2022 False
@@ -264,7 +264,7 @@ expiration date.
 Which company repurchased more a greater amount of shares, in total value, in 2021 and 2022 combined. What are the respective total amounts for the two companies?
 ```
 
-Here is the extracted arithmetic program:
+Here are the extracted calculations:
 
 ```python
 # Definitions
@@ -284,7 +284,7 @@ goog_c_2021 = 46875 # million dollars
 goog_a_2022 = 6719 # million dollars
 goog_c_2022 = 52577 # million dollars
 
-# Arithmetic
+# Calculations
 # Microsoft total share repurchase amount by year in millions of dollars
 ms_2021 = ms_q1_2021 + ms_q2_2021 + ms_q3_2021 + ms_q4_2021 # million dollars
 ms_2022 = ms_q1_2022 + ms_q2_2022 + ms_q3_2022 + ms_q4_2022 # million dollars
@@ -372,9 +372,9 @@ n ≈ 2.53
 Therefore, it takes about 2.53 years for an item growing at 30% annually to double.
 ```
 
-The final answer - 2.53 - is wrong. GPT-4 can do quite a lot of good mathematical explanation and reasoning, but it can't do the final arithmetic step.
+The final answer - 2.53 - is wrong. GPT-4 can do quite a lot of good mathematical explanation and reasoning, but it can't do the final calculation step.
 
-Arithmetic equipping to the rescue! Hope is restored! The extracted arithmetic code is:
+Calculation equipping to the rescue! Hope is restored! The extracted calculations are:
 
 ```python
 # Definitions
@@ -382,7 +382,7 @@ growth_rate = 0.3 # annual growth rate as a decimal fraction
 initial_amount = 1 # initial amount of the item in unknown units
 doubling_amount = 2 # amount of the item after doubling in unknown units
 
-# Arithmetic
+# Calculations
 # Use the formula A = P * (1 + r)^t, where A is the final amount, P is the initial amount, r is the growth rate, and t is the time in years
 doubling_time = np.log(doubling_amount / initial_amount) / np.log(1 + growth_rate) # time in years it takes for the item to double
 ```
@@ -403,10 +403,10 @@ Happiness.
 
 We have applied this technique to the very large and complex problem originally quoted - the comparison of two financial reports. [The full text of our version of the problem can be found here](https://gist.github.com/dsyme/f96372f465b8e93d0418ae5c887d065d)
 
-While not perfect, the technique vastly improves the generated text. The generated arithmetic is as follows:
+While not perfect, the technique vastly improves the generated text. The generated calculations are as follows:
 
 `````
-## Relevant arithmetic and comparisons
+## Relevant calculations and comparisons
 
 ````python
 # Definitions
@@ -440,7 +440,7 @@ lulu_capital_expenditures = 175.6 # million USD
 lulu_share_repurchases = 17 # million USD
 lulu_store_count = 623 # number of stores
 
-# Arithmetic
+# Calculations
 gap_gross_profit = gap_net_sales * gap_gross_margin # billion USD
 lulu_net_revenue_growth = (lulu_net_revenue - 1.3) / 1.3 # fraction
 lulu_store_revenue_growth = (lulu_store_revenue - 0.488) / 0.488 # fraction
@@ -471,9 +471,9 @@ gap_share_repurchases_yield < lulu_share_repurchases_yield # true/false
 gap_store_count > lulu_store_count # true/false
 `````
 
-This is not bad, but there are new assumed numbers such as `2.72` in the generated arithmetic code that do not relate to anything in the source text. UPDATE: this fabrication can be eliminated through more stringent prompting, see the appendix.
+This is not bad, but there are new assumed numbers such as `2.72` in the generated calculations that do not relate to anything in the source text. UPDATE: this fabrication can be eliminated through more stringent prompting, see the appendix.
 
-The resulting text is still a huge improvement, as all the comparisons are "the right way around", and each of the numbers is grounded in an arithmetic derivation:
+The resulting text is still a huge improvement, as all the comparisons are "the right way around", and each of the numbers is grounded in a calculation derivation:
 
 > - Gap Inc. had more than twice the net sales of Lululemon in Q3 2022 ($4.04 billion vs. $1.9 billion), but Lululemon grew its net revenue much faster than Gap Inc. (46% vs. 2% year-over-year).
 > - Lululemon had a higher proportion of its net revenue coming from e-commerce than Gap Inc. (41.3% vs. 39%), and also grew its e-commerce revenue faster than Gap Inc. (31% vs. 5% year-over-year).
@@ -488,19 +488,19 @@ While not perfect it is many, many times better than the original answer.
 
 ## Example 5
 
-Take pretty much any basic arithmetic math problem that doesn't invovle really simple numbers, e.g. from [This LA County math exam](https://hr.lacounty.gov/wp-content/uploads/2016/12/Basic-Arithmetic-v1.pdf):
+Take pretty much any basic calculation problem that doesn't involve really simple numbers, e.g. from [This LA County math exam](https://hr.lacounty.gov/wp-content/uploads/2016/12/Basic-Arithmetic-v1.pdf):
 
 > Fred’s gross salary is \$850 per week. From his salary, 11% is removed for federal deductions; 5.5% for state deductions; and 6.2% for the company’s pension plan. If each of these deductions is taken as a percent of Fred’s gross salary, what is his net salary for a fourweek period?
 
-Without arithmetic equipping the answer is wrong:
+Without calculation equipping the answer is wrong:
 
 > $2448.20
 
-With arithmetic equipping the answer is correct:
+With calculation equipping the answer is correct:
 
 > Fred's net salary for a four-week period is $2628.20.
 
-In the Javascript-generating prototype, the generated arithmetic code (with full generated documentation comments) is:
+In the Javascript-generating prototype, the generated calculation code (with full generated documentation comments) is:
 
 ```javascript
 // Definitions
@@ -510,7 +510,7 @@ let state_deduction_rate = 0.055; // in fraction, the percentage of gross salary
 let pension_deduction_rate = 0.062; // in fraction, the percentage of gross salary removed for the company's pension plan
 let weeks_per_period = 4; // in weeks, the length of the period for which the net salary is calculated
 
-// Arithmetic
+// Calculations
 let federal_deduction_per_week = gross_salary_per_week * federal_deduction_rate; // in dollars, the amount of federal taxes deducted from the gross salary per week
 let state_deduction_per_week = gross_salary_per_week * state_deduction_rate; // in dollars, the amount of state taxes deducted from the gross salary per week
 let pension_deduction_per_week = gross_salary_per_week * pension_deduction_rate; // in dollars, the amount of pension contribution deducted from the gross salary per week
@@ -524,27 +524,27 @@ let net_salary_per_period = net_salary_per_week * weeks_per_period; // in dollar
 
 During this investigation we investigated some alternatives:
 
-- We tried variations using a single model invocation, producing a mix of arithmetic code plus text. Some examples clearly required conditional text, which we started to investigate by making the generated final text be conditional/templated/interpolated. However, the longer longer financial report examples above convinced us that too much reasoning remained in text generation, and that it is a clearer and simpler architecture to use a specific model invocation to enrich with an arithmetic program. Certainly a single invocation is viable for smaller examples.
+- We tried variations using a single model invocation, producing a mix of calculations plus text. Some examples clearly required conditional text, which we started to investigate by making the generated final text be conditional/templated/interpolated. However, the longer longer financial report examples above convinced us that too much reasoning remained in text generation, and that it is a clearer and simpler architecture to use a specific model invocation to enrich with an calculation program. Certainly a single invocation is viable for smaller examples.
 
-- We tried variations using a single model invocation that generates only a program, which is encouraged to print the full final text - so the only output was a program which could include arithmetic content. However that seemed to result in output texts more like those programmers write for diagnostics or output - terse, rather than well-written human-facing output text. Again, it seems a clearer and simpler architecture to distinguish between a phase that enriches with arithmetic code, and a phase which uses GPT-4 in text-generation mode.
+- We tried variations using a single model invocation that generates only a program, which is encouraged to print the full final text - so the only output was a program which could include calculation content. However that seemed to result in output texts more like those programmers write for diagnostics or output - terse, rather than well-written human-facing output text. Again, it seems a clearer and simpler architecture to distinguish between a phase that enriches with calculations, and a phase which uses GPT-4 in text-generation mode.
 
 ## Conclusion
 
-GPT-4 can't do arithmetic or comparisons. But it can write pretty good arithmetic code. By using a two-phase approach we can equip GPT-4 with arithmetic by writing the arithmetic code and evaluating it with Python or a similar interpreter.
+GPT-4 can't do numeric calculations or comparisons. But it can write pretty good calculation code. By using a two-phase approach we can equip GPT-4 with numeric calculation by writing the calculation code and evaluating it with Python or a similar interpreter.
 
 This has truly huge advantages:
 
-1. Applications based on GPT-4 become much more reliable at arithmetic.
+1. Applications based on GPT-4 become much more reliable at numeric calculation.
 2. A major cause of reputation loss is greatly reduced.
-3. The derivation of all numbers in the output can be explained through the presentation of the arithmetic code that derived it.
+3. The derivation of all numbers in the output can be explained through the presentation of the calculation code that derived it.
 4. Alternative output formats such as spreadsheets, executable notebooks or outright code can be produced to back the response.
-5. The arithmetic code can be automatically assessed and filtered for certain properties.
+5. The calculations can be automatically assessed and filtered for certain properties.
 
 Further:
 
 1. We speculate that with further prompting properties such as units (e.g. dollars) and multiplicative constants (e.g. millions) can be really carefully tracked and assessed. Unit mistakes are pernicious and the automated extraction of unit derivations can help here.
 2. We speculate that there are many other classes of "equips" that can be dealt with this way. For example, we believe GPT-4 can be "equipped" with Datalog, or an SMT-solver, or Wolfram, or further programmatic data retrieval, or SQL queries.
-3. There are a wide variety of "equip" architectures. Early versions of this work used a two step approach, where arithmetic and templated answer were written in one model invocation. Other architectures could ask which equips are most relevant, or iterate on equips until no more information can be incorporated. There are many tradeoffs and much to explore.
+3. There are a wide variety of "augment", "equip" and "chain of reasoning" architectures. Early versions of this work used a two step approach, where calculation and templated answer were written in one model invocation. Other architectures could ask which equips are most relevant, or iterate on equips until no more information can be incorporated. There are many tradeoffs and much to explore.
 
 The technique needs rigorous evaluation and refinement and we encourage collaboration. Please iterate with us and take this further. If publishing externally please include us as co-authors.
 
@@ -558,12 +558,12 @@ The basic idea that you can get LLMs to emit Python to handle arithemtic calcula
 
 ## Appendix: Update on Example 4
 
-Adding the following lines in the prompt eliminated the addition of hallucinated assumptions in the arithmetic code:
+Adding the following lines in the prompt eliminated the addition of hallucinated assumptions in the calculations:
 
      Avoid new assumptions in this section, if you make an assumption document it.
      Document the meaning of each definition in the comment.
 
-In the latest implemented proof-of-concept (generating Javascript for the arithmetic code), the generated arithmetic became:
+In the latest implemented proof-of-concept (generating Javascript for the calculations), the generated calculations became:
 
 ```javascript
 // Definitions
@@ -583,7 +583,7 @@ let lululemon_diluted_eps = 2.0; // USD, diluted earnings per share for lululemo
 let lululemon_inventory = 1.7; // billion USD, ending inventory for lululemon in Q3 2022
 let lululemon_capital_expenditures = 0.176; // billion USD, capital expenditures for lululemon in Q3 2022
 
-// Arithmetic
+// Calculations
 let net_sales_difference = lululemon_net_sales - gap_net_sales; // billion USD, difference in net sales between lululemon and Gap Inc. in Q3 2022
 let net_sales_ratio = lululemon_net_sales / gap_net_sales; // decimal, ratio of net sales between lululemon and Gap Inc. in Q3 2022
 let comparable_sales_difference = lululemon_comparable_sales - gap_comparable_sales; // decimal, difference in comparable sales growth rate between lululemon and Gap Inc. in Q3 2022
@@ -612,14 +612,14 @@ let capital_expenditures_higher = lululemon_capital_expenditures > gap_capital_e
 However the risk that code-generation will encode new hallucinations is real. Some techniques to deal with this are
 
 - Heavy prompting to avoid new assumptions, as above
-- Filtering or rejection of arithmetic code that doesn't conform to expected requriements
-- Size restrictions rejecting new hallucinated arithmetic code when inputs are small
+- Filtering or rejection of calculations that don't conform to expected requriements
+- Size restrictions rejecting new hallucinated calculations when inputs are small
 
-For end user-experience it may also be very important to have the models include a textual explanation of any arithmetic assumptions made in generating the text. This is feasible given the above through another model invocation to explain any assumptins made.
+For end user-experience it may also be very important to have the models include a textual explanation of any assumptions made in generating the calculations. This is feasible given the above through another model invocation to explain any assumptins made.
 
-### Appendix: What format for arithmetic code?
+### Appendix: What format for calculations?
 
-We have left open what format should be used for arithmetic code. For convenience we have shown generating Python and Javascript. However introducing arbitrary code generation and execution in general-purpose languages is not necessary for this technique - instead the prompts should continue to be devloped to demand the generation of highly restricted calculation code. A limited subset of Python+numpy or Javascript or similar could still be used but a processing step should be added to strictly check the conformance of the arithmetic code to a well-defined known subset. Careful sandboxing of the execution (or careful interpretation) will also be required.
+We have left open what format should be used for calculations. For convenience we have shown generating Python and Javascript. However introducing arbitrary code generation and execution in general-purpose languages is not necessary for this technique - instead the prompts should continue to be devloped to demand the generation of highly restricted calculation code. A limited subset of Python+numpy or Javascript or similar could still be used but a processing step should be added to strictly check the conformance of the calculations to a well-defined known subset. Careful sandboxing of the execution (or careful interpretation) will also be required.
 
 ## Appendix: Highly preliminary evaluation notes
 
@@ -631,7 +631,7 @@ We want to make sure that the numbers computed are correct - even if the calcula
 
 Because of this, we put a huge caveat on any evaluation: much of the work on math and GPT-4 attempts to improve its more advanced mathematical capabilities, e.g. for algebra, geometry, problem solving, is mostly based on word problems, and the typical evaluation problem sets are oriented in this way. This is understandable for LLM-based research - why would be use an LLM to try to add "16.84812 + 19.29039" let alone to evaluate trigonometric functions? However in real-life chat people will try to do exactly these kinds of problems: there is a strong user expectation that they can throw in any calculation and the chat will get it right, or else refuse to answer.
 
-### Raw Arithmetic Calculation
+### Raw Numeric Calculation
 
 (TBD)
 
@@ -646,6 +646,26 @@ It's easy to construct quite realistic problem sets where the technique describe
 (TBD)
 
 ### Raw Data Table Operations
+
+(TBD)
+
+### Raw Currency Calculation
+
+(TBD)
+
+### With/Without unit tracking
+
+(TBD)
+
+### With/Without Calculation code in final generation
+
+(TBD)
+
+### With/Without documentation insertion in calculation code
+
+(TBD)
+
+### With/Without good names for labels
 
 (TBD)
 
