@@ -671,12 +671,14 @@ It's easy to construct quite realistic problem sets where the technique describe
 
 ### ASDiv.xml
 
+> NOTE: essentially every problem in this data set can be made to fail with raw GPT-4 simply by making the umbers involved sufficeintly large or adding decimal places.  The existing GPT-4 pass rates for this problem set are somewhat deceptive as they assume child-like numbers are involved in real-world problems.
+
 This is a problem set of 2300 childrens maths puzzles, up to grade 6 US curriculum. It is primarily word problem solving, not calculation. We ran the strategy described here on a modified version of this data set where:
 * some additional instructions were added to the questions specifying exact intended output formats
 * some answers were corrected (the data set contained mistakes)
 * some questions were clarified (they were highly ambiguous and open to interpretation, or assuming prior questions in the data set had been asked).
 
-These adjsutments applied to both GPT-4 and GPT-4e.
+These adjustments applied to both GPT-4 and GPT-4e.
 
 When run with the technique here, the error rate reduces from 11% to 8%:
 ```
