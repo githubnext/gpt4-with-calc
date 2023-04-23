@@ -528,9 +528,9 @@ We want to make sure that the numbers computed are correct - even if the calcula
 
 We are exploring a number of refinements to the described technique.
 
-### Emitting checks
+### Refinement: Emitting checks
 
-It is possible to add a section to include a check on the values with this prompt addition:
+It is possible to add a section to the calculation code prompt requesting a check on the values. Here is an example prompt addition:
 
 ```
 In the optional "Check" section:
@@ -542,6 +542,8 @@ In the optional "Check" section:
 
 We are assessing the value of this check in eliminating false arithmetic. It appears useful in "word puzzle" problems but it is unclear if it has broader utility for helping to ensure correctness and soundness.
 
+#### Problems with checks - additional hallucination
+
 One problem with emitting checks is that the model may attempt to perform the calculation as part of the check, which is agsinst the purpose of this work. Milder checks can be used, e.g. just requesting range checking:
 
 ```
@@ -550,9 +552,21 @@ One problem with emitting checks is that the model may attempt to perform the ca
 
 However beware this may lead to hallucinated range checks.
 
-### Avoiding Date and Time calculations
+#### Problems with checks - overly pedantic
 
-One problem with this technique is it can lead to incorrect code calculating with dates and times. These are a tricky and domain with many pitfalls and possible assumptions: everything from localization formats to incorrect use of decimal reprentations like `18.5` for `6:30pm`.
+Another problem is that the checks may be "surprising yet logically reasonable", e.g. consider this question:
+
+> Mrs. Hilt and her sister drove to a concert 78 miles away. They drove 32 miles and then stopped for gas. Her sister put 28 gallons of gas in the car. How many miles did they have left to drive? ----------------
+
+After correct calculation code, the emitted check is:
+```
+const check_message = gas_added > 20 ? "That's a lot of gas for a short trip." : ""; // [string]
+```
+It's true - the irrelevant information of 28 gallons really is a lot of gas for a short trip, and one can indeed imagine a bright grade 2 child putting up their hand and querying why so much gas is needed.
+
+### Refinement: Reducing Date and Time calculations
+
+Numeric calculation can easily lead to incorrect code calculating any use of numbers that is textual or non-standard arithmetic, e.g. with dates and times. These are a tricky domain with many pitfalls and possible assumptions: everything from localization formats to incorrect use of decimal reprentations like `18.5` for `6:30pm`.
 
 One approach to banning all dates and times is to add this prompt directive:
 ```
@@ -565,9 +579,15 @@ Another option is to avoid or ban all textual date times:
 * Avoid all date/time calculations
 * Parse all textual dates and times using the \`PARSEDATETIMEFAIL\` function
 ```
+
 The second directive will cause the emit of a function that will fail to exist when the calculation code is run, suppressing the use of calculation. However, it is likely this overly impacts innocuous or simple uses of dates and times. 
 
 A third alternative is to attempt to convert to a standard DateTime object with good computational support. However this is still prone to localization and other problems. Additionally, such an object should have unlimited range (any date/time, including day 1,000,000 BC) if used in arbitrary chat scenarios: many libraries limit the ranges usable.
+
+A fourth alternative is to instruct the reduction of the date-time computations to more tractable computations, e.g.
+```
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+```
 
 ### Avoiding solving equations and other algebra
 
