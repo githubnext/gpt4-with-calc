@@ -44,7 +44,7 @@ Without numeric calculation equipping:
 With numeric calculation equipping:
 
 1. **GPT-4**: Question ➡️ Numeric calculation code
-2. **Numeric calculation Evaluator**: Numeric calculation code ➡️ Numeric calculation answers
+2. **Evaluator**: Numeric calculation code ➡️ Numeric calculation answers
 3. **GPT-4**: Question + Numeric calculation code + Numeric calculation answers ➡️ Answer
 
 We call this "equipping" GPT-4 with numeric calculation. GPT-4 has a new tool in the box, and it turns out it loves to use it.
@@ -519,9 +519,108 @@ let net_salary_per_week = gross_salary_per_week - total_deduction_per_week; // i
 let net_salary_per_period = net_salary_per_week * weeks_per_period; // in dollars, the amount Fred takes home after deductions for a four-week period
 ```
 
-## Alternatives and variations
+## Refinements
 
-During this investigation we investigated some alternatives:
+The emphasis here is on "calculation" not "math" or "algebra" - we want to reliably perform the simpler, purely calculational end of mathematical reasoning. This means detecting and emitting the calculational subset of reasoning and executing it with 100% accuracy - especially the kind that may easily be present in large quantities in chat discussion about large texts. The financial document comparisons above being good examples. Another aim is to not to try to perform any other kind of reasoning. In this setting, calculations may involve a considerable amount of data processing and reduction.
+
+We want to make sure that the numbers computed are correct - even if the calculation itself is not strictly the right calculation to be doing. Ideally the presence of the calculation code and results will not greatly disturb the other reasoning or textual emit going on.
+
+We are exploring a number of refinements to the described technique.
+
+### Refinement: Emitting checks
+
+It is possible to add a section to the calculation code prompt requesting a check on the values. Here is an example prompt addition:
+
+```
+In the optional "Check" section:
+* If possible, define the label \`check\` comparing a combination of the calculated values to check if the calculations are correct. Also check results lie within expected ranges where known.
+* Omit this section completely if it contains no definitions.
+* The \`check\` value should evaluate to a single true/false boolean.
+* Do NOT include the calculated true/false value for this label.
+```
+
+We are assessing the value of this check in eliminating false arithmetic. It appears useful in "word puzzle" problems but it is unclear if it has broader utility for helping to ensure correctness and soundness.
+
+#### Problems with checks - additional hallucination
+
+One problem with emitting checks is that the model may attempt to perform the calculation as part of the check, which is agsinst the purpose of this work. Milder checks can be used, e.g. just requesting range checking:
+
+```
+* If appropriate, define the label \`check_message\` checking if results lie within the known range for the type of number.
+```
+
+However beware this may lead to hallucinated range checks.
+
+#### Problems with checks - overly pedantic
+
+Another problem is that the checks may be "surprising yet logically reasonable", e.g. consider this question:
+
+> Mrs. Hilt and her sister drove to a concert 78 miles away. They drove 32 miles and then stopped for gas. Her sister put 28 gallons of gas in the car. How many miles did they have left to drive? ----------------
+
+After correct calculation code, the emitted check is:
+
+```
+const check_message = gas_added > 20 ? "That's a lot of gas for a short trip." : ""; // [string]
+```
+
+It's true - the irrelevant information of 28 gallons really is a lot of gas for a short trip, and one can indeed imagine a bright grade 2 child putting up their hand and querying why so much gas is needed.
+
+### Refinement: Reducing Date and Time calculations
+
+Numeric calculation can easily lead to incorrect code calculating any use of numbers that is textual or non-standard arithmetic, e.g. with dates and times. These are a tricky domain with many pitfalls and possible assumptions: everything from localization formats to incorrect use of decimal reprentations like `18.5` for `6:30pm`.
+
+One approach to banning all dates and times is to add this prompt directive:
+
+```
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+```
+
+Another option is to avoid or ban all textual date times:
+
+```
+* Avoid all date/time calculations
+* Parse all textual dates and times using the \`PARSEDATETIMEFAIL\` function
+```
+
+The second directive will cause the emit of a function that will fail to exist when the calculation code is run, suppressing the use of calculation. However, it is likely this overly impacts innocuous or simple uses of dates and times.
+
+A third alternative is to attempt to convert to a standard DateTime object with good computational support. However this is still prone to localization and other problems. Additionally, such an object should have unlimited range (any date/time, including day 1,000,000 BC) if used in arbitrary chat scenarios: many libraries limit the ranges usable.
+
+A fourth alternative is to instruct the reduction of the date-time computations to more tractable computations, e.g.
+
+```
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+```
+
+### Avoiding solving equations and other algebra
+
+The aim here is to calculate with numbers, not perform high-school maths. GPT-4 loves to pretend that it is good at doing maths, but in reality that should not be part of the generated code emit, which is deigned to be entirely calulational.
+
+This is a tricky thing to delimit, but we have experimented with adding the following to the calculation-section prompt:
+
+```
+* Do NOT solve equations, simply write relevant calculations.
+```
+
+However further filtering of pseudo-mathematical code is likely needed to stay in the calculation zone.
+
+### Integer division
+
+One identified mistake in generated code is the mis-use of integer v. floating-point division.
+
+We are experimenting with adding this to the prompt to help guide the model to correct this:
+
+```
+* Use integer division when appropriate.
+```
+
+### Calculate, not code
+
+The point of this work is to calculate. But what exactly counts as a calculation?
+
+## Alternative architectures
+
+During this investigation we investigated some other alternatives:
 
 - We tried variations using a single model invocation, producing a mix of calculations plus text. Some examples clearly required conditional text, which we started to investigate by making the generated final text be conditional/templated/interpolated. However, the longer longer financial report examples above convinced us that too much reasoning remained in text generation, and that it is a clearer and simpler architecture to use a specific model invocation to enrich with an calculation program. Certainly a single invocation is viable for smaller examples.
 
@@ -531,7 +630,7 @@ During this investigation we investigated some alternatives:
 
 GPT-4 can't do numeric calculations or comparisons. But it can write pretty good calculation code. By using a two-phase approach we can equip GPT-4 with numeric calculation by writing the calculation code and evaluating it with Python or a similar interpreter.
 
-This has truly huge advantages:
+This has potentially huge advantages:
 
 1. Applications based on GPT-4 become much more reliable at numeric calculation.
 2. A major cause of reputation loss is greatly reduced.
@@ -620,53 +719,41 @@ For end user-experience it may also be very important to have the models include
 
 We have left open what format should be used for calculations. For convenience we have shown generating Python and Javascript. However introducing arbitrary code generation and execution in general-purpose languages is not necessary for this technique - instead the prompts should continue to be devloped to demand the generation of highly restricted calculation code. A limited subset of Python+numpy or Javascript or similar could still be used but a processing step should be added to strictly check the conformance of the calculations to a well-defined known subset. Careful sandboxing of the execution (or careful interpretation) will also be required.
 
-## Appendix: Highly preliminary evaluation notes
+## Appendix: Preliminary evaluation notes
 
-NOTE: Evaluation is currently being done using Javascript codegen. We will be looking into Python codegen and other options.
+> NOTE: Evaluation is currently being done using Javascript codegen. We will be looking into Python codegen and other options.
 
-The emphasis here is on "calculation" not "math" or "algebra" - we want to reliably perform the simpler, purely calculational end of mathematical reasoning. This means detecting and emitting the calculational subset of reasoning and executing it with 100% accuracy - especially the kind that may easily be present in large quantities in chat discussion about large texts. The financial document comparisons above being good examples. Another aim is to not to try to perform any other kind of reasoning. In this setting, calculations may involve a considerable amount of data processing and reduction.
+A caveat on any comparative evaluation: this work is about calculation, not math. Much of the work on math and GPT-4 attempts to improve its more advanced mathematical capabilities, e.g. for algebra, geometry, problem solving, is mostly based on word problems, and the typical evaluation problem sets are oriented in this way. This is understandable for LLM-based research - why would be use an LLM to try to add "16.84812 + 19.29039" let alone to evaluate trigonometric functions? However in real-life chat people will try to do exactly these kinds of problems: there is a strong user expectation that they can throw in any calculation and the chat will get it right, or else refuse to answer.
 
-We want to make sure that the numbers computed are correct - even if the calculation itself is not strictly the right calculation to be doing. Ideally the presence of the calculation code and results will not greatly disturb the other reasoning or textual emit going on.
+### Raw Calculation
 
-Because of this, we put a huge caveat on any evaluation: much of the work on math and GPT-4 attempts to improve its more advanced mathematical capabilities, e.g. for algebra, geometry, problem solving, is mostly based on word problems, and the typical evaluation problem sets are oriented in this way. This is understandable for LLM-based research - why would be use an LLM to try to add "16.84812 + 19.29039" let alone to evaluate trigonometric functions? However in real-life chat people will try to do exactly these kinds of problems: there is a strong user expectation that they can throw in any calculation and the chat will get it right, or else refuse to answer.
+TBD: Find or create a corpus of `+`, `-`, `*`, `/`, `mod`, `rem`, trig, exp, pi, log2, log10, logN, ceil, floor, sign, compare, including small integer, large integer, decimal, floating point.
 
-### Raw Numeric Calculation
+> NOTE: It's easy to construct quite realistic problem sets where the technique described here takes a 100% failure rate to a 0% failure rate - for example just take a corpus where every question involving a large-number or non-trivial-function (e.g. trigonometric or exponential) calculation, and with GPT-4 all will fail.
 
-(TBD)
+#### Financial
 
-> It's easy to construct quite realistic problem sets where the technique described here takes a 100% failure rate to a 0% failure rate - for example just take a corpus where every question involving a large-number or non-trivial-function (e.g. trigonometric or exponential) calculation, and with GPT-4 all will fail.
+TBD: Assess exact decimal computation, computation of rates etc.
 
-### Raw Financial Calculation
+#### DateTime
 
-(TBD)
+TBD: Assess ability to do DateTime calculation.
 
-### Raw DateTime Calculation
+#### Calculations over Data Tables
 
-(TBD)
+Word problems: Sum, average, compare, sumprod, .. (TBD)
 
-### Raw Data Table Operations
+#### Excel Calculations
 
-(TBD)
+TBD: Use Excel-named functions in formulae over tables. Also ask for `sum(data)` etc.
 
-### Raw Currency Calculation
+#### Currency Calculations
 
-(TBD)
+TBD: Convert between currencies
 
-### With/Without unit tracking
+#### Unit Calculations
 
-(TBD)
-
-### With/Without Calculation code in final generation
-
-(TBD)
-
-### With/Without documentation insertion in calculation code
-
-(TBD)
-
-### With/Without good names for labels
-
-(TBD)
+TBD: Convert between units `10 km/h converted to m/s` etc. Full SI units, some other adhoc units.
 
 ### Mathematical word puzzles
 
@@ -683,60 +770,69 @@ We ran the strategy described here on a modified version of this data set where:
 
 These adjustments applied to both GPT-4 and GPT-4e.
 
-When run with the technique here, the error rate reduces from 11% to 8%:
+When run with the technique here, the error rate reduces from 11% to 7%:
 
 ```
 Without numeric calculation equip: 254 failures
-With numeric calculation equip:    188 failures
+With numeric calculation equip:    161 failures
 ```
-
-> Caveat: we're still assessing both sets of failures, as there's some noise, the above is indicative
 
 The different grades of problems are affected as follows:
 
 ```
 grade 1: 2 --> 2
-grade 2: 8 --> 4
-grade 3: 25 --> 17
-grade 4: 50 --> 28
-grade 5: 29 --> 16
-grade 6: 140 --> 119
+grade 2: 7 --> 2
+grade 3: 25 --> 18
+grade 4: 48 --> 18
+grade 5: 33 --> 16
+grade 6: 137 --> 105
 ```
 
 The differrent kinds of problems are interesting and important.
 
-- The big improvements lie in subtraction, summation, comparison, surplus and common-division.
-- In contrast, some areas such as LCM and GCD have been curiously impaired. Of course, these kinds of problems are largely non-calculational mathematical reasoning and are vanishingly rare in real-world chat (except for students doing homework puzzles!). However it is essential that the technique not impair performance on this kind of problem.
-
-> NOTE: We're looking into the impairments
-
 Improved:
 
 ```
-Subtraction: 28 --> 13
+Subtraction: 28 --> 4
 Sum: 10 --> 2
-Multiplication: 7 --> 3
-Comparison: 24 --> 5
+Multiplication: 8 --> 3
+Floor-Division: 6 --> 3
+Common-Division: 13 --> 8
+Comparison: 21 --> 4
 TVQ-Final: 3 --> 0
-Surplus: 24 --> 8
-Common-Division: 15 --> 4
+Surplus: 23 --> 10
+Algebra-1: 22 --> 15            // note, largely out of zone, only partially calculational
 ```
 
 Regressed:
 
 ```
-Sequential patterns: 3 --> 8
-LCM: 11 --> 18
-GCD: 10 --> 19
-Ceil-Division: 1 --> 4
+LCM: 10 --> 17                  // note, largely out of zone, mostly word puzzle curiosities
+GCD: 11 --> 14                  // note, largely out of zone, mostly word puzzle curiosities
+Sequential-Operation: 3 --> 8   // note, largely out of zone, only partially calculational, mostly "spot the numeric pattern"
 ```
 
 About the same:
 
 ```
-Addition: 18 --> 19  //note, includes may date-time problems
-Ratio: 9 --> 11
-Floor-Division: 6 --> 4
-Algebra-1: 21 --> 19
-Algebra-2: 44 --> 38
+Addition: 17 --> 16            // note, remaining are largely date/time calculations
+Ceil-Division: 1 --> 1          // note, largely out of zone, mostly word puzzle curiosities
+Ratio: 12 --> 11               // note, ratio reduction involves LCM/GCD which isn't a calculational strength
+Algebra-2: 43 --> 36           // note, largely out of zone, only partially calculational
+```
+
+Notes:
+
+- The big improvements lie in the calculational heart: subtraction, summation, multiplication, comparison, surplus and some division problems.
+- In contrast, some areas such as LCM and GCD have been a little impaired. These problems are largely non-calculational mathematical reasoning and are likely vanishingly rare in real-world chat (except for students doing homework puzzles!). However we should continue to investigate the reasons that performance is impaired on this kind of problem, and what can be done to restrict the technique from attempting to work on this kind of problem.
+
+### Assessing aspects of calculation code
+
+Taking the word puzzles, eliminating some characteristics of the generated calculations gives a measure of the proportion of word puzzles sensitive to this aspect of calculation.
+
+```
+Without numeric calculation equip: 254 failures
+With numeric calculation equip:    171 failures (noEmitChecks)
+With numeric calculation equip:    169 failures (noEliminateDateTime)
+With numeric calculation equip:    161 failures
 ```
