@@ -720,11 +720,35 @@ We have left open what format should be used for calculations. For convenience w
 
 A caveat on any comparative evaluation: this work is about calculation, not math. Much of the work on math and GPT-4 attempts to improve its more advanced mathematical capabilities, e.g. for algebra, geometry, problem solving, is mostly based on word problems, and the typical evaluation problem sets are oriented in this way. This is understandable for LLM-based research - why would be use an LLM to try to add "16.84812 + 19.29039" let alone to evaluate trigonometric functions? However in real-life chat people will try to do exactly these kinds of problems: there is a strong user expectation that they can throw in any calculation and the chat will get it right, or else refuse to answer.
 
-### Raw Numeric Calculation
+### Raw Calculation
 
 TBD: Find or create a corpus of `+`, `-`, `*`, `/`, `mod`, `rem`, trig, exp, pi, log2, log10, logN, ceil, floor, sign, compare, including small integer, large integer, decimal, floating point.
 
 > NOTE: It's easy to construct quite realistic problem sets where the technique described here takes a 100% failure rate to a 0% failure rate - for example just take a corpus where every question involving a large-number or non-trivial-function (e.g. trigonometric or exponential) calculation, and with GPT-4 all will fail.
+
+#### Financial
+
+TBD: Assess exact decimal computation, computation of rates etc.
+
+#### DateTime
+
+TBD: Assess ability to do DateTime calculation.
+
+#### Calculations over Data Tables
+
+Word problems: Sum, average, compare, sumprod, .. (TBD)
+
+#### Excel Calculations 
+
+TBD: Use Excel-named functions in formulae over tables. Also ask for `sum(data)` etc. 
+
+#### Currency Calculations
+
+TBD: Convert between currencies
+
+#### Unit Calculations
+
+TBD: Convert between units `10 km/h converted to m/s` etc. Full SI units, some other adhoc units.
 
 ### Mathematical word puzzles
 
@@ -740,95 +764,64 @@ We ran the strategy described here on a modified version of this data set where:
 These adjustments applied to both GPT-4 and GPT-4e.
 
 When run with the technique here, the error rate reduces from 11% to 7%:
+
 ```
 Without numeric calculation equip: 254 failures
-With numeric calculation equip:    159 failures
+With numeric calculation equip:    161 failures
 ```
 
 The different grades of problems are affected as follows:
 
 ```
-grade 1: 2 --> 1
+grade 1: 2 --> 2
 grade 2: 7 --> 2
-grade 3: 25 --> 17
-grade 4: 48 --> 20
-grade 5: 33 --> 13
-grade 6: 137 --> 106
+grade 3: 25 --> 18
+grade 4: 48 --> 18
+grade 5: 33 --> 16
+grade 6: 137 --> 105
 ```
 
 The differrent kinds of problems are interesting and important. 
 
 Improved:
 ```
-Subtraction: 28 --> 7
-Sum: 10 --> 0
-Multiplication: 8 --> 1
+Subtraction: 28 --> 4
+Sum: 10 --> 2
+Multiplication: 8 --> 3
 Floor-Division: 6 --> 3
-Common-Division: 13 --> 7
+Common-Division: 13 --> 8
 Comparison: 21 --> 4
 TVQ-Final: 3 --> 0
-Surplus: 23 --> 8
+Surplus: 23 --> 10
 Algebra-1: 22 --> 15            // note, largely out of zone, only partially calculational
 ```
 
 Regressed:
 ```
-LCM: 10 --> 14                  // note, largely out of zone, mostly word puzzle curiosities
-Ceil-Division: 1 --> 3          // note, largely out of zone, mostly word puzzle curiosities
+LCM: 10 --> 17                  // note, largely out of zone, mostly word puzzle curiosities
+GCD: 11 --> 14                  // note, largely out of zone, mostly word puzzle curiosities
 Sequential-Operation: 3 --> 8   // note, largely out of zone, only partially calculational, mostly "spot the numeric pattern"
 ```
 
 About the same:
 ```
 Addition: 17 --> 16            // note, remaining are largely date/time calculations
+Ceil-Division: 1 --> 1          // note, largely out of zone, mostly word puzzle curiosities
 Ratio: 12 --> 11               // note, ratio reduction involves LCM/GCD which isn't a calculational strength
-GCD: 11 --> 13                 // note, largely out of zone, mostly word puzzle curiosities
-Algebra-2: 43 --> 37           // note, largely out of zone, only partially calculational     
+Algebra-2: 43 --> 36           // note, largely out of zone, only partially calculational     
 ```
 
 Notes:
 * The big improvements lie in the calculational heart: subtraction, summation, multiplication, comparison, surplus and some division problems.
 * In contrast, some areas such as LCM and GCD have been a little impaired. These problems are largely non-calculational mathematical reasoning and are likely vanishingly rare in real-world chat (except for students doing homework puzzles!). However we should continue to investigate the reasons that performance is impaired on this kind of problem, and what can be done to restrict the technique from attempting to work on this kind of problem.
 
-### Raw Financial Calculation
+### Assessing aspects of calculation code
 
-Exact decimal computation (TBD)
+Taking the word puzzles, eliminating some characteristics of the generated calculations gives a measure of the proportion of word puzzles sensitive to this aspect of calculation.
 
-### Raw DateTime Calculation
-
-(TBD)
-
-### Calculations in the presence of Data Tables
-
-Word problems: Sum, average, compare, sumprod, .. (TBD)
-
-### Excel Calculations over Data Tables
-
-TBD: Use Excel-named functions in formulae over tables.
-
-Also ask for `sum(data)` etc. 
-
-### Raw Currency Calculation
-
-TBD: Convert between currencies
-
-### Raw Unit Calculation
-
-TBD: Convert between units `10 km/h converted to m/s` etc. Full SI units, some other adhoc units.
-
-### With/Without unit tracking
-
-TBD: Compare performance with/without unit tracking on
-
-### With/Without Calculation code in final generation
-
-TBD: Compare performance with/without including calculation code
-
-### With/Without documentation insertion in calculation code
-
-TBD: Compare performance with/without longer language descriptions in calculation code.
-
-### With/Without good names for labels
-
-TBD: Compare performance with/without longer names for units
-
+```
+Without numeric calculation equip: 254 failures
+With numeric calculation equip:    171 failures (noEmitChecks)
+With numeric calculation equip:    169 failures (noEliminateDateTime)
+With numeric calculation equip:    161 failures
+```
