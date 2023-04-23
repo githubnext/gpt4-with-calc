@@ -834,5 +834,6 @@ Taking the word puzzles, eliminating some characteristics of the generated calcu
 Without numeric calculation equip: 254 failures
 With numeric calculation equip:    171 failures (noEmitChecks)
 With numeric calculation equip:    169 failures (noEliminateDateTime)
+With numeric calculation equip:    169 failures (noEmitUnits)
 With numeric calculation equip:    161 failures
 ```
