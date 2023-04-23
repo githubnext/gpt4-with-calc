@@ -1,5 +1,3 @@
 #! /bin/sh
 set -f
-# Run lib/cmdline/cmdline.js with the current node version passing all args
-# to it.
-node lib/src/cmdline/cmdline.js "$@"
+node lib/cmdline/cmdline.js "$@"

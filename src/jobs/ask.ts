@@ -1,4 +1,5 @@
 import { ICancellationToken } from "../util/cancellation";
+import colors from "colors/safe";
 import * as context from "../engine/context";
 import { Services } from "../engine/services";
 import { Options } from "../engine/options";
@@ -16,56 +17,100 @@ export async function buildEngineContext(
 }
 
 export class WriteArithmeticStrategy {
-  constructor(readonly question: string) {}
+  constructor(readonly question: string, readonly options: EngineContext) {}
 
-  stops = ["````"];
+  stops = ["```"];
   //* If the label is a solution to one or more equations, first document the algebraic derivation of the solution using labels, then use the solution in terms of labels as the definition.
 
   makePrimer() {
     return `# Guidance
 
-Do not answer the question. Instead, write some arithmetic and comparisons relevant to answering the question.
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations${!this.options.noEmitChecks ? "* Check\n" : ""}${
+      !this.options.noEmitComparisons ? "* Comparisons\n" : ""
+    }
+* Return
 
-After the question write a code block with up to three sections. 
+General guidance for all sections about labels:
+* Use names like \`car_count\` or \`speed_of_car_in_km_per_h\` for each label.
+${
+  !this.options.noEmitDescriptions
+    ? "* Document each label with a descriptive comment at end of line.\n"
+    : ""
+}
 
-In the "Definitions" section:
-* Define a label for each number in the question like \`car_count\` or \`speed_of_car\`.
-* This section should be valid Javascript definitions, end each with a semicolon.
-* This section can include valid Javascript single-dimensional arrays.
-* Do not use or create multi-dimensional arrays.
-* Omit this section if there are no numbers in the question.
-
-In the "Arithmetic" section:
-* Define additional relevant labels using Javascript expressions.
-* Define each label using an expression that references previously defined labels.
-* Do NOT include the calculated values for labels in code or comments.
-* Avoid new assumptions in this section. If you make an assumption document it.
-* This section should be valid Javascript definitions, end each with a semicolon.
-* Omit this section if there are no additional labels relevant to the answer.
-* Use integer division when dividing things that are individually indivisible.
-
-In the "Comparisons" section:
-* Define additional relevant labels using Javascript expressions by comparing labels using comparison operators and functions and evaluating to single boolean values.
-* Do NOT include the calculated true/false values for these labels.
-* This section should be valid Javascript definitions, end each with a semicolon.
-* Omit this section if there are no comparisons relevant to the answer.
-
-In all sections:
+${
+  !this.options.noEmitUnits
+    ? `General guidance for all sections about units:
 * Every label name should include the unit if known.
-* Document each label in a comment after each definition.
-* Include a unit in the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
 * If the unit is unknown use [unknown].
 
-Finish with a single unnamed Javascript record expression that puts all the defined values into a single object. 
+`
+    : ""
+}General guidance for all sections about code:
+${
+  !this.options.noSuppressArbitraryCode
+    ? "* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.\n"
+    : ""
+}${
+      !this.options.noEliminateDateTime
+        ? "* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds."
+        : ""
+    }
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+
+${
+  !this.options.noEmitChecks
+    ? `In the optional "Check" section:
+* If appropriate, define the label \`check_message\` checking if results lie within the known range for the type of number.
+* Omit this section completely if it contains no definitions.
+* If failing the \`check_message\` value should evaluate to a string containing a description of why the check failed.
+* If succeeding the \`check_message\` value should evaluate to an empty string
+* Do NOT include the calculated string for this label.
+
+`
+    : ""
+}${
+      !this.options.noEmitComparisons
+        ? `In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+`
+        : ""
+    }In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
 
 # Question\n\n`;
   }
 
   makeInvitation(): string {
     return `\n\n
-## Relevant arithmetic and comparisons
+## Relevant calculations and comparisons
 
-\`\`\`\`javascript`;
+\`\`\`javascript`;
   }
 
   parseResponse(response: string): string {
@@ -104,12 +149,15 @@ const maxAnswerTokens = 4000;
 export async function ask(
   ctxt: EngineContext,
   id: string,
+  formatInstructions: string,
   question: string,
   ct: ICancellationToken
 ): Promise<string> {
+  const questionWithFormatInstructions =
+    formatInstructions + "\n\n### Text of question\n\n" + question;
   if (ctxt.arith) {
-    console.log(`[${id}]: Generating arithmetic code...`);
-    const strategy = new WriteArithmeticStrategy(question);
+    console.log(`[${id}]: Generating numeric calculation code...`);
+    const strategy = new WriteArithmeticStrategy(question, ctxt);
     const completionAttempt = await completions.getOneUnstreamedCompletion(
       ctxt,
       strategy.makePrimer() + strategy.question + strategy.makeInvitation(),
@@ -122,30 +170,51 @@ export async function ask(
     if (!completionAttempt.completed) {
       return "incomplete";
     }
-    const arithmeticCode = completionAttempt.result;
-    console.log(`---------------- [${id}] arithmetic code ----------------`);
-    console.log(arithmeticCode);
-
-    console.log(`[${id}]: Evaluating arithmetic code...`);
-    let arithmeticResults: any;
+    let arithmeticCode: string;
+    let arithmeticResults: string;
     try {
-      arithmeticResults = eval(arithmeticCode);
+      arithmeticCode = completionAttempt.result;
+      console.log(`---------------- [${id}] calculations, question: ${question} ----------------`);
+      console.log(arithmeticCode);
+      if (arithmeticCode.includes("=> {") || arithmeticCode.includes("  return ")) {
+        throw new Error("FILTER: Lambda functions and returns not allowed");
+      }
+
+      console.log(`[${id}]: Evaluating calculations...`);
+      const arithmeticResultsObject: any = eval("(() => { \n" + arithmeticCode + "})()");
+
+      arithmeticResults = JSON.stringify(arithmeticResultsObject, null, 2);
+
+      console.log(`---------------- [${id}] numeric calculation results ----------------`);
+      console.log(arithmeticResults);
+
+      // see if check_message property is present in the object
+      if (
+        // eslint-disable-next-line no-prototype-builtins
+        arithmeticResultsObject.hasOwnProperty("check_message") &&
+        arithmeticResultsObject.check_message
+      ) {
+        throw new Error(
+          "FILTER: Correctness check failed: " + arithmeticResultsObject.check_message
+        );
+      }
     } catch (e) {
+      console.error(colors.red(`[${id}]: Error evaluating calculations: ${e}`));
+      console.log(colors.red(`[${id}]: Error evaluating calculations: ${e}`));
+      arithmeticCode = "";
       arithmeticResults = "";
     }
-    console.log(`---------------- [${id}] arithmetic results ----------------`);
-    console.log(arithmeticResults);
 
     console.log(`[${id}]:Generating answer...`);
-    const strategy2 = new AskQuestionStrategy(question, ctxt.singleline);
+    const strategy2 = new AskQuestionStrategy(questionWithFormatInstructions, ctxt.singleline);
     const completionAttempt2 = await completions.getOneUnstreamedCompletion(
       ctxt,
       strategy2.makePrimer() +
         strategy2.question +
-        "\n\n" +
-        arithmeticCode +
-        "\n\n" +
-        JSON.stringify(arithmeticResults, null, 2) +
+        (!ctxt.noIncludeCodeInFinalQuestion && arithmeticCode
+          ? "\n\n### Calculations\n\n" + arithmeticCode
+          : "") +
+        (arithmeticResults ? "\n\n### Calculation results\n\n" + arithmeticResults : "") +
         strategy2.makeInvitation(),
       strategy2.stops,
       minAnswerTokens,
@@ -158,7 +227,7 @@ export async function ask(
     }
     return completionAttempt2.result;
   } else {
-    const strategy = new AskQuestionStrategy(question, ctxt.singleline);
+    const strategy = new AskQuestionStrategy(questionWithFormatInstructions, ctxt.singleline);
     const completionAttempt = await completions.getOneUnstreamedCompletion(
       ctxt,
       strategy.makePrimer() + strategy.question + strategy.makeInvitation(),

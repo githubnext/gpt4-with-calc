@@ -207,7 +207,7 @@
 	</Problem>
 	<Problem ID="nluds-0030" Grade="1" Source="http://www.k5learning.com">
 		<Body>Mrs. Hilt has two pennies, two dimes, and two nickels. Jacob has four pennies, one nickel, and one dime.</Body>
-		<Question>Who has more money?</Question>
+		<Question>Who has more money? Answer "Mrs. Hilt" or "Jacob" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
 		<Answer>Mrs. Hilt</Answer>
 		<Formula>2*1  (cent)+2 (dime)*10 (cent/dime) +2 (nickel)*5 (cent/nickel)=32 cents(Mrs. Hilt) &gt; 4*1 (cent)+1 (nickel)*5 (cent/nickel) +1  (dime)*10 (cent/dime)=19 cents(Jacob)</Formula>
@@ -227,7 +227,7 @@
 		<Formula>1 (quarter)*25 (cent/quarter) + 1 (dime)*10 (cent/dime) + 2 (nickel)*5 (cent/nickel) = 45 (cent)</Formula>
 	</Problem>
 	<Problem ID="nluds-0033" Grade="1" Source="http://www.k5learning.com">
-		<Body>Mrs. Hilt's favorite first grade classes are baking muffins. Mrs. Brier's class bakes 18 muffins, Mrs. MacAdams's class bakes 20 muffins, and Mrs. Flannery's class bakes 17 muffins.</Body>
+		<Body>Mrs. Hilt's favorite first grade classes are baking muffins. Mrs. Brier's class bakes 18 muffins, Mrs. MacAdams's class bakes 20 muffins, and Mrs. French's class bakes 17 muffins.</Body>
 		<Question>How many muffins does first grade bake in all?</Question>
 		<Solution-Type>Sum</Solution-Type>
 		<Answer>55 (muffins)</Answer>
@@ -241,7 +241,7 @@
 		<Formula>24+14=38</Formula>
 	</Problem>
 	<Problem ID="nluds-0035" Grade="1" Source="http://www.k5learning.com">
-		<Body>Mrs. Hilt made 5 Rice Krispie Treats. She used 8 large marshmallows and 10 mini marshmallows.</Body>
+		<Body>Mrs. Hilt made 5 Rice Krispie Treats. She used 8 large marshmallows and 10 mini marshmallows in total.</Body>
 		<Question>How many marshmallows did she use altogether?</Question>
 		<Solution-Type>Addition</Solution-Type>
 		<Answer>18 (marshmallows)</Answer>
@@ -529,7 +529,7 @@
 	</Problem>
 	<Problem ID="nluds-0076" Grade="2" Source="http://www.k5learning.com">
 		<Body>Tessa has 4 apples. Anita gave her 5 more. She needs 10 apples to make a pie.</Body>
-		<Question>Does she have enough to make a pie?</Question>
+		<Question>Does she have enough to make a pie? Answer "Tessa" or "Anita" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
 		<Answer>No</Answer>
 		<Formula>4+5=9 apples &lt; 10 apples</Formula>
@@ -1145,7 +1145,7 @@
 	</Problem>
 	<Problem ID="nluds-0164" Grade="2" Source="http://www.k5learning.com">
 		<Body>A game spinner has 5 equal parts. Two parts are blue and three parts are purple.</Body>
-		<Question>Which color would you most likely spin? Answer "Purple" or "Blue".</Question>
+		<Question>Which color would you most likely spin? Answer "Purple" or "Blue" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
 		<Answer>Purple</Answer>
 		<Formula>2 parts(Blue) &lt; 3 parts(Purple)</Formula>
@@ -1194,7 +1194,7 @@
 	</Problem>
 	<Problem ID="nluds-0171" Grade="2" Source="http://www.k5learning.com">
 		<Body>Two dimes and 3 pennies,</Body>
-		<Question>does the former equal the latter?</Question>
+		<Question>does the former equal the latter? Answer "Yes" or "No" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
 		<Answer>No</Answer>
 		<Formula>2*10=20 cents &gt; 1*3=3 cents</Formula>
@@ -1208,7 +1208,7 @@
 	</Problem>
 	<Problem ID="nluds-0173" Grade="2" Source="http://www.k5learning.com">
 		<Body>Karen wants to buy a pen that costs 75 cents. She has 2 quarters and 3 dimes.</Body>
-		<Question>Does she have enough money?</Question>
+		<Question>Does she have enough money? Answer "Yes" or "No" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
 		<Answer>Yes</Answer>
 		<Formula>2*25+3*10=80 cents &gt; 75 cents</Formula>
@@ -1397,7 +1397,7 @@
 	</Problem>
 	<Problem ID="nluds-0200" Grade="2" Source="http://www.k5learning.com">
 		<Body>The train left for the station at 9:45 and arrived at 10:00.</Body>
-		<Question>How long did it take?</Question>
+		<Question>How long did it take? Give answer in minutes.</Question>
 		<Solution-Type UnitTrans="Time">Subtraction</Solution-Type>
 		<Answer>15 (minutes)</Answer>
 		<Formula>(10*60 (min/hour) - (9*60 (min/hour) + 45 (min))) = 15 (min)</Formula>
@@ -6457,7 +6457,7 @@
 		<Formula>36-19=17</Formula>
 	</Problem>
 	<Problem ID="nluds-0923" Grade="3" Source="http://www.mathplayground.com">
-		<Body>One zoo guide spoke to a group of 19 children. Another guide spoke to a group of 25 children. There are 22 guides at the zoo.</Body>
+		<Body>One zoo guide spoke to a group of 19 children. Another guide spoke to a group of 25 children. There are 2 guides at the zoo.</Body>
 		<Question>How many children did the zoo guides speak to?</Question>
 		<Solution-Type>Addition</Solution-Type>
 		<Answer>44 (children)</Answer>
@@ -7616,7 +7616,7 @@
 		<Question>how many nickels do you have?</Question>
 		<Solution-Type Subgoal-1="Multiplication" Subgoal-2="Addition" Subgoal-3="Multiplication">Common-Division</Solution-Type>
 		<Answer>40 (nickels)</Answer>
-		<Formula>(12*100)/(5+5*5)=40</Formula>
+		<Formula>(12*100)/(5+5*5)=40/2</Formula>
 	</Problem>
 	<Problem ID="nluds-1089" Grade="4" Source="http://www.ixl.com">
 		<Body>A worker at a medical lab is studying blood samples. The first sample contained 1,410 blood cells. The second one contained 6,908 more than the first.</Body>
@@ -8943,7 +8943,7 @@
 	</Problem>
 	<Problem ID="nluds-1279" Grade="2" Source="Created by an Annotator">
 		<Body>A pet store had sixty-eight gerbils. If they sold fourteen of them,</Body>
-		<Question>what's the difference between the number of gerbils that they had before selling and they sold?</Question>
+		<Question>what's the difference between the number of gerbils that they had before selling and the number of gerbils they sold?</Question>
 		<Solution-Type>Difference</Solution-Type>
 		<Answer>54 (gerbils)</Answer>
 		<Formula>68-14=54</Formula>
@@ -11897,14 +11897,14 @@
 	</Problem>
 	<Problem ID="nluds-1701" Grade="6" Source="http://www.commoncoresheets.com">
 		<Body>A store had 3 blue chairs for $35.07 or 5 red chairs for $58.15.</Body>
-		<Question>Which color chair has a lower unit price?</Question>
+		<Question>Which color chair has a lower unit price? Answer "Blue" or "Red" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
 		<Answer>Red</Answer>
 		<Formula>35.07/3=11.69(Blue) &gt; 58.15/5=11.63(Red)</Formula>
 	</Problem>
 	<Problem ID="nluds-1702" Grade="6" Source="http://www.commoncoresheets.com">
 		<Body>In September a clothing store had a sale where you could get 2 scarves for $10.70. In October the price was changed to 7 scarves for $37.52.</Body>
-		<Question>On which month did a scarf cost the most?</Question>
+		<Question>On which month did a scarf cost the most? Answer "September" or "October" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
 		<Answer>October</Answer>
 		<Formula>10.70/2=5.35(September) &lt; 37.52/7=5.36(October)</Formula>
@@ -11953,14 +11953,14 @@
 	</Problem>
 	<Problem ID="nluds-1709" Grade="6" Source="http://www.commoncoresheets.com">
 		<Body>At a comic book convention vendor 1 was selling a set of 3 comics for $31.77. Vendor 2 was selling a set of 2 comics for $21.32.</Body>
-		<Question>Which vendor has the higher unit price?</Question>
+		<Question>Which vendor has the higher unit price? Answer "Vendor 1" or "Vendor 2" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
 		<Answer>Vendor 2</Answer>
 		<Formula>31.77/3=10.59(Vendor 1) &lt; 21.32/2=10.66(Vendor 2)</Formula>
 	</Problem>
 	<Problem ID="nluds-1710" Grade="6" Source="http://www.commoncoresheets.com">
 		<Body>At the store Brand A potato chips were $10.40 for 4 bags. Brand B potato chips were $17.78 for 7 bags.</Body>
-		<Question>Which brand has the cheaper price?</Question>
+		<Question>Which brand has the cheaper price? Answer "Brand A" or "Brand B" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
 		<Answer>Brand B</Answer>
 		<Formula>10.40/4=2.6(Brand A) &gt; 17.78/7=2.54(Brand B)</Formula>
@@ -11988,7 +11988,7 @@
 	</Problem>
 	<Problem ID="nluds-1714" Grade="6" Source="http://www.commoncoresheets.com">
 		<Body>A supermarket had bags of red grapes for $13.00 for 5. The also had bags of green grapes priced at $5.08 for 2.</Body>
-		<Question>Which type of grape is most expensive?</Question>
+		<Question>Which type of grape is most expensive? Answer "Red" or "Green" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
 		<Answer>Red</Answer>
 		<Formula>13.00/5=2.6(Red) &gt; 5.08/2=2.54(Green)</Formula>
@@ -13240,8 +13240,8 @@
 		<Formula>98-92=6</Formula>
 	</Problem>
 	<Problem ID="nluds-1893" Grade="2" Source="http://www.commoncoresheets.com">
-		<Body>Olivia owned ninety-three pennies. After she bought an apple, she had fifty-six pennies left.</Body>
-		<Question>How many did she spend for the apple?</Question>
+		<Body>Olivia owned ninety-three cents. After she bought an apple, she had fifty-six cents left.</Body>
+		<Question>How many cents did she pay for the apple?</Question>
 		<Solution-Type>Subtraction</Solution-Type>
 		<Answer>37 (pennies)</Answer>
 		<Formula>93-56=37</Formula>

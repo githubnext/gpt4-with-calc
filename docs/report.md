@@ -92,7 +92,6 @@ In the "Comparisons" section define additional labels using Python or numpy form
 
 > NOTE: in our manual testing, we generated Python calculation code. In our prototype, for convenience we generated Javascript calculation code. There are many choices here and it is not strictly necessary to generate a general-purpose programming language. See discussion in Appendix.
 
-
 GPT-4 then writes the calculation code and stops.
 
 Step 2 evaluates this calculation code.
@@ -673,16 +672,19 @@ Because of this, we put a huge caveat on any evaluation: much of the work on mat
 
 This is a problem set of 2300 childrens maths puzzles, up to grade 6 US curriculum. The puzzles are primarily word problem solving, not calculation.
 
-> NOTE: essentially every problem in this data set can be made to fail with raw GPT-4 simply by making the numbers involved sufficeintly large or adding decimal places.  The existing GPT-4 pass rates for this problem set are somewhat deceptive as they assume child-like numbers are involved in real-world problems.
+> NOTE: essentially every problem in this data set can be made to fail with raw GPT-4 simply by making the numbers involved sufficeintly large or adding decimal places. The existing GPT-4 pass rates for this problem set are somewhat deceptive as they assume child-like numbers are involved in real-world problems.
 
 We ran the strategy described here on a modified version of this data set where:
-* some additional instructions were added to the questions specifying exact intended output formats
-* some answers were corrected (the data set contained mistakes)
-* some questions were clarified (they were highly ambiguous and open to interpretation, or assuming prior questions in the data set had been asked).
+
+- some additional instructions were added to the questions specifying exact intended output formats
+- some answers were corrected (the data set contained mistakes)
+- some questions were clarified (they were highly ambiguous and open to interpretation, or assuming prior questions in the data set had been asked).
+- the text of some questions triggered Responsible AI filters and was modified in otherwise harmless ways.
 
 These adjustments applied to both GPT-4 and GPT-4e.
 
 When run with the technique here, the error rate reduces from 11% to 8%:
+
 ```
 Without numeric calculation equip: 254 failures
 With numeric calculation equip:    188 failures
@@ -701,13 +703,15 @@ grade 5: 29 --> 16
 grade 6: 140 --> 119
 ```
 
-The differrent kinds of problems are interesting and important. 
-* The big improvements lie in subtraction, summation, comparison, surplus and common-division.
-* In contrast, some areas such as LCM and GCD have been curiously impaired. Of course, these kinds of problems are largely non-calculational mathematical reasoning and are vanishingly rare in real-world chat (except for students doing homework puzzles!). However it is essential that the technique not impair performance on this kind of problem.
+The differrent kinds of problems are interesting and important.
 
-> NOTE: We're looking into the impairments 
+- The big improvements lie in subtraction, summation, comparison, surplus and common-division.
+- In contrast, some areas such as LCM and GCD have been curiously impaired. Of course, these kinds of problems are largely non-calculational mathematical reasoning and are vanishingly rare in real-world chat (except for students doing homework puzzles!). However it is essential that the technique not impair performance on this kind of problem.
+
+> NOTE: We're looking into the impairments
 
 Improved:
+
 ```
 Subtraction: 28 --> 13
 Sum: 10 --> 2
@@ -719,6 +723,7 @@ Common-Division: 15 --> 4
 ```
 
 Regressed:
+
 ```
 Sequential patterns: 3 --> 8
 LCM: 11 --> 18
@@ -727,6 +732,7 @@ Ceil-Division: 1 --> 4
 ```
 
 About the same:
+
 ```
 Addition: 18 --> 19  //note, includes may date-time problems
 Ratio: 9 --> 11

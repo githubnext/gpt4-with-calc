@@ -131,15 +131,61 @@ const commonEngineArgs = {
     defaults: { all: 0 },
   },
 };
-
-const askArgs = {
-  ...commonEngineArgs,
+const commonAskArgs = {
   arith: {
-    description: "Use arithmetic equip or not",
+    description: "Use arithmetic equip",
     type: "boolean",
     default: true,
     modes: ["cli"],
   },
+  noEmitComparisons: {
+    description: "Don't emit comparisons",
+    type: "boolean",
+    default: true,
+    modes: ["cli"],
+  },
+  noEliminateDateTime: {
+    description: "Don't request the reduction of date/time to minutes, hours, etc.",
+    type: "boolean",
+    default: true,
+    modes: ["cli"],
+  },
+  noSuppressArbitraryCode: {
+    description: "Don't suppress the generation of arbitrary code like lambdas and loops",
+    type: "boolean",
+    default: true,
+    modes: ["cli"],
+  },
+  noEmitChecks: {
+    description: "Don't emit check_message checks",
+    type: "boolean",
+    default: true,
+    modes: ["cli"],
+  },
+  noEmitUnits: {
+    description: "Don't include units in the comments of the calculation code",
+    type: "boolean",
+    default: true,
+    modes: ["cli"],
+  },
+  noEmitDescriptions: {
+    description: "Don't include descriptions in comments of the calculation code",
+    type: "boolean",
+    default: true,
+    modes: ["cli"],
+  },
+  noIncludeCodeInFinalQuestion: {
+    description:
+      "Don't include the calculation code in the final question prompt, only the answers",
+    type: "boolean",
+    default: true,
+    modes: ["cli"],
+  },
+};
+
+const askArgs = {
+  ...commonEngineArgs,
+  ...commonAskArgs,
   question: {
     description: "The question to ask",
     type: "string",
@@ -162,9 +208,10 @@ const askArgs = {
 
 const evalArgs = {
   ...commonEngineArgs,
-  arith: {
-    description: "Use arithmetic equip or not",
-    type: "boolean",
+  ...commonAskArgs,
+  questions: {
+    description: "The identifiers of the questions to run",
+    type: "string",
     default: true,
     modes: ["cli"],
   },

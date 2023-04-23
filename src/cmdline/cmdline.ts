@@ -39,7 +39,7 @@ async function main() {
       ? fs.readFileSync(options.questionfile, "utf8")
       : fail("No question provided");
     local_cache.loadLocalCache(options, prefix);
-    const answer = await ask(options, "1", question, ct);
+    const answer = await ask(options, "1", "", question, ct);
     console.log(options.workListener.toString());
     console.log(colors.green(answer));
     local_cache.writeLocalCache(options);
@@ -53,6 +53,7 @@ async function main() {
       singleline: true,
     };
     const prefix = "eval";
+    const questions: string = options.questions || "";
     local_cache.loadLocalCache(options, prefix);
 
     const xml = readFileSync("test/dataset/ASDiv.xml", "utf8");
@@ -66,23 +67,19 @@ async function main() {
     // Do a parallel map over the problems
 
     await mapControlled<any, any>(options, problems, async (problem) => {
-      const body: string = problem.Body;
-      const question: string = problem.Question.toString();
-      const expected: string = problem.Answer.toString();
       const id: string = problem["@_ID"];
-      const grade: string = problem["@_Grade"];
-      const type: any = problem["Solution-Type"];
-      const type_text: string = typeof type === "string" ? type : type["#text"];
-
-      // log the type of Answer
-      console.log(`[${id}] question: ${body} ${question}`);
-      console.log(`[${id}] expected answer: ${expected}`);
-      const result = await ask(
-        options,
-        id,
-        `### Instructions
-
-Answer the question below a format like the following, giving a unit if appropriate:
+      try {
+        const body: string = problem.Body;
+        const questionLine: string = problem.Question.toString();
+        const expected: string = problem.Answer.toString();
+        const grade: string = problem["@_Grade"];
+        const type: any = problem["Solution-Type"];
+        const type_text: string = typeof type === "string" ? type : type["#text"];
+        if (!questions || questions.includes(id)) {
+          console.log(`[${id}] question: ${body} ${questionLine}`);
+          console.log(`[${id}] expected answer: ${expected}`);
+          const question = `${body} ${questionLine}`;
+          const format = `Answer the question below using a format like the following, giving a unit if appropriate:
   931
   49 (oranges)
   Mr.Jones
@@ -93,48 +90,49 @@ Answer the question below a format like the following, giving a unit if appropri
   No
 
 If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
-Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.`;
+          const result = await ask(options, id, format, question, ct);
+          console.log(`[${id}] actual answer: ${result}`);
+          let correct = false;
+          if (result) {
+            // check if the integer or decimal numbers in the answer match the numbers in the expected answer by extracting them
+            // using regular expressions, and comparing them, not caring about the order they occur in
 
-### Text of question
+            const expected_match = expected.match(/(\d(\d|,\d)*(\.\d(\d|,\d)*)?)/g);
+            const result_match = result.match(/(\d(\d|,\d)*(\.\d(\d|,\d)*)?)/g);
+            if (expected_match && result_match) {
+              const result_numbers = result_match.sort();
+              const expected_numbers = expected_match.sort();
+              console.log(`[${id}]: result_numbers: ${result_numbers}`);
+              console.log(`[${id}]: expected_numbers: ${expected_numbers}`);
+              correct =
+                expected_numbers.length == result_numbers.length &&
+                expected_numbers.every(
+                  (v, i) =>
+                    // remove commas and parse to numbers and compare
+                    parseFloat(v.replace(/,/g, "")) ==
+                    parseFloat(result_numbers[i].replace(/,/g, ""))
+                );
+            } else {
+              correct = result.trim() == expected.trim();
+            }
+          }
 
-${body} ${question}`,
-        ct
-      );
-      console.log(`[${id}] actual answer: ${result}`);
-      let correct = false;
-      if (result) {
-        // check if the integer or decimal numbers in the answer match the numbers in the expected answer by extracting them
-        // using regular expressions, and comparing them, not caring about the order they occur in
-
-        const expected_match = expected.match(/(\d(\d|,\d)*(\.\d(\d|,\d)*)?)/g);
-        const result_match = result.match(/(\d(\d|,\d)*(\.\d(\d|,\d)*)?)/g);
-        if (expected_match && result_match) {
-          const result_numbers = result_match.sort();
-          const expected_numbers = expected_match.sort();
-          console.log(`[${id}]: result_numbers: ${result_numbers}`);
-          console.log(`[${id}]: expected_numbers: ${expected_numbers}`);
-          correct =
-            expected_numbers.length == result_numbers.length &&
-            expected_numbers.every(
-              (v, i) =>
-                // remove commas and parse to numbers and compare
-                parseFloat(v.replace(/,/g, "")) == parseFloat(result_numbers[i].replace(/,/g, ""))
+          if (correct) {
+            yes++;
+          } else {
+            console.log(
+              `FAIL: [${id}, grade ${grade}, type ${type_text}], expected: "${expected}", actual: "${result}", question: ${body} ${questionLine}`
             );
-        } else {
-          correct = result.trim() == expected.trim();
+          }
+          count++;
+          console.log(`yes: ${yes}, count: ${count}, accuracy: ${yes / count}`);
+          local_cache.writeLocalCache(options);
         }
+      } catch (e) {
+        console.error(`ERROR: [${id}], error: ${e}`);
+        console.log(`ERROR: [${id}], error: ${e}`);
       }
-
-      if (correct) {
-        yes++;
-      } else {
-        console.log(
-          `FAIL: [${id}, grade ${grade}, type ${type_text}], expected: "${expected}", actual: "${result}", question: ${body} ${question}`
-        );
-      }
-      count++;
-      console.log(`yes: ${yes}, count: ${count}, accuracy: ${yes / count}`);
-      local_cache.writeLocalCache(options);
     });
   }
   exit(0);
