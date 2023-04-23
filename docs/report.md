@@ -777,15 +777,15 @@ Without numeric calculation equip: 254 failures
 With numeric calculation equip:    161 failures
 ```
 
-The different grades of problems are affected as follows:
+The mistake rates in the different grades of problems are affected as follows:
 
 ```
-grade 1: 2 --> 2
-grade 2: 7 --> 2
-grade 3: 25 --> 18
-grade 4: 48 --> 18
-grade 5: 33 --> 16
-grade 6: 137 --> 105
+grade 1: 2 --> 2       // out of 194
+grade 2: 7 --> 2       // out of 340
+grade 3: 25 --> 18     // out of 808
+grade 4: 48 --> 18     // out of 301
+grade 5: 33 --> 16     // out of 146
+grade 6: 137 --> 105   // out of 514
 ```
 
 The differrent kinds of problems are interesting and important.
