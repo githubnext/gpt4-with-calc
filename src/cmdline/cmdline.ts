@@ -8,7 +8,7 @@ import { ask } from "../jobs/ask";
 import { exit } from "process";
 import { Services } from "../engine/services";
 import * as fs from "fs";
-import { Problem, getProblems } from "./problems";
+import { Problem, getProblems } from "../problems/calc";
 import { readFileSync } from "fs";
 import * as xml_parser from "fast-xml-parser";
 

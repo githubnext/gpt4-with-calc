@@ -20,7 +20,7 @@ Mathematical word puzzles with small integers:
 
 ### Raw Calculation
 
-We created a set of 153 decimal and integer calculation problems like this:
+We created [a set of 153 decimal and integer calculation problems like this](/src/problems/calc.ts):
 
 > What is the result of adding -942.12 and 1441.23? Give answer rounded to two decimal places.
 >
@@ -43,7 +43,17 @@ The results are:
 - without equip: 76/153 (50% failure rate, many extreme mistakes)
 - with equip: 150/153 (2% mistake rate, only minor mistakes, see below)
 
-The remaining minor mistakes were errors in the last decimal place:
+Without equip, GPT-4 is sometimes surprisingly good at knowing tables of existing functions like sin, cos, exp:
+
+> expected: "2.1", actual: "2.1", question: What is the natural logarithm of 8.131? Give answer rounded to one decimal places.
+
+However the scale of mistakes is also extraordinary e.g.
+
+> expected: "90.79", actual: "40.11", question: Calculate (2.12^3)^2. Give answer rounded to two decimal places.
+>
+> expected: "2211733.5", actual: "1,948,789,000.7", question: What is 6.21 raised to power 8. Give answer rounded to one decimal places.
+
+With equip, 98% of answers were exactly correct. The remaining minor mistakes were errors in the last decimal place:
 
 ```
 expected: "24.533", actual: "24.532", question: What is e raised to power 3.2.  Give answer rounded to three decimal places.
@@ -51,13 +61,16 @@ expected: "7.3891", actual: "7.3890", question: What is the result of calculatin
 expected: "7.2733", actual: "7.2732", question: What is the natural logarithm of 1441.23?  Give answer rounded to four decimal places.
 ```
 
-These stemmed from two cases of incorrect textual rounding of a correctly calculated result in the final GPT-4 question-answering phase, and a case where the calculated code used a hardwired approximation to `e`:
+These stemmed from
 
-```
-const e = 2.71828; // base of natural logarithm [unknown]
-```
+- Two cases of incorrect textual rounding of a correctly calculated result in the final GPT-4 question-answering phase
+- One case where the calculated code used a hardwired approximation to `e`:
 
-We believe these cases can all be easily handled by prompt refinements (e.g. move rounding computations into the calculated code, and always using precise values of constants like `e` and `pi`).
+  ```
+  const e = 2.71828; // base of natural logarithm [unknown]
+  ```
+
+These cases can clearly be handled by prompt refinements (e.g. move rounding computations into the calculated code, and always using precise values of constants like `e` and `pi`).
 
 ### Mathematical word puzzles
 
