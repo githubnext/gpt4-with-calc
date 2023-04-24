@@ -74,7 +74,7 @@ These cases can clearly be handled by prompt refinements (e.g. move rounding com
 
 ### Mathematical word puzzles
 
-This is a problem set of 2300 childrens maths puzzles, up to grade 6 US curriculum. The puzzles are primarily word problem solving, not calculation.
+We used [a problem set of 2300 childrens maths puzzles, up to grade 6 US curriculum](/test/dataset/ASDiv.xml). The puzzles are primarily word problem solving, not calculation.
 
 > NOTE: essentially every problem in this data set can be made to fail with raw GPT-4 simply by making the numbers involved sufficeintly large or adding decimal places. The existing GPT-4 pass rates for this problem set are somewhat deceptive as they assume child-like numbers are involved in real-world problems.
 
