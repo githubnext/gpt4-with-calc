@@ -780,12 +780,12 @@ With numeric calculation equip:    161 failures
 The mistake rates in the different grades of problems are affected as follows:
 
 ```
-grade 1: 2 --> 2       // out of 194
-grade 2: 7 --> 2       // out of 340
-grade 3: 25 --> 18     // out of 808
-grade 4: 48 --> 18     // out of 301
-grade 5: 33 --> 16     // out of 146
-grade 6: 137 --> 105   // out of 514
+grade 1: 2 --> 2       // mistakes out of 194
+grade 2: 7 --> 2       // mistakes out of 340
+grade 3: 25 --> 18     // mistakes out of 808
+grade 4: 48 --> 18     // mistakes out of 301
+grade 5: 33 --> 16     // mistakes out of 146
+grade 6: 137 --> 105   // mistakes out of 514
 ```
 
 The differrent kinds of problems are interesting and important.
@@ -834,5 +834,6 @@ Taking the word puzzles, eliminating some characteristics of the generated calcu
 Without numeric calculation equip: 254 failures
 With numeric calculation equip:    171 failures (noEmitChecks)
 With numeric calculation equip:    169 failures (noEliminateDateTime)
+With numeric calculation equip:    167 failures (noEmitComparisons)
 With numeric calculation equip:    161 failures
 ```

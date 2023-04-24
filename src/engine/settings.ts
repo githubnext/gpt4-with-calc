@@ -58,5 +58,5 @@ export const models: {
 };
 
 export function reqCacheFile(qualifiers: string) {
-  return ".prbot-engine/cache" + (qualifiers ? "-" + qualifiers : "");
+  return ".gpt4e/cache" + (qualifiers ? "-" + qualifiers : "");
 }

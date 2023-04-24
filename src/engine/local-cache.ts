@@ -38,9 +38,9 @@ export type LocalRequestCache = {
 
 export function writeLocalCache(ctxt: EngineContext) {
   if (ctxt.requestCache && ctxt.requestCacheFile && ctxt.requestCache.changed) {
-    if (ctxt.verbose) {
-      console.log("    * writing request cache to", ctxt.requestCacheFile);
-    }
+    //if (ctxt.verbose) {
+    console.log("    * writing request cache to", ctxt.requestCacheFile);
+    //}
     fs.mkdirSync(path.dirname(ctxt.requestCacheFile), { recursive: true });
     fs.writeFileSync(ctxt.requestCacheFile, JSON.stringify(ctxt.requestCache, null), "utf8");
     ctxt.requestCache.changed = false;
@@ -51,18 +51,18 @@ export function loadLocalCache(ctxt: EngineContext, prefix: string) {
   if (ctxt.useLocalCache) {
     const requestCacheFile = settings.reqCacheFile(prefix + "-model-" + model + "-v2");
     if (fs.existsSync(requestCacheFile)) {
-      if (ctxt.verbose) {
-        console.log("    * reading request cache from", requestCacheFile);
-      }
+      //if (ctxt.verbose) {
+      console.log("    * reading request cache from", requestCacheFile);
+      //}
       try {
         const requestCache = JSON.parse(fs.readFileSync(requestCacheFile, "utf8")) || {};
         ctxt.requestCache = requestCache;
         ctxt.requestCacheFile = requestCacheFile;
         return;
       } catch (e) {
-        if (ctxt.verbose) {
-          console.log("    * failed reading request cache from", requestCacheFile, " - ignoring");
-        }
+        //if (ctxt.verbose) {
+        console.log("    * failed reading request cache from", requestCacheFile, " - ignoring");
+        //}
       }
     } else {
       ctxt.requestCache = { entries: {}, changed: false };
@@ -71,6 +71,8 @@ export function loadLocalCache(ctxt: EngineContext, prefix: string) {
   }
 }
 
+let lastKey = "";
+
 export function lookupLocalCache(
   ctxt: EngineContext,
   keyData: any
@@ -78,6 +80,7 @@ export function lookupLocalCache(
   const cache = ctxt.requestCache;
   if (cache) {
     const key = JSON.stringify(keyData);
+    lastKey = key;
     return cache.entries[key];
   }
   return undefined;
@@ -93,8 +96,18 @@ export function setLocalCache(
     const cache = ctxt.requestCache;
     if (cache) {
       const key = JSON.stringify(keyData);
+      // const hash = crypto.createHash("sha256");
+      // hash.write(key);
+      // console.log("cache set: " + hash.update(key).digest("hex") + "");
+      if (ctxt.deterministic && lastKey != key) {
+        console.log("cache match: no match");
+        console.log("cache key1: " + lastKey);
+        console.log("cache key2: " + key);
+      }
       cache.entries[key] = entry;
       cache.changed = true;
     }
+  } else {
+    console.log("setLocalCache: not caching status", status);
   }
 }

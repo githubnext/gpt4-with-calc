@@ -209,22 +209,28 @@ const askArgs = {
 const evalArgs = {
   ...commonEngineArgs,
   ...commonAskArgs,
+  questionset: {
+    description: "The set of questions to use",
+    type: "string",
+    default: "ASDiv",
+    modes: ["cli"],
+  },
   questions: {
     description: "The identifiers of the questions to run",
     type: "string",
-    default: true,
+    default: "",
     modes: ["cli"],
   },
 };
 
 const modeOptionsTemplate = {
   ask: {
-    description: "ask a question",
+    description: "Ask a question",
     arguments: askArgs,
     modes: ["cli", "everything"],
   },
   eval: {
-    description: "evaluate ask a quetion",
+    description: "Evaluate performance on a set of questions",
     arguments: evalArgs,
     modes: ["cli", "everything"],
   },

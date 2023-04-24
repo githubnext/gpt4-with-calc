@@ -121,16 +121,16 @@ ${
 export class AskQuestionStrategy {
   constructor(readonly question: string, readonly singleline: boolean) {}
 
-  stops = this.singleline ? ["\n"] : ["\n# "];
+  stops = this.singleline ? ["\n", "\n# "] : ["\n# "];
 
   makePrimer() {
     return `# Question\n\n`;
   }
 
   makeInvitation(): string {
-    return `\n\n# Answer${
+    return `\n\n# Answer\n\n${
       this.singleline
-        ? "\n\nWrite a single one-line answer to the above question. Use the format\n\nANSWER: <answer>\n\nWrite your answer below.\n\nANSWER:"
+        ? "Write a single one-line answer to the above question. Use the format\n\nANSWER: <answer>\n\nWrite your answer below.\n\nANSWER: "
         : ""
     }`;
   }

@@ -1327,7 +1327,7 @@
 	</Problem>
 	<Problem ID="nluds-0190" Grade="2" Source="http://www.k5learning.com">
 		<Body>Alex has 5 dimes, 4 nickels and one penny.</Body>
-		<Question>Does he have enough to buy a hat that costs 90 cents?</Question>
+		<Question>Does he have enough to buy a hat that costs 90 cents? Answer "Yes" or "No" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
 		<Answer>No</Answer>
 		<Formula>50+20+1=71 cents &lt; 90 cents</Formula>
@@ -14227,10 +14227,10 @@
 		<Formula>GCD(39,13)=13</Formula>
 	</Problem>
 	<Problem ID="nluds-2034" Grade="6" Source="http://www.khanacademy.org">
-		<Body>Yadira's mom is buying hot dogs and hot dog buns for the family barbecue. Hot dogs come in packs of 12 and hot dog buns come in packs of 9. The store does not sell parts of a pack and Yadira's mom wants the same number of hot dogs as hot dog buns.</Body>
-		<Question>What is the smallest total number of hot dogs that Yadira's mom can purchase?</Question>
+		<Body>Yadira's mom is buying hamburgers and rolls for the family barbecue. Hot dogs come in packs of 12 and rolls come in packs of 9. The store does not sell parts of a pack and Yadira's mom wants the same number of hamburgers as rolls.</Body>
+		<Question>What is the smallest total number of hamburgers that Yadira's mom can purchase?</Question>
 		<Solution-Type>LCM</Solution-Type>
-		<Answer>36 (hot dogs)</Answer>
+		<Answer>36 (hamburgers)</Answer>
 		<Formula>LCM[12,9]=36</Formula>
 	</Problem>
 	<Problem ID="nluds-2035" Grade="6" Source="http://www.khanacademy.org">
