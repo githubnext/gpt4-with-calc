@@ -76,6 +76,8 @@ In the optional "Calculations" section:
 * This section should be valid Javascript definitions.
 * Omit this section completely if it contains no definitions.
 * Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
 
 ${
   this.options.emitChecks

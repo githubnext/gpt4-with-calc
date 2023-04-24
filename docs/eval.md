@@ -8,19 +8,45 @@ See [the report](report.md) for an overview of the technique.
 
 ### TLDR
 
-Raw calculation (decimals, integers, math functions):
+We developed some indicative problem sets that exhibit the following characteristics:
+
+[**Raw calculation**](/src/problems/calc.ts) (decimals, integers, math functions):
 
 - without equip: **50% mistake rate**, many extreme mistakes
-- with equip: **2% mistake rate**, only minor mistakes, see below
+- with equip: **0% mistake rate**
 
-Mathematical word puzzles with small integers:
+[**Financial calculations**](/src/problems/finance.ts) (mortgage, rate of return, WACC):
+
+- without equip: **57% mistake rate**, 4/14
+- with equip: **14% mistake rate** 12/14
+
+[**Tabular data calculations**](/src/problems/tables.ts):
+
+- without equip: **50% mistake rate**
+- with equip: **0% mistake rate**
+
+[**Date calculations**](/src/problems/dates.ts):
+
+- without equip: **30% mistake rate** 7/10
+- with equip: **20% mistake rate** 8/10
+
+[**Unit conversion calculations**](/src/problems/units.ts) problems
+
+- without equip: **36% mistake rate** 7/11
+- with equip: **0% mistake rate** 11/11
+
+These sets were developed partly in order to explore the boundary of what this technique can handle, so we encourage you to look at the data sets and we will develop these further over time. Of these, we estimate the date-time problems are an area we should proactively try to **not** apply this technique without much more confidence that results improve and accuracy is achieved. This is discussed in the report.
+
+Not all "math" is dramatically improved, and indeed that's not the point (see above). For example, we looked at [mathematical word puzzles with small integers](/test/dataset/ASDiv.xml):
 
 - without equip: **11% mistake rate**
 - with equip: **7% mistake rate**
 
-### Raw Calculation
+However this is still a significant improvement in a partially-ambiguous problem set.
 
-We created [a set of 153 decimal and integer calculation problems like this](/src/problems/calc.ts):
+### Details: Raw Calculation
+
+We created [a set of decimal and integer calculation problems like this](/src/problems/calc.ts):
 
 > What is the result of adding -942.12 and 1441.23? Give answer rounded to two decimal places.
 >
@@ -72,7 +98,7 @@ These stemmed from
 
 These cases can clearly be handled by prompt refinements (e.g. move rounding computations into the calculated code, and always using precise values of constants like `e` and `pi`).
 
-### Mathematical word puzzles
+### Details: Mathematical word puzzles
 
 We used [a problem set of 2300 childrens maths puzzles, up to grade 6 US curriculum](/test/dataset/ASDiv.xml). The puzzles are primarily word problem solving, not calculation.
 
@@ -142,22 +168,6 @@ Notes:
 
 - The big improvements lie in the calculational heart: subtraction, summation, multiplication, comparison, surplus and some division problems.
 - In contrast, some areas such as LCM and GCD have been a little impaired. These problems are largely non-calculational mathematical reasoning and are likely vanishingly rare in real-world chat (except for students doing homework puzzles!). However we should continue to investigate the reasons that performance is impaired on this kind of problem, and what can be done to restrict the technique from attempting to work on this kind of problem.
-
-#### Financial
-
-TBD: Assess exact decimal computation, computation of rates etc.
-
-#### DateTime
-
-TBD: Assess ability to do DateTime calculation.
-
-#### Calculations over Data Tables
-
-Word problems: Sum, average, compare, sumprod, .. (TBD)
-
-#### Excel Calculations
-
-TBD: Use Excel-named functions in formulae over tables. Also ask for `sum(data)` etc.
 
 #### Currency Calculations
 

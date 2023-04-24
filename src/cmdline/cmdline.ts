@@ -8,7 +8,11 @@ import { ask } from "../jobs/ask";
 import { exit } from "process";
 import { Services } from "../engine/services";
 import * as fs from "fs";
-import { Problem, getProblems } from "../problems/calc";
+import * as calc from "../problems/calc";
+import * as finance from "../problems/finance";
+import * as tables from "../problems/tables";
+import * as dates from "../problems/dates";
+import * as units from "../problems/units";
 import { readFileSync } from "fs";
 import * as xml_parser from "fast-xml-parser";
 
@@ -59,7 +63,7 @@ async function main() {
     const questions: string = options.questions || "";
     local_cache.loadLocalCache(options, prefix);
 
-    let problems: Problem[];
+    let problems: calc.Problem[];
     if (options.questionset == "puzzles") {
       const xml = readFileSync("test/dataset/ASDiv.xml", "utf8");
       // Parse the XML including attributes
@@ -77,7 +81,15 @@ async function main() {
         return { id, question, expected, grade, kind: kind };
       });
     } else if (options.questionset == "calc") {
-      problems = getProblems();
+      problems = calc.getProblems();
+    } else if (options.questionset == "finance") {
+      problems = finance.getProblems();
+    } else if (options.questionset == "tables") {
+      problems = tables.getProblems();
+    } else if (options.questionset == "dates") {
+      problems = dates.getProblems();
+    } else if (options.questionset == "units") {
+      problems = units.getProblems();
     } else {
       fail("Unknown question set");
     }
@@ -86,7 +98,7 @@ async function main() {
     let count = 0;
     // Do a parallel map over the problems
 
-    await mapControlled<Problem, any>(options, problems, async (problem) => {
+    await mapControlled<calc.Problem, any>(options, problems, async (problem) => {
       try {
         if (!questions || questions.includes(problem.id)) {
           console.log(`[${problem.id}] question: ${problem.question}`);
