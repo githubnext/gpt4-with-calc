@@ -19,7 +19,7 @@ echo "  With equip:                       `grep CORRECT logs/log.calc.with | wc 
 ./gpt4e eval --questionset puzzles --arith --verbose --noEmitDescriptions > logs/log.puzzles.with.noEmitDescriptions
 ./gpt4e eval --questionset puzzles --arith --verbose --emitChecks > logs/log.puzzles.with.emitChecks
  
-PUZZLES_TOTAL=`grep "CORRECT\|FAIL" logs/log.calc.with | wc -l`
+PUZZLES_TOTAL=`grep "CORRECT\|FAIL" logs/log.puzzles.with | wc -l`
 echo "Math puzzles:"
 echo "  Without equip:                    `grep FAIL logs/log.puzzles.without | wc -l` failures from $PUZZLES_TOTAL"
 echo "  With equip:                       `grep FAIL logs/log.puzzles.with | wc -l` failures from $PUZZLES_TOTAL"

@@ -100,9 +100,9 @@ export function setLocalCache(
       // hash.write(key);
       // console.log("cache set: " + hash.update(key).digest("hex") + "");
       if (ctxt.deterministic && lastKey != key) {
-        console.log("cache match: no match");
-        console.log("cache key1: " + lastKey);
-        console.log("cache key2: " + key);
+        console.error("cache match: no match");
+        console.error("   cache key1: " + lastKey);
+        console.error("   cache key2: " + key);
       }
       cache.entries[key] = entry;
       cache.changed = true;
