@@ -1,4 +1,4 @@
-# Evaluating "GPT4 Equipped with Arithmetic"
+# Evaluating "GPT4 Equipped with Numeric Calculation"
 
 See [the report](report.md) for an overview of the technique.
 
