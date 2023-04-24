@@ -1,18 +1,31 @@
-npm run build && ./gpt4e eval --verbose > log
-npm run build && ./gpt4e eval --arith --verbose > log2
-npm run build && ./gpt4e eval --arith --verbose --noEliminateDateTime > log2.noEliminateDateTime
-npm run build && ./gpt4e eval --arith --verbose --noEmitChecks > log2.noEmitChecks
-npm run build && ./gpt4e eval --arith --verbose --noEmitComparisons > log2.noEmitComparisons
-npm run build && ./gpt4e eval --arith --verbose --noEmitUnits > log2.noEmitUnits
-npm run build && ./gpt4e eval --arith --verbose --noEmitDescriptions > log2.noEmitDescriptions
+npm run build
+
+./gpt4e eval --questionset calc --verbose > logs/log.calc.without
+./gpt4e eval --questionset calc --arith --verbose > logs/log.calc.with
+
+echo "Raw calculation:"
+echo "  Without equip:                    `grep CORRECT logs/log.calc.without | wc -l`/`grep "CORRECT\|FAIL" logs/log.calc.with | wc -l`"
+echo "  With equip:                       `grep CORRECT logs/log.calc.with | wc -l`/`grep "CORRECT\|FAIL" logs/log.calc.with | wc -l`"
+
+
+./gpt4e eval --questionset puzzles --verbose > logs/log.puzzles.without
+./gpt4e eval --questionset puzzles --arith --verbose > logs/log.puzzles.with
+
+# variations
+./gpt4e eval --questionset puzzles --arith --verbose --noEliminateDateTime > logs/log.puzzles.with.noEliminateDateTime
+./gpt4e eval --questionset puzzles --arith --verbose --noEmitComparisons > logs/log.puzzles.with.noEmitComparisons
+./gpt4e eval --questionset puzzles --arith --verbose --noEmitUnits > logs/log.puzzles.with.noEmitUnits
+./gpt4e eval --questionset puzzles --arith --verbose --noEmitDescriptions > logs/log.puzzles.with.noEmitDescriptions
+./gpt4e eval --questionset puzzles --arith --verbose --emitChecks > logs/log.puzzles.with.emitChecks
  
-echo "Without equip:                    `grep FAIL log | wc -l` failures"
-echo "With equip:                       `grep FAIL log2 | wc -l` failures"
-echo "With equip (noEliminateDateTime): `grep FAIL log2.noEliminateDateTime | wc -l` failures"
-echo "With equip (noEmitChecks):        `grep FAIL log2.noEmitChecks | wc -l` failures"
-echo "With equip (noEmitComparisons):   `grep FAIL log2.noEmitComparisons | wc -l` failures"
-echo "With equip (noEmitUnits):         `grep FAIL log2.noEmitUnits | wc -l` failures"
-echo "With equip (noEmitDescriptions):  `grep FAIL log2.noEmitDescriptions | wc -l` failures"
+echo "Math puzzles:"
+echo "  Without equip:                    `grep FAIL logs/log.puzzles.without | wc -l` failures"
+echo "  With equip:                       `grep FAIL logs/log.puzzles.with | wc -l` failures"
+echo "  With equip (emitChecks):          `grep FAIL logs/log.puzzles.with.emitChecks | wc -l` failures"
+echo "  With equip (noEliminateDateTime): `grep FAIL logs/log.puzzles.with.noEliminateDateTime | wc -l` failures"
+echo "  With equip (noEmitComparisons):   `grep FAIL logs/log.puzzles.with.noEmitComparisons | wc -l` failures"
+echo "  With equip (noEmitUnits):         `grep FAIL logs/log.puzzles.with.noEmitUnits | wc -l` failures"
+echo "  With equip (noEmitDescriptions):  `grep FAIL logs/log.puzzles.with.noEmitDescriptions | wc -l` failures"
 
 for k in \
    "grade 1"\
@@ -21,7 +34,7 @@ for k in \
    "grade 4"\
    "grade 5"\
    "grade 6"; do
-    echo "$k: `(grep FAIL log | grep "$k" | wc -l)` --> `(grep FAIL log2 | grep "$k" | wc -l)`";
+    echo "$k: `(grep FAIL logs/log.puzzles.without | grep "$k" | wc -l)` --> `(grep FAIL logs/log.puzzles.with | grep "$k" | wc -l)`";
 done
 
 #"TVQ-Change"\
@@ -44,19 +57,20 @@ for k in \
    "Surplus"\
    "Algebra-1"\
    "Algebra-2"; do
-    echo "$k: `(grep FAIL log | grep "type $k" | wc -l)` --> `(grep FAIL log2 | grep "type $k" | wc -l)`";
+    echo "$k: `(grep FAIL logs/log.puzzles.without | grep "type $k" | wc -l)` --> `(grep FAIL logs/log.puzzles.with | grep "type $k" | wc -l)`";
 done
 
-# Find the failures in log
-FAILS1=`grep FAIL log | cut -d',' -f1 | cut -d'[' -f2`
+# Find the failures in logs/log.puzzles.without
+FAILS1=`grep FAIL logs/log.puzzles.without | cut -d',' -f1 | cut -d'[' -f2`
 
-FAILS2=`grep FAIL log2 | cut -d',' -f1 | cut -d'[' -f2`
+# Find the failures in logs/log.puzzles.with
+FAILS2=`grep FAIL logs/log.puzzles.with | cut -d',' -f1 | cut -d'[' -f2`
 
-# Find the failures in log2 that aren't in log and add them to REGRESSIONS
+# Find the regressions
 REGRESSIONS=""
 for k in $FAILS2; do
     if [[ ! $FAILS1 =~ $k ]]; then
-        fail=`grep "FAIL: \[$k" log2`
+        fail=`grep "FAIL: \[$k" logs/log.puzzles.with`
         echo "Regression: $fail"
         REGRESSIONS="$REGRESSIONS $k"
     fi
@@ -68,7 +82,7 @@ done
 # for k in $FAILS1; do
 #     if [[ ! $FAILS2 =~ $k ]]; then
 #         echo "New success: $k"
-#         grep "FAIL: \[$k" log2
+#         grep "FAIL: \[$k" logs/log.puzzles.with
 #     fi
 # done
 

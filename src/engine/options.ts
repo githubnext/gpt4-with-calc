@@ -156,8 +156,8 @@ const commonAskArgs = {
     default: true,
     modes: ["cli"],
   },
-  noEmitChecks: {
-    description: "Don't emit check_message checks",
+  emitChecks: {
+    description: "Emit checks",
     type: "boolean",
     default: true,
     modes: ["cli"],

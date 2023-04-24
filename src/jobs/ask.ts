@@ -27,7 +27,7 @@ export class WriteArithmeticStrategy {
 
 Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
 * Definitions
-* Calculations${!this.options.noEmitChecks ? "* Check\n" : ""}${
+* Calculations${this.options.emitChecks ? "* Check\n" : ""}${
       !this.options.noEmitComparisons ? "* Comparisons\n" : ""
     }
 * Return
@@ -78,7 +78,7 @@ In the optional "Calculations" section:
 * Use integer division when appropriate.
 
 ${
-  !this.options.noEmitChecks
+  this.options.emitChecks
     ? `In the optional "Check" section:
 * If appropriate, define the label \`check_message\` checking if results lie within the known range for the type of number.
 * Omit this section completely if it contains no definitions.

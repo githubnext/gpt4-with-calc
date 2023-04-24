@@ -472,18 +472,65 @@ gap_store_count > lulu_store_count # true/false
 
 This is not bad, but there are new assumed numbers such as `2.72` in the generated calculations that do not relate to anything in the source text. UPDATE: this fabrication can be eliminated through more stringent prompting, see the appendix.
 
-The resulting text is still a huge improvement, as all the comparisons are "the right way around", and each of the numbers is grounded in a calculation derivation:
+Adding the following lines in the prompt eliminated the addition of hallucinated assumptions in the calculations:
 
-> - Gap Inc. had more than twice the net sales of Lululemon in Q3 2022 ($4.04 billion vs. $1.9 billion), but Lululemon grew its net revenue much faster than Gap Inc. (46% vs. 2% year-over-year).
-> - Lululemon had a higher proportion of its net revenue coming from e-commerce than Gap Inc. (41.3% vs. 39%), and also grew its e-commerce revenue faster than Gap Inc. (31% vs. 5% year-over-year).
-> - Lululemon had a much higher gross margin than Gap Inc. (55.9% vs. 37.4%), and also a higher operating margin (19% vs. 4.6%). This means that Lululemon was more profitable and efficient than Gap Inc. in generating income from its sales.
-> - Gap Inc. had a higher net income than Lululemon in Q3 2022 ($282 million vs. $255.5 million), but this was mainly due to a large income tax benefit of $114 million that Gap Inc. recorded in the quarter. Lululemon had a higher diluted earnings per share than Gap Inc. ($2.00 vs. $0.77), which reflects its higher profitability per share of common stock.
-> - Gap Inc. had a much higher capital expenditures growth than Lululemon in Q3 2022 (87.3% vs. 43.3% year-over-year), which means that Gap Inc. invested more in its property and equipment than Lululemon. Gap Inc. also had a higher capital expenditures level relative to its net sales than Lululemon ($577 million vs. $175.6 million).
-> - Gap Inc. paid a quarterly dividend of $0.15 per share, which translates to a dividend yield of 0.78% based on its diluted earnings per share. Lululemon did not pay any dividend in Q3 2022. This means that Gap Inc. returned more cash to its shareholders than Lululemon in the form of dividends.
-> - Lululemon repurchased more shares than Gap Inc. in Q3 2022 ($17 million vs. $12 million), and also had a higher share repurchases yield than Gap Inc. (6.7% vs. 4.3%), which means that Lululemon returned more cash to its shareholders than Gap Inc. in the form of share buybacks.
-> - Gap Inc. had more store locations than Lululemon in Q3 2022 (3,380 vs. 623), but Lululemon opened more net new stores than Gap Inc. in the quarter (23 vs. 1). This means that Lululemon expanded its physical presence more than Gap Inc. in the quarter.
+```
+* Avoid new assumptions in this section, if you make an assumption document it.
+```
 
-While not perfect it is many, many times better than the original answer.
+In the latest implemented proof-of-concept (generating Javascript for the calculations), the generated calculations became:
+
+```javascript
+// Definitions
+let gap_net_sales = 4.04; // billion USD, total net sales for Gap Inc. in Q3 2022
+let gap_comparable_sales = 0.01; // decimal, year-over-year growth rate of comparable sales for Gap Inc. in Q3 2022
+let gap_gross_margin = 0.374; // decimal, reported gross margin as a percentage of net sales for Gap Inc. in Q3 2022
+let gap_operating_margin = 0.046; // decimal, reported operating margin as a percentage of net sales for Gap Inc. in Q3 2022
+let gap_diluted_eps = 0.77; // USD, reported diluted earnings per share for Gap Inc. in Q3 2022
+let gap_inventory = 3.04; // billion USD, ending inventory for Gap Inc. in Q3 2022
+let gap_capital_expenditures = 0.577; // billion USD, year-to-date capital expenditures for Gap Inc. in Q3 2022
+
+let lululemon_net_sales = 1.9; // billion USD, total net revenue for lululemon in Q3 2022
+let lululemon_comparable_sales = 0.22; // decimal, year-over-year growth rate of total comparable sales for lululemon in Q3 2022
+let lululemon_gross_margin = 0.559; // decimal, gross margin as a percentage of net revenue for lululemon in Q3 2022
+let lululemon_operating_margin = 0.19; // decimal, operating margin as a percentage of net revenue for lululemon in Q3 2022
+let lululemon_diluted_eps = 2.0; // USD, diluted earnings per share for lululemon in Q3 2022
+let lululemon_inventory = 1.7; // billion USD, ending inventory for lululemon in Q3 2022
+let lululemon_capital_expenditures = 0.176; // billion USD, capital expenditures for lululemon in Q3 2022
+
+// Calculations
+let net_sales_difference = lululemon_net_sales - gap_net_sales; // billion USD, difference in net sales between lululemon and Gap Inc. in Q3 2022
+let net_sales_ratio = lululemon_net_sales / gap_net_sales; // decimal, ratio of net sales between lululemon and Gap Inc. in Q3 2022
+let comparable_sales_difference = lululemon_comparable_sales - gap_comparable_sales; // decimal, difference in comparable sales growth rate between lululemon and Gap Inc. in Q3 2022
+let comparable_sales_ratio = lululemon_comparable_sales / gap_comparable_sales; // decimal, ratio of comparable sales growth rate between lululemon and Gap Inc. in Q3 2022
+let gross_margin_difference = lululemon_gross_margin - gap_gross_margin; // decimal, difference in gross margin percentage between lululemon and Gap Inc. in Q3 2022
+let gross_margin_ratio = lululemon_gross_margin / gap_gross_margin; // decimal, ratio of gross margin percentage between lululemon and Gap Inc. in Q3 2022
+let operating_margin_difference = lululemon_operating_margin - gap_operating_margin; // decimal, difference in operating margin percentage between lululemon and Gap Inc. in Q3 2022
+let operating_margin_ratio = lululemon_operating_margin / gap_operating_margin; // decimal, ratio of operating margin percentage between lululemon and Gap Inc. in Q3 2022
+let diluted_eps_difference = lululemon_diluted_eps - gap_diluted_eps; // USD, difference in diluted earnings per share between lululemon and Gap Inc. in Q3 2022
+let diluted_eps_ratio = lululemon_diluted_eps / gap_diluted_eps; // decimal, ratio of diluted earnings per share between lululemon and Gap Inc. in Q3 2022
+let inventory_difference = lululemon_inventory - gap_inventory; // billion USD, difference in ending inventory between lululemon and Gap Inc. in Q3 2022
+let inventory_ratio = lululemon_inventory / gap_inventory; // decimal, ratio of ending inventory between lululemon and Gap Inc. in Q3 2022
+let capital_expenditures_difference = lululemon_capital_expenditures - gap_capital_expenditures; // billion USD, difference in capital expenditures between lululemon and Gap Inc. in Q3 2022
+let capital_expenditures_ratio = lululemon_capital_expenditures / gap_capital_expenditures; // decimal, ratio of capital expenditures between lululemon and Gap Inc. in Q3 2022
+
+// Comparisons
+let net_sales_higher = lululemon_net_sales > gap_net_sales; // boolean, true if lululemon had higher net sales than Gap Inc. in Q3 2022, false otherwise
+let comparable_sales_higher = lululemon_comparable_sales > gap_comparable_sales; // boolean, true if lululemon had higher comparable sales growth rate than Gap Inc. in Q3 2022, false otherwise
+let gross_margin_higher = lululemon_gross_margin > gap_gross_margin; // boolean, true if lululemon had higher gross margin percentage than Gap Inc. in Q3 2022, false otherwise
+let operating_margin_higher = lululemon_operating_margin > gap_operating_margin; // boolean, true if lululemon had higher operating margin percentage than Gap Inc. in Q3 2022, false otherwise
+let diluted_eps_higher = lululemon_diluted_eps > gap_diluted_eps; // boolean, true if lululemon had higher diluted earnings per share than Gap Inc. in Q3 2022, false otherwise
+let inventory_higher = lululemon_inventory > gap_inventory; // boolean, true if lululemon had higher ending inventory than Gap Inc. in Q3 2022, false otherwise
+let capital_expenditures_higher = lululemon_capital_expenditures > gap_capital_expenditures; // boolean, true if lululemon had higher capital expenditures than Gap Inc. in Q3 2022, false otherwise
+```
+
+However the risk that code-generation will encode new hallucinations is real. Some techniques to deal with this are
+
+- Heavy prompting to avoid new assumptions, as above
+- Filtering or rejection of calculations that don't conform to expected requriements
+- Size restrictions rejecting new hallucinated calculations when inputs are small
+
+For end user-experience it may also be very important to have the models include a textual explanation of any assumptions made in generating the calculations. This is feasible given the above through another model invocation to explain any assumptins made.
 
 ## Example 5
 
@@ -541,19 +588,13 @@ In the optional "Check" section:
 
 We are assessing the value of this check in eliminating false arithmetic. It appears useful in "word puzzle" problems but it is unclear if it has broader utility for helping to ensure correctness and soundness.
 
-#### Problems with checks - additional hallucination
-
 One problem with emitting checks is that the model may attempt to perform the calculation as part of the check, which is agsinst the purpose of this work. Milder checks can be used, e.g. just requesting range checking:
 
 ```
 * If appropriate, define the label \`check_message\` checking if results lie within the known range for the type of number.
 ```
 
-However beware this may lead to hallucinated range checks.
-
-#### Problems with checks - overly pedantic
-
-Another problem is that the checks may be "surprising yet logically reasonable", e.g. consider this question:
+However beware this may lead to hallucinated range checks. Another problem is that the checks may be "surprising yet logically reasonable", e.g. consider this question:
 
 > Mrs. Hilt and her sister drove to a concert 78 miles away. They drove 32 miles and then stopped for gas. Her sister put 28 gallons of gas in the car. How many miles did they have left to drive? ----------------
 
@@ -563,7 +604,7 @@ After correct calculation code, the emitted check is:
 const check_message = gas_added > 20 ? "That's a lot of gas for a short trip." : ""; // [string]
 ```
 
-It's true - the irrelevant information of 28 gallons really is a lot of gas for a short trip, and one can indeed imagine a bright grade 2 child putting up their hand and querying why so much gas is needed.
+It's true - the irrelevant information of 28 gallons really is a lot of gas for a short trip! And one can indeed imagine a bright grade 2 child putting up their hand and querying why so much gas is needed. But the check is, in practice, not helpful.
 
 ### Refinement: Reducing Date and Time calculations
 
@@ -594,7 +635,7 @@ A fourth alternative is to instruct the reduction of the date-time computations 
 
 ### Avoiding solving equations and other algebra
 
-The aim here is to calculate with numbers, not perform high-school maths. GPT-4 loves to pretend that it is good at doing maths, but in reality that should not be part of the generated code emit, which is deigned to be entirely calulational.
+The aim here is to calculate with numbers, not perform high-school algebraic maths. GPT-4 loves to pretend that it is good at doing maths, but in reality that should not be part of the generated code emit, as GPT-4 is unreliable at this problem domain.
 
 This is a tricky thing to delimit, but we have experimented with adding the following to the calculation-section prompt:
 
@@ -602,7 +643,7 @@ This is a tricky thing to delimit, but we have experimented with adding the foll
 * Do NOT solve equations, simply write relevant calculations.
 ```
 
-However further filtering of pseudo-mathematical code is likely needed to stay in the calculation zone.
+Further filtering of pseudo-mathematical code is likely required to restrict ourselves to high-quality calculation.
 
 ### Integer division
 
@@ -614,17 +655,29 @@ We are experimenting with adding this to the prompt to help guide the model to c
 * Use integer division when appropriate.
 ```
 
-### Calculate, not code
-
-The point of this work is to calculate. But what exactly counts as a calculation?
-
-## Alternative architectures
+### Alternative architectures
 
 During this investigation we investigated some other alternatives:
 
 - We tried variations using a single model invocation, producing a mix of calculations plus text. Some examples clearly required conditional text, which we started to investigate by making the generated final text be conditional/templated/interpolated. However, the longer longer financial report examples above convinced us that too much reasoning remained in text generation, and that it is a clearer and simpler architecture to use a specific model invocation to enrich with an calculation program. Certainly a single invocation is viable for smaller examples.
 
 - We tried variations using a single model invocation that generates only a program, which is encouraged to print the full final text - so the only output was a program which could include calculation content. However that seemed to result in output texts more like those programmers write for diagnostics or output - terse, rather than well-written human-facing output text. Again, it seems a clearer and simpler architecture to distinguish between a phase that enriches with calculations, and a phase which uses GPT-4 in text-generation mode.
+
+### Format for calulation code
+
+We have left open what format should be used for calculations code. For convenience we have shown generating Python and Javascript. However introducing arbitrary code generation and execution in general-purpose languages is not necessary for this technique - instead the prompts should continue to be devloped to demand the generation of highly restricted calculation code. A limited subset of Python+numpy or Javascript or similar could still be used but a processing step should be added to strictly check the conformance of the calculations to a well-defined known subset. Careful sandboxing of the execution (or careful interpretation) will also be required.
+
+## Evaluation
+
+See [evaluation](eval.md).
+
+## Related Work
+
+There's a recent survey paper on techniques to augment Language Models, see https://arxiv.org/abs/2302.07842. Most the papers used retraining or fine tuning specifically to use such tools, but the survey is comprehensive and a useful guide to equips (augmentations).
+
+Much of the work on math and GPT-4 attempts to improve its more advanced mathematical capabilities, e.g. for algebra, geometry, problem solving, see https://arxiv.org/abs/2303.05398 for a recent paper from MSR.
+
+The basic idea that you can get LLMs to emit Python to handle arithemtic calculation as part of chain-of-reason prompting has been around a long time, e.g. see the prompt here: https://huggingface.co/datasets/LangChainHub-Prompts/LLM_Math.
 
 ## Conclusion
 
@@ -645,195 +698,3 @@ Further:
 3. There are a wide variety of "augment", "equip" and "chain of reasoning" architectures. Early versions of this work used a two step approach, where calculation and templated answer were written in one model invocation. Other architectures could ask which equips are most relevant, or iterate on equips until no more information can be incorporated. There are many tradeoffs and much to explore.
 
 The technique needs rigorous evaluation and refinement and we encourage collaboration. Please iterate with us and take this further. If publishing externally please include us as co-authors.
-
-## Related Work
-
-There's a recent survey paper on techniques to augment Language Models, see https://arxiv.org/abs/2302.07842. Most the papers used retraining or fine tuning specifically to use such tools, but the survey is comprehensive and a useful guide to equips (augmentations).
-
-Much of the work on math and GPT-4 attempts to improve its more advanced mathematical capabilities, e.g. for algebra, geometry, problem solving, see https://arxiv.org/abs/2303.05398 for a recent paper from MSR.
-
-The basic idea that you can get LLMs to emit Python to handle arithemtic calculation as part of chain-of-reason prompting has been around a long time, e.g. see the prompt here: https://huggingface.co/datasets/LangChainHub-Prompts/LLM_Math.
-
-## Appendix: Update on Example 4
-
-Adding the following lines in the prompt eliminated the addition of hallucinated assumptions in the calculations:
-
-     Avoid new assumptions in this section, if you make an assumption document it.
-     Document the meaning of each definition in the comment.
-
-In the latest implemented proof-of-concept (generating Javascript for the calculations), the generated calculations became:
-
-```javascript
-// Definitions
-let gap_net_sales = 4.04; // billion USD, total net sales for Gap Inc. in Q3 2022
-let gap_comparable_sales = 0.01; // decimal, year-over-year growth rate of comparable sales for Gap Inc. in Q3 2022
-let gap_gross_margin = 0.374; // decimal, reported gross margin as a percentage of net sales for Gap Inc. in Q3 2022
-let gap_operating_margin = 0.046; // decimal, reported operating margin as a percentage of net sales for Gap Inc. in Q3 2022
-let gap_diluted_eps = 0.77; // USD, reported diluted earnings per share for Gap Inc. in Q3 2022
-let gap_inventory = 3.04; // billion USD, ending inventory for Gap Inc. in Q3 2022
-let gap_capital_expenditures = 0.577; // billion USD, year-to-date capital expenditures for Gap Inc. in Q3 2022
-
-let lululemon_net_sales = 1.9; // billion USD, total net revenue for lululemon in Q3 2022
-let lululemon_comparable_sales = 0.22; // decimal, year-over-year growth rate of total comparable sales for lululemon in Q3 2022
-let lululemon_gross_margin = 0.559; // decimal, gross margin as a percentage of net revenue for lululemon in Q3 2022
-let lululemon_operating_margin = 0.19; // decimal, operating margin as a percentage of net revenue for lululemon in Q3 2022
-let lululemon_diluted_eps = 2.0; // USD, diluted earnings per share for lululemon in Q3 2022
-let lululemon_inventory = 1.7; // billion USD, ending inventory for lululemon in Q3 2022
-let lululemon_capital_expenditures = 0.176; // billion USD, capital expenditures for lululemon in Q3 2022
-
-// Calculations
-let net_sales_difference = lululemon_net_sales - gap_net_sales; // billion USD, difference in net sales between lululemon and Gap Inc. in Q3 2022
-let net_sales_ratio = lululemon_net_sales / gap_net_sales; // decimal, ratio of net sales between lululemon and Gap Inc. in Q3 2022
-let comparable_sales_difference = lululemon_comparable_sales - gap_comparable_sales; // decimal, difference in comparable sales growth rate between lululemon and Gap Inc. in Q3 2022
-let comparable_sales_ratio = lululemon_comparable_sales / gap_comparable_sales; // decimal, ratio of comparable sales growth rate between lululemon and Gap Inc. in Q3 2022
-let gross_margin_difference = lululemon_gross_margin - gap_gross_margin; // decimal, difference in gross margin percentage between lululemon and Gap Inc. in Q3 2022
-let gross_margin_ratio = lululemon_gross_margin / gap_gross_margin; // decimal, ratio of gross margin percentage between lululemon and Gap Inc. in Q3 2022
-let operating_margin_difference = lululemon_operating_margin - gap_operating_margin; // decimal, difference in operating margin percentage between lululemon and Gap Inc. in Q3 2022
-let operating_margin_ratio = lululemon_operating_margin / gap_operating_margin; // decimal, ratio of operating margin percentage between lululemon and Gap Inc. in Q3 2022
-let diluted_eps_difference = lululemon_diluted_eps - gap_diluted_eps; // USD, difference in diluted earnings per share between lululemon and Gap Inc. in Q3 2022
-let diluted_eps_ratio = lululemon_diluted_eps / gap_diluted_eps; // decimal, ratio of diluted earnings per share between lululemon and Gap Inc. in Q3 2022
-let inventory_difference = lululemon_inventory - gap_inventory; // billion USD, difference in ending inventory between lululemon and Gap Inc. in Q3 2022
-let inventory_ratio = lululemon_inventory / gap_inventory; // decimal, ratio of ending inventory between lululemon and Gap Inc. in Q3 2022
-let capital_expenditures_difference = lululemon_capital_expenditures - gap_capital_expenditures; // billion USD, difference in capital expenditures between lululemon and Gap Inc. in Q3 2022
-let capital_expenditures_ratio = lululemon_capital_expenditures / gap_capital_expenditures; // decimal, ratio of capital expenditures between lululemon and Gap Inc. in Q3 2022
-
-// Comparisons
-let net_sales_higher = lululemon_net_sales > gap_net_sales; // boolean, true if lululemon had higher net sales than Gap Inc. in Q3 2022, false otherwise
-let comparable_sales_higher = lululemon_comparable_sales > gap_comparable_sales; // boolean, true if lululemon had higher comparable sales growth rate than Gap Inc. in Q3 2022, false otherwise
-let gross_margin_higher = lululemon_gross_margin > gap_gross_margin; // boolean, true if lululemon had higher gross margin percentage than Gap Inc. in Q3 2022, false otherwise
-let operating_margin_higher = lululemon_operating_margin > gap_operating_margin; // boolean, true if lululemon had higher operating margin percentage than Gap Inc. in Q3 2022, false otherwise
-let diluted_eps_higher = lululemon_diluted_eps > gap_diluted_eps; // boolean, true if lululemon had higher diluted earnings per share than Gap Inc. in Q3 2022, false otherwise
-let inventory_higher = lululemon_inventory > gap_inventory; // boolean, true if lululemon had higher ending inventory than Gap Inc. in Q3 2022, false otherwise
-let capital_expenditures_higher = lululemon_capital_expenditures > gap_capital_expenditures; // boolean, true if lululemon had higher capital expenditures than Gap Inc. in Q3 2022, false otherwise
-```
-
-However the risk that code-generation will encode new hallucinations is real. Some techniques to deal with this are
-
-- Heavy prompting to avoid new assumptions, as above
-- Filtering or rejection of calculations that don't conform to expected requriements
-- Size restrictions rejecting new hallucinated calculations when inputs are small
-
-For end user-experience it may also be very important to have the models include a textual explanation of any assumptions made in generating the calculations. This is feasible given the above through another model invocation to explain any assumptins made.
-
-### Appendix: What format for calculations?
-
-We have left open what format should be used for calculations. For convenience we have shown generating Python and Javascript. However introducing arbitrary code generation and execution in general-purpose languages is not necessary for this technique - instead the prompts should continue to be devloped to demand the generation of highly restricted calculation code. A limited subset of Python+numpy or Javascript or similar could still be used but a processing step should be added to strictly check the conformance of the calculations to a well-defined known subset. Careful sandboxing of the execution (or careful interpretation) will also be required.
-
-## Appendix: Preliminary evaluation notes
-
-> NOTE: Evaluation is currently being done using Javascript codegen. We will be looking into Python codegen and other options.
-
-A caveat on any comparative evaluation: this work is about calculation, not math. Much of the work on math and GPT-4 attempts to improve its more advanced mathematical capabilities, e.g. for algebra, geometry, problem solving, is mostly based on word problems, and the typical evaluation problem sets are oriented in this way. This is understandable for LLM-based research - why would be use an LLM to try to add "16.84812 + 19.29039" let alone to evaluate trigonometric functions? However in real-life chat people will try to do exactly these kinds of problems: there is a strong user expectation that they can throw in any calculation and the chat will get it right, or else refuse to answer.
-
-### Raw Calculation
-
-TBD: Find or create a corpus of `+`, `-`, `*`, `/`, `mod`, `rem`, trig, exp, pi, log2, log10, logN, ceil, floor, sign, compare, including small integer, large integer, decimal, floating point.
-
-> NOTE: It's easy to construct quite realistic problem sets where the technique described here takes a 100% failure rate to a 0% failure rate - for example just take a corpus where every question involving a large-number or non-trivial-function (e.g. trigonometric or exponential) calculation, and with GPT-4 all will fail.
-
-#### Financial
-
-TBD: Assess exact decimal computation, computation of rates etc.
-
-#### DateTime
-
-TBD: Assess ability to do DateTime calculation.
-
-#### Calculations over Data Tables
-
-Word problems: Sum, average, compare, sumprod, .. (TBD)
-
-#### Excel Calculations
-
-TBD: Use Excel-named functions in formulae over tables. Also ask for `sum(data)` etc.
-
-#### Currency Calculations
-
-TBD: Convert between currencies
-
-#### Unit Calculations
-
-TBD: Convert between units `10 km/h converted to m/s` etc. Full SI units, some other adhoc units.
-
-### Mathematical word puzzles
-
-This is a problem set of 2300 childrens maths puzzles, up to grade 6 US curriculum. The puzzles are primarily word problem solving, not calculation.
-
-> NOTE: essentially every problem in this data set can be made to fail with raw GPT-4 simply by making the numbers involved sufficeintly large or adding decimal places. The existing GPT-4 pass rates for this problem set are somewhat deceptive as they assume child-like numbers are involved in real-world problems.
-
-We ran the strategy described here on a modified version of this data set where:
-
-- some additional instructions were added to the questions specifying exact intended output formats
-- some answers were corrected (the data set contained mistakes)
-- some questions were clarified (they were highly ambiguous and open to interpretation, or assuming prior questions in the data set had been asked).
-- the text of some questions triggered Responsible AI filters and was modified in otherwise harmless ways.
-
-These adjustments applied to both GPT-4 and GPT-4e.
-
-When run with the technique here, the error rate reduces from 11% to 7%:
-
-```
-Without numeric calculation equip: 254 failures
-With numeric calculation equip:    161 failures
-```
-
-The mistake rates in the different grades of problems are affected as follows:
-
-```
-grade 1: 2 --> 2       // mistakes out of 194
-grade 2: 7 --> 2       // mistakes out of 340
-grade 3: 25 --> 18     // mistakes out of 808
-grade 4: 48 --> 18     // mistakes out of 301
-grade 5: 33 --> 16     // mistakes out of 146
-grade 6: 137 --> 105   // mistakes out of 514
-```
-
-The differrent kinds of problems are interesting and important.
-
-Improved:
-
-```
-Subtraction: 28 --> 4
-Sum: 10 --> 2
-Multiplication: 8 --> 3
-Floor-Division: 6 --> 3
-Common-Division: 13 --> 8
-Comparison: 21 --> 4
-TVQ-Final: 3 --> 0
-Surplus: 23 --> 10
-Algebra-1: 22 --> 15            // note, largely out of zone, only partially calculational
-```
-
-Regressed:
-
-```
-LCM: 10 --> 17                  // note, largely out of zone, mostly word puzzle curiosities
-GCD: 11 --> 14                  // note, largely out of zone, mostly word puzzle curiosities
-Sequential-Operation: 3 --> 8   // note, largely out of zone, only partially calculational, mostly "spot the numeric pattern"
-```
-
-About the same:
-
-```
-Addition: 17 --> 16            // note, remaining are largely date/time calculations
-Ceil-Division: 1 --> 1          // note, largely out of zone, mostly word puzzle curiosities
-Ratio: 12 --> 11               // note, ratio reduction involves LCM/GCD which isn't a calculational strength
-Algebra-2: 43 --> 36           // note, largely out of zone, only partially calculational
-```
-
-Notes:
-
-- The big improvements lie in the calculational heart: subtraction, summation, multiplication, comparison, surplus and some division problems.
-- In contrast, some areas such as LCM and GCD have been a little impaired. These problems are largely non-calculational mathematical reasoning and are likely vanishingly rare in real-world chat (except for students doing homework puzzles!). However we should continue to investigate the reasons that performance is impaired on this kind of problem, and what can be done to restrict the technique from attempting to work on this kind of problem.
-
-### Assessing aspects of calculation code
-
-Taking the word puzzles, eliminating some characteristics of the generated calculations gives a measure of the proportion of word puzzles sensitive to this aspect of calculation.
-
-```
-Without numeric calculation equip: 254 failures
-With numeric calculation equip:    171 failures (noEmitChecks)
-With numeric calculation equip:    169 failures (noEliminateDateTime)
-With numeric calculation equip:    167 failures (noEmitComparisons)
-With numeric calculation equip:    161 failures
-```
