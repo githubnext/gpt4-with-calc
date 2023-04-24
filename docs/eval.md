@@ -25,15 +25,15 @@ We developed some indicative problem sets that exhibit the following characteris
 - without equip: **50% mistake rate**
 - with equip: **0% mistake rate**
 
-[**Date calculations**](/src/problems/dates.ts):
-
-- without equip: **30% mistake rate** 7/10
-- with equip: **20% mistake rate** 8/10
-
 [**Unit conversion calculations**](/src/problems/units.ts) problems
 
 - without equip: **36% mistake rate** 7/11
 - with equip: **0% mistake rate** 11/11
+
+[**Date calculations**](/src/problems/dates.ts):
+
+- without equip: **30% mistake rate** 7/10
+- with equip: **20% mistake rate** 8/10
 
 These sets were developed partly in order to explore the boundary of what this technique can handle, so we encourage you to look at the data sets and we will develop these further over time. Of these, we estimate the date-time problems are an area we should proactively try to **not** apply this technique without much more confidence that results improve and accuracy is achieved. This is discussed in the report.
 
