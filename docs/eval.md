@@ -1,6 +1,6 @@
 # Evaluating "GPT4 Equipped with Arithmetic"
 
-See [the technique](report.md) for an overview of the technique.
+See [the report](report.md) for an overview of the technique.
 
 > Caveat!!! this work is about calculation, not math. Much of the work on math and GPT-4 attempts to improve its more advanced mathematical capabilities, e.g. for algebra, geometry, problem solving, is mostly based on word problems, and the typical evaluation problem sets are oriented in this way. This is understandable for LLM-based research - why would be use an LLM to try to add "16.84812 + 19.29039" let alone to evaluate trigonometric functions? However in real-life chat people will try to do exactly these kinds of problems: there is a strong user expectation that they can throw in any calculation and the chat will get it right, or else refuse to answer.
 
