@@ -6,7 +6,7 @@ See [the technique](report.md) for an overview of the technique.
 
 > NOTE: Evaluation is currently being done using Javascript codegen. We may look into Python codegen and other options.
 
-### TLDR Summary
+### TLDR
 
 Raw calculation (decimals, integers, math functions):
 
