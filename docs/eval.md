@@ -20,10 +20,7 @@ Mathematical word puzzles with small integers:
 
 ### Raw Calculation
 
-Results without equip: 76/153 (50% failure rate)
-Results with equip: 150/153 (2% mistake rate)
-
-Details: We created a set of 153 decimal and integer calculation problems like this:
+We created a set of 153 decimal and integer calculation problems like this:
 
 > What is the result of adding -942.12 and 1441.23? Give answer rounded to two decimal places.
 >
@@ -41,7 +38,12 @@ With categories:
 - decimal comparison
 - integer comparison
 
-The remaining mistakes were errors in the last decimal place:
+The results are:
+
+- without equip: 76/153 (50% failure rate, many extreme mistakes)
+- with equip: 150/153 (2% mistake rate, only minor mistakes, see below)
+
+The remaining minor mistakes were errors in the last decimal place:
 
 ```
 expected: "24.533", actual: "24.532", question: What is e raised to power 3.2.  Give answer rounded to three decimal places.
@@ -49,37 +51,13 @@ expected: "7.3891", actual: "7.3890", question: What is the result of calculatin
 expected: "7.2733", actual: "7.2732", question: What is the natural logarithm of 1441.23?  Give answer rounded to four decimal places.
 ```
 
-These stemmed from two cases of incorrect rounding of a correctly calculated result, and once case where the calculated code used a hardwired approximation to `e`:
+These stemmed from two cases of incorrect textual rounding of a correctly calculated result in the final GPT-4 question-answering phase, and a case where the calculated code used a hardwired approximation to `e`:
 
 ```
 const e = 2.71828; // base of natural logarithm [unknown]
 ```
 
-All such cases can be handled by prompt refinements (e.g. move rounding computations into the calculated code, and always using precise values of constants like `e` and `pi`).
-
-#### Financial
-
-TBD: Assess exact decimal computation, computation of rates etc.
-
-#### DateTime
-
-TBD: Assess ability to do DateTime calculation.
-
-#### Calculations over Data Tables
-
-Word problems: Sum, average, compare, sumprod, .. (TBD)
-
-#### Excel Calculations
-
-TBD: Use Excel-named functions in formulae over tables. Also ask for `sum(data)` etc.
-
-#### Currency Calculations
-
-TBD: Convert between currencies
-
-#### Unit Calculations
-
-TBD: Convert between units `10 km/h converted to m/s` etc. Full SI units, some other adhoc units.
+We believe these cases can all be easily handled by prompt refinements (e.g. move rounding computations into the calculated code, and always using precise values of constants like `e` and `pi`).
 
 ### Mathematical word puzzles
 
@@ -152,9 +130,33 @@ Notes:
 - The big improvements lie in the calculational heart: subtraction, summation, multiplication, comparison, surplus and some division problems.
 - In contrast, some areas such as LCM and GCD have been a little impaired. These problems are largely non-calculational mathematical reasoning and are likely vanishingly rare in real-world chat (except for students doing homework puzzles!). However we should continue to investigate the reasons that performance is impaired on this kind of problem, and what can be done to restrict the technique from attempting to work on this kind of problem.
 
-### Assessing aspects of calculation code
+#### Financial
 
-Taking the word puzzles, eliminating some characteristics of the generated calculations gives a measure of the proportion of word puzzles sensitive to this aspect of calculation.
+TBD: Assess exact decimal computation, computation of rates etc.
+
+#### DateTime
+
+TBD: Assess ability to do DateTime calculation.
+
+#### Calculations over Data Tables
+
+Word problems: Sum, average, compare, sumprod, .. (TBD)
+
+#### Excel Calculations
+
+TBD: Use Excel-named functions in formulae over tables. Also ask for `sum(data)` etc.
+
+#### Currency Calculations
+
+TBD: Convert between currencies
+
+#### Unit Calculations
+
+TBD: Convert between units `10 km/h converted to m/s` etc. Full SI units, some other adhoc units.
+
+### Assessing variations of calculation code
+
+Taking the mathematical word puzzles, we tried variations on the prompt that eliminated some characteristics of the generated calculations. This really gives a measure of the proportion of word puzzles sensitive to this aspect of calculation.
 
 ```
 Without numeric calculation equip: 254 failures
