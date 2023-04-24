@@ -4,6 +4,8 @@ Author: Don Syme, GitHub Next, with input from others at [GitHub Next](https://g
 
 [Proof-of-concept implementation](https://github.com/githubnext/gpt4e). Access available on request.
 
+[Evaluation](eval.md).
+
 > NOTE: The technique needs rigorous evaluation and refinement and we encourage collaboration. Please iterate with us and take this further. If publishing externally please contact us and include us as co-authors.
 
 Date: 18 April 2023
