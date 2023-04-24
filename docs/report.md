@@ -635,7 +635,7 @@ A fourth alternative is to instruct the reduction of the date-time computations 
 * Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
 ```
 
-### Avoiding solving equations and other algebra
+### Refinement: Avoiding solving equations and other algebra
 
 The aim here is to calculate with numbers, not perform high-school algebraic maths. GPT-4 loves to pretend that it is good at doing maths, but in reality that should not be part of the generated code emit, as GPT-4 is unreliable at this problem domain.
 
@@ -647,7 +647,7 @@ This is a tricky thing to delimit, but we have experimented with adding the foll
 
 Further filtering of pseudo-mathematical code is likely required to restrict ourselves to high-quality calculation.
 
-### Integer division
+### Refinement: Integer division
 
 One identified mistake in generated code is the mis-use of integer v. floating-point division.
 
@@ -657,7 +657,7 @@ We are experimenting with adding this to the prompt to help guide the model to c
 * Use integer division when appropriate.
 ```
 
-### Alternative architectures
+### Refinement: Alternative architectures
 
 During this investigation we investigated some other alternatives:
 
@@ -665,7 +665,7 @@ During this investigation we investigated some other alternatives:
 
 - We tried variations using a single model invocation that generates only a program, which is encouraged to print the full final text - so the only output was a program which could include calculation content. However that seemed to result in output texts more like those programmers write for diagnostics or output - terse, rather than well-written human-facing output text. Again, it seems a clearer and simpler architecture to distinguish between a phase that enriches with calculations, and a phase which uses GPT-4 in text-generation mode.
 
-### Format for calulation code
+### Refinement: Format for calulation code
 
 We have left open what format should be used for calculations code. For convenience we have shown generating Python and Javascript. However introducing arbitrary code generation and execution in general-purpose languages is not necessary for this technique - instead the prompts should continue to be devloped to demand the generation of highly restricted calculation code. A limited subset of Python+numpy or Javascript or similar could still be used but a processing step should be added to strictly check the conformance of the calculations to a well-defined known subset. Careful sandboxing of the execution (or careful interpretation) will also be required.
 
