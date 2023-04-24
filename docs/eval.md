@@ -10,13 +10,13 @@ See [the technique](report.md) for an overview of the technique.
 
 Raw calculation (decimals, integers, math functions):
 
-- without equip: 76/153 (50% failure rate, many extreme mistakes)
-- with equip: 150/153 (2% mistake rate, only minor mistakes, see below)
+- without equip: **50% mistake rate**, many extreme mistakes
+- with equip: **2% mistake rate**, only minor mistakes, see below
 
 Mathematical word puzzles with small integers:
 
-- without equip: 254/2303 failures (11% mistake rate)
-- with equip: 161/2303 failures (7% mistake rate)
+- without equip: **11% mistake rate**
+- with equip: **7% mistake rate**
 
 ### Raw Calculation
 
