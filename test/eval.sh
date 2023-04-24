@@ -3,9 +3,10 @@ npm run build
 ./gpt4e eval --questionset calc --verbose > logs/log.calc.without
 ./gpt4e eval --questionset calc --arith --verbose > logs/log.calc.with
 
+CALC_TOTAL=`grep "CORRECT\|FAIL" logs/log.calc.with | wc -l`
 echo "Raw calculation:"
-echo "  Without equip:                    `grep CORRECT logs/log.calc.without | wc -l`/`grep "CORRECT\|FAIL" logs/log.calc.with | wc -l`"
-echo "  With equip:                       `grep CORRECT logs/log.calc.with | wc -l`/`grep "CORRECT\|FAIL" logs/log.calc.with | wc -l`"
+echo "  Without equip:                    `grep CORRECT logs/log.calc.without | wc -l`/$CALC_TOTAL"
+echo "  With equip:                       `grep CORRECT logs/log.calc.with | wc -l`/$CALC_TOTAL"
 
 
 ./gpt4e eval --questionset puzzles --verbose > logs/log.puzzles.without
@@ -18,14 +19,15 @@ echo "  With equip:                       `grep CORRECT logs/log.calc.with | wc 
 ./gpt4e eval --questionset puzzles --arith --verbose --noEmitDescriptions > logs/log.puzzles.with.noEmitDescriptions
 ./gpt4e eval --questionset puzzles --arith --verbose --emitChecks > logs/log.puzzles.with.emitChecks
  
+PUZZLES_TOTAL=`grep "CORRECT\|FAIL" logs/log.calc.with | wc -l`
 echo "Math puzzles:"
-echo "  Without equip:                    `grep FAIL logs/log.puzzles.without | wc -l` failures"
-echo "  With equip:                       `grep FAIL logs/log.puzzles.with | wc -l` failures"
-echo "  With equip (emitChecks):          `grep FAIL logs/log.puzzles.with.emitChecks | wc -l` failures"
-echo "  With equip (noEliminateDateTime): `grep FAIL logs/log.puzzles.with.noEliminateDateTime | wc -l` failures"
-echo "  With equip (noEmitComparisons):   `grep FAIL logs/log.puzzles.with.noEmitComparisons | wc -l` failures"
-echo "  With equip (noEmitUnits):         `grep FAIL logs/log.puzzles.with.noEmitUnits | wc -l` failures"
-echo "  With equip (noEmitDescriptions):  `grep FAIL logs/log.puzzles.with.noEmitDescriptions | wc -l` failures"
+echo "  Without equip:                    `grep FAIL logs/log.puzzles.without | wc -l` failures from $PUZZLES_TOTAL"
+echo "  With equip:                       `grep FAIL logs/log.puzzles.with | wc -l` failures from $PUZZLES_TOTAL"
+echo "  With equip (emitChecks):          `grep FAIL logs/log.puzzles.with.emitChecks | wc -l` failures from $PUZZLES_TOTAL"
+echo "  With equip (noEliminateDateTime): `grep FAIL logs/log.puzzles.with.noEliminateDateTime | wc -l` failures from $PUZZLES_TOTAL"
+echo "  With equip (noEmitComparisons):   `grep FAIL logs/log.puzzles.with.noEmitComparisons | wc -l` failures from $PUZZLES_TOTAL"
+echo "  With equip (noEmitUnits):         `grep FAIL logs/log.puzzles.with.noEmitUnits | wc -l` failures from $PUZZLES_TOTAL"
+echo "  With equip (noEmitDescriptions):  `grep FAIL logs/log.puzzles.with.noEmitDescriptions | wc -l` failures from $PUZZLES_TOTAL"
 
 for k in \
    "grade 1"\
