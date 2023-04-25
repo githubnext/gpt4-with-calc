@@ -6,7 +6,7 @@ GPT-4 is terrible at calculation with numbers. We look at a technique to fix tha
 
 ## The Code
 
-**GPT-4 Equipped with Calculation**: see [src/jobs/ask.ts]
+[**GPT-4 Equipped with Calculation**](src/jobs/ask.ts)
 
 The rest is stripped-down boilerplate taken from the CoPilot for PRS repo.
 

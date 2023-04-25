@@ -1285,7 +1285,7 @@
 	</Problem>
 	<Problem ID="nluds-0184" Grade="2" Source="http://www.k5learning.com">
 		<Body>Kyle has four dimes, one nickel, and one quarter.</Body>
-		<Question>Does he have enough to buy a book that costs $1.00?</Question>
+		<Question>Does he have enough to buy a book that costs $1.00? Answer 'Yes' or 'No' without quotes</Question>
 		<Solution-Type>Comparison</Solution-Type>
 		<Answer>No</Answer>
 		<Formula>4*10+1*5+1*25=70 cents &lt; 1 dollar</Formula>
@@ -7095,7 +7095,7 @@
 	</Problem>
 	<Problem ID="nluds-1014" Grade="3" Source="http://www.mathplayground.com">
 		<Body>Coach Mike bought several cups of lemonade. The girls told him it would cost 58 cents. The coach gave the girls 75 cents.</Body>
-		<Question>How much change did Coach Mike get back?</Question>
+		<Question>How much change did Coach Mike get back, in cents?</Question>
 		<Solution-Type>Subtraction</Solution-Type>
 		<Answer>17 (cents)</Answer>
 		<Formula>75-58=17</Formula>
@@ -7333,9 +7333,9 @@
 	</Problem>
 	<Problem ID="nluds-1048" Grade="6" Source="http://www.ixl.com">
 		<Body>Last season, Lisa's soccer team won 8 games and lost 6 games. Her cousin Susan's team won 17 games and lost 14 games.</Body>
-		<Question>Which team had a higher ratio of wins to losses?</Question>
+		<Question>Which team had a higher ratio of wins to losses? Give answer as "Lisa" or "Susan" without quotes.</Question>
 		<Solution-Type Subgoal-1="Ratio">Comparison</Solution-Type>
-		<Answer>Lisa's soccer team</Answer>
+		<Answer>Lisa</Answer>
 		<Formula>8/6(Lisa's soccer team) &gt; 17/14(Susan's team)</Formula>
 	</Problem>
 	<Problem ID="nluds-1049" Grade="6" Source="http://www.ixl.com">
@@ -7354,16 +7354,16 @@
 	</Problem>
 	<Problem ID="nluds-1051" Grade="6" Source="http://www.ixl.com">
 		<Body>Mrs. Greer and Mrs. Doyle took polls of their second-grade classes to find out their students' favorite colors. In Mrs. Greer's class, 8 students said their favorite color was blue and 14 said their favorite color was red. In Mrs. Doyle's class, 10 voted for blue and 13 for red.</Body>
-		<Question>Whose class had a higher ratio of students who preferred blue to students who preferred red?</Question>
+		<Question>Whose class had a higher ratio of students who preferred blue to students who preferred red? Give answer as "Mrs. Doyle" or "Mrs. Greer" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
-		<Answer>Mrs. Doyle's class</Answer>
+		<Answer>Mrs. Doyle</Answer>
 		<Formula>8/14(Mrs. Greer's class) &lt; 10/13(Mrs. Doyle's class)</Formula>
 	</Problem>
 	<Problem ID="nluds-1052" Grade="6" Source="http://www.ixl.com">
 		<Body>Jacob's punch recipe calls for 2 liters of lemon-lime soda and 4 liters of pineapple juice. Ella's punch recipe requires 3 liters of lemon-lime soda and 7 liters of pineapple juice.</Body>
-		<Question>Which recipe has a higher ratio of lemon-lime soda to pineapple juice?</Question>
+		<Question>Which recipe has a higher ratio of lemon-lime soda to pineapple juice? Give answer as "Jacob" or "Ella" without quotes.</Question>
 		<Solution-Type>Comparison</Solution-Type>
-		<Answer>Jacob's punch recipe</Answer>
+		<Answer>Jacob</Answer>
 		<Formula>2/4(Jacob's punch recipe) &gt; 3/7(Ella's punch recipe)</Formula>
 	</Problem>
 	<Problem ID="nluds-1053" Grade="6" Source="http://www.ixl.com">
@@ -7375,9 +7375,9 @@
 	</Problem>
 	<Problem ID="nluds-1054" Grade="6" Source="http://www.ixl.com">
 		<Body>When preparing the cheese for their pizzas, the cooks at Daniel's pizza restaurant mix 2 kilograms of Parmesan cheese and 12 kilograms of mozzarella. At Ethan's pizza restaurant, the cooks mix 5 kilograms of Parmesan cheese and 18 kilograms of mozzarella.</Body>
-		<Question>Which restaurant uses a lower ratio of Parmesan to mozzarella?</Question>
+		<Question>Which restaurant uses a lower ratio of Parmesan to mozzarella? Give answer as "Daniel" or "Ethan" without quotes,</Question>
 		<Solution-Type>Comparison</Solution-Type>
-		<Answer>Daniel's pizza restaurant</Answer>
+		<Answer>Daniel</Answer>
 		<Formula>2/12(Daniel's pizza restaurant) &lt; 5/18(Ethan's pizza restaurant)</Formula>
 	</Problem>
 	<Problem ID="nluds-1055" Grade="6" Source="http://www.ixl.com">
@@ -7419,7 +7419,7 @@
 		<Body>During a road trip, Lester stopped at two rest stops. In the parking lot of the first rest stop, he counted 20 cars and 18 trucks. At the second rest stop, he counted 17 cars and 16 trucks.</Body>
 		<Question>At which rest stop did Lester count a higher ratio of cars to trucks? Answer "1st" or "2nd" without quotes</Question>
 		<Solution-Type>Comparison</Solution-Type>
-		<Answer>The first rest stop</Answer>
+		<Answer>1st</Answer>
 		<Formula>20/18(The first rest stop) &gt; 17/16(The second rest stop)</Formula>
 	</Problem>
 	<Problem ID="nluds-1061" Grade="6" Source="http://www.ixl.com">
@@ -7773,10 +7773,10 @@
 		<Formula>24*60 (min/hour) + 1*60 (min/hour) + 6 (min) = 1506 (min); 1*60 (min/hour) + 21 (min) = 81 (min); (1506-81)/60 (min/hour)=23 r45; hh:mm=23:45=11:45 p.m.</Formula>
 	</Problem>
 	<Problem ID="nluds-1111" Grade="6" Class="time" Source="http://mtapreviewer.com">
-		<Body>Time in the Philippines is one hour ahead of the time in Japan. Luz who is in Manila called up her friend who is in Japan at 12:55 am on 25 December 2014.</Body>
-		<Question>What day and time was it in Japan?</Question>
+		<Body>Time in the Philippines is one hour ahead of the time in Japan. Luz who is in Manila called up her friend who is in Japan at 12:55am on 25 December 2014.</Body>
+		<Question>What day and time was it in Japan? Give answer in format like "4:52am on 13 January 1998" without quotes</Question>
 		<Solution-Type UnitTrans="Time">Subtraction</Solution-Type>
-		<Answer>11:55 p.m. on 24 December 2014.</Answer>
+		<Answer>11:55pm on 24 December 2014.</Answer>
 		<Formula>24*60 (min/hour) + 55 (min) = 1495 (min)(25 December 2014); (1495-1*60 (min/hour))/60 (min/hour) = 23 r55; hh:mm=23:55=11:55 p.m.(24 December 2014)</Formula>
 	</Problem>
 	<Problem ID="nluds-1112" Grade="6" Source="http://www.mathplayground.com">
@@ -8824,7 +8824,7 @@
 	</Problem>
 	<Problem ID="nluds-1261" Grade="3" Source="Created by an Annotator">
 		<Body>Diane wants to buy a package of cookies. The cookies cost 65 cents. Diane has 27 cents.</Body>
-		<Question>What's the difference between the cost of the cookies and the money of Diane?</Question>
+		<Question>What's the difference between the cost of the cookies and the money of Diane, in cents?</Question>
 		<Solution-Type>Difference</Solution-Type>
 		<Answer>38 (cents)</Answer>
 		<Formula>65-27=38</Formula>
@@ -8845,7 +8845,7 @@
 	</Problem>
 	<Problem ID="nluds-1264" Grade="1" Source="Created by an Annotator">
 		<Body>For Halloween Frank got fifteen pounds of candy. If he gave eight pounds to Nancy,</Body>
-		<Question>what's the difference between the pounds of Frank's candy before he gave some to Nancy and the amount he gave to Nancy?</Question>
+		<Question>what's the difference between the amount Frank had originally and the amount he gave?</Question>
 		<Solution-Type>Difference</Solution-Type>
 		<Answer>7 (pounds)</Answer>
 		<Formula>15-8=7</Formula>
@@ -8915,7 +8915,7 @@
 	</Problem>
 	<Problem ID="nluds-1275" Grade="1" Source="Created by an Annotator">
 		<Body>A farmer had seventeen tomatoes from his garden. If he picked nine of them,</Body>
-		<Question>what's the difference between the number of tomatoes before picking and he picked?</Question>
+		<Question>what's the difference between the number of tomatoes he had originally and the number he picked?</Question>
 		<Solution-Type>Difference</Solution-Type>
 		<Answer>8 (tomatoes)</Answer>
 		<Formula>17-9=8</Formula>
@@ -9216,7 +9216,7 @@
 	</Problem>
 	<Problem ID="nluds-1318" Grade="6" Source="http://www.mathocean.com">
 		<Body>One-third of a number minus seven gives eight.</Body>
-		<Question>Find the number. Give the answer as two numbers.</Question>
+		<Question>Find the number. Give the answer as a single number.</Question>
 		<Solution-Type>Algebra-1</Solution-Type>
 		<Answer>45</Answer>
 		<Formula>x:The number; (1/3)*x-7=8</Formula>
@@ -10084,7 +10084,7 @@
 	</Problem>
 	<Problem ID="nluds-1442" Grade="6" Source="http://www.ask-math.com">
 		<Body>The sum of the digits of a two-digit number is 9. Also, nine times this number is twice the number obtained by reversing the order of the digits.</Body>
-		<Question>Find the number. Give the answer as two numbers.</Question>
+		<Question>Find the number. Give the answer as a single number.</Question>
 		<Solution-Type>Algebra-2</Solution-Type>
 		<Answer>18</Answer>
 		<Formula>x:The number of first digit; y:The number of second digit; x+y=9; 9*(10x+y)=2*(10y+x)</Formula>
@@ -10406,7 +10406,7 @@
 	</Problem>
 	<Problem ID="nluds-1488" Grade="6" Source="http://www.mathplayground.com">
 		<Body>A square has a perimeter of 24 inches.</Body>
-		<Question>What is the area of the square?</Question>
+		<Question>What is the area of the square? Give the answer in format like "141 (sq. inches)" without quotes.</Question>
 		<Solution-Type>Geometry</Solution-Type>
 		<Answer>36 (sq. inches)</Answer>
 		<Formula>(24/4)^2=36</Formula>

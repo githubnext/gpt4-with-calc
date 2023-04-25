@@ -37,7 +37,7 @@ We developed some indicative problem sets that exhibit the following characteris
 
 These sets were developed partly in order to explore the boundary of what this technique can handle, so we encourage you to look at the data sets and we will develop these further over time. Of these, we estimate the date-time problems are an area we should proactively try to **not** apply this technique without much more confidence that results improve and accuracy is achieved. This is discussed in the report.
 
-Not all "math" is dramatically improved, and indeed that's not the point (see above). For example, we looked at [mathematical word puzzles with small integers](/test/dataset/ASDiv.xml):
+Not all "math" is dramatically improved, and indeed that's not the point (see above). For example, we looked at [Mathematical word puzzles with small integers](/test/dataset/ASDiv.xml):
 
 - without equip: **11% mistake rate**
 - with equip: **7% mistake rate**
@@ -113,22 +113,22 @@ We ran the strategy described here on a modified version of this data set where:
 
 These adjustments applied to both GPT-4 and GPT-4e.
 
-When run with the technique here, the error rate reduces from 11% to 7%:
+When run with the technique here, the error rate reduces from 11% to 6.5%:
 
 ```
-Without numeric calculation equip: 254/2303 failures
-With numeric calculation equip:    161/2303 failures
+Without numeric calculation equip: 253/2296 failures
+With numeric calculation equip: 151/2296 failures
 ```
 
 The mistake rates in the different grades of problems are affected as follows:
 
 ```
-grade 1: 2 --> 2       // mistakes out of 194
-grade 2: 7 --> 2       // mistakes out of 340
-grade 3: 25 --> 18     // mistakes out of 808
-grade 4: 48 --> 18     // mistakes out of 301
-grade 5: 33 --> 16     // mistakes out of 146
-grade 6: 137 --> 105   // mistakes out of 514
+grade 1: 2 --> 1       // mistakes out of 194
+grade 2: 7 --> 1       // mistakes out of 340
+grade 3: 25 --> 12     // mistakes out of 808
+grade 4: 49 --> 19     // mistakes out of 301
+grade 5: 31 --> 18     // mistakes out of 146
+grade 6: 139 --> 94    // mistakes out of 514
 ```
 
 The differrent kinds of problems are interesting and important.
@@ -136,32 +136,32 @@ The differrent kinds of problems are interesting and important.
 Improved:
 
 ```
-Subtraction: 28 --> 4
-Sum: 10 --> 2
-Multiplication: 8 --> 3
-Floor-Division: 6 --> 3
-Common-Division: 13 --> 8
-Comparison: 21 --> 4
+Subtraction: 29 --> 7
+Sum: 10 --> 0
+Multiplication: 8 --> 2
+Floor-Division: 6 --> 5
+Common-Division: 14 --> 7
+Comparison: 22 --> 0
 TVQ-Final: 3 --> 0
-Surplus: 23 --> 10
-Algebra-1: 22 --> 15            // note, largely out of zone, only partially calculational
+Surplus: 22 --> 6
+Algebra-1: 21 --> 16            // note, largely out of zone, only partially calculational
 ```
 
 Regressed:
 
 ```
-LCM: 10 --> 17                  // note, largely out of zone, mostly word puzzle curiosities
-GCD: 11 --> 14                  // note, largely out of zone, mostly word puzzle curiosities
+LCM: 9 --> 13                   // note, largely out of zone, mostly word puzzle curiosities
+GCD: 11 --> 13                  // note, largely out of zone, mostly word puzzle curiosities
 Sequential-Operation: 3 --> 8   // note, largely out of zone, only partially calculational, mostly "spot the numeric pattern"
 ```
 
 About the same:
 
 ```
-Addition: 17 --> 16            // note, remaining are largely date/time calculations
-Ceil-Division: 1 --> 1          // note, largely out of zone, mostly word puzzle curiosities
-Ratio: 12 --> 11               // note, ratio reduction involves LCM/GCD which isn't a calculational strength
-Algebra-2: 43 --> 36           // note, largely out of zone, only partially calculational
+Addition: 18 --> 16             // note, remaining are largely date/time calculations
+Ceil-Division: 1 --> 2          // note, largely out of zone, mostly word puzzle curiosities
+Ratio: 12 --> 7                 // note, ratio reduction involves LCM/GCD which isn't a calculational strength
+Algebra-2: 44 --> 35            // note, largely out of zone, only partially calculational
 ```
 
 Notes:
@@ -169,13 +169,61 @@ Notes:
 - The big improvements lie in the calculational heart: subtraction, summation, multiplication, comparison, surplus and some division problems.
 - In contrast, some areas such as LCM and GCD have been a little impaired. These problems are largely non-calculational mathematical reasoning and are likely vanishingly rare in real-world chat (except for students doing homework puzzles!). However we should continue to investigate the reasons that performance is impaired on this kind of problem, and what can be done to restrict the technique from attempting to work on this kind of problem.
 
-#### Currency Calculations
+As an example of the kind of problem that the equip does not improve, consider:
 
-TBD: Convert between currencies
+> Andrew's 4 friends decided to bring food as well. If each them brought 4 slices of pizza, how many slices of pizza do they have in total?
 
-#### Unit Calculations
+Both with and without equip the model answers "20" because it counts Andrew as an additional friend, the correct answer is 16. This kind of word-interpretation mistake is not solved by the technique here.
 
-TBD: Convert between units `10 km/h converted to m/s` etc. Full SI units, some other adhoc units.
+### Details: Financial, Table, Unit, Date and other calculations
+
+See the linked data sets for the kinds of problems we explored. As few examples are shown below:
+
+**Table calculations**:
+
+Example:
+
+```
+Month	Date	Interest	Principal	Ending Balance
+1	4/2023	$500	$343	$199,657
+2	5/2023	$499	$344	$199,313
+3	6/2023	$498	$345	$198,968
+4	7/2023	$497	$346	$198,622
+5	8/2023	$497	$347	$198,275
+6	9/2023	$496	$348	$197,928
+7	10/2023	$495	$348	$197,579
+8	11/2023	$494	$349	$197,230
+9	12/2023	$493	$350	$196,880
+10	1/2024	$492	$351	$196,529
+11	2/2024	$491	$352	$196,177
+12	3/2024	$490	$353	$195,824
+
+What is the total interest paid in these 12 months?
+```
+
+**Unit calculations**:
+
+Example:
+
+```
+Convert 7482 joules to calories. Answer to two decimal places.
+```
+
+**Finance calculations**:
+
+Example:
+
+```
+Suppose a firm has Cost of equity 4.2%, Equity $1934143, Cost of debt 4.2% and Debt $50,042 and corporate tax rate of 22%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+```
+
+**Date calculations**:
+
+Example:
+
+```
+How many days are there between April 25th and May 11th, excluding the last day?
+```
 
 ### Assessing variations of calculation code
 

@@ -3,10 +3,43 @@ npm run build
 ./gpt4e eval --questionset calc --verbose > logs/log.calc.without
 ./gpt4e eval --questionset calc --arith --verbose > logs/log.calc.with
 
+./gpt4e eval --questionset units --verbose > logs/log.units.without
+./gpt4e eval --questionset units --arith --verbose > logs/log.units.with
+
+./gpt4e eval --questionset finance --verbose > logs/log.finance.without
+./gpt4e eval --questionset finance --arith --verbose > logs/log.finance.with
+
+./gpt4e eval --questionset tables --verbose > logs/log.tables.without
+./gpt4e eval --questionset tables --arith --verbose > logs/log.tables.with
+
+./gpt4e eval --questionset dates --verbose > logs/log.dates.without
+./gpt4e eval --questionset dates --arith --verbose > logs/log.dates.with
+
 CALC_TOTAL=`grep "CORRECT\|FAIL" logs/log.calc.with | wc -l`
 echo "Raw calculation:"
 echo "  Without equip:                    `grep CORRECT logs/log.calc.without | wc -l`/$CALC_TOTAL"
 echo "  With equip:                       `grep CORRECT logs/log.calc.with | wc -l`/$CALC_TOTAL"
+
+UNITS_TOTAL=`grep "CORRECT\|FAIL" logs/log.units.with | wc -l`
+echo "Raw calculation:"
+echo "  Without equip:                    `grep CORRECT logs/log.units.without | wc -l`/$UNITS_TOTAL"
+echo "  With equip:                       `grep CORRECT logs/log.units.with | wc -l`/$UNITS_TOTAL"
+
+FINANCE_TOTAL=`grep "CORRECT\|FAIL" logs/log.finance.with | wc -l`
+echo "Raw calculation:"
+echo "  Without equip:                    `grep CORRECT logs/log.finance.without | wc -l`/$FINANCE_TOTAL"
+echo "  With equip:                       `grep CORRECT logs/log.finance.with | wc -l`/$FINANCE_TOTAL"
+
+TABLES_TOTAL=`grep "CORRECT\|FAIL" logs/log.tables.with | wc -l`
+echo "Raw calculation:"
+echo "  Without equip:                    `grep CORRECT logs/log.tables.without | wc -l`/$TABLES_TOTAL"
+echo "  With equip:                       `grep CORRECT logs/log.tables.with | wc -l`/$TABLES_TOTAL"
+
+DATES_TOTAL=`grep "CORRECT\|FAIL" logs/log.dates.with | wc -l`
+echo "Raw calculation:"
+echo "  Without equip:                    `grep CORRECT logs/log.dates.without | wc -l`/$DATES_TOTAL"
+echo "  With equip:                       `grep CORRECT logs/log.dates.with | wc -l`/$DATES_TOTAL"
+
 
 
 ./gpt4e eval --questionset puzzles --verbose > logs/log.puzzles.without
@@ -19,7 +52,7 @@ echo "  With equip:                       `grep CORRECT logs/log.calc.with | wc 
 ./gpt4e eval --questionset puzzles --arith --verbose --noEmitDescriptions > logs/log.puzzles.with.noEmitDescriptions
 ./gpt4e eval --questionset puzzles --arith --verbose --emitChecks > logs/log.puzzles.with.emitChecks
  
-PUZZLES_TOTAL=`grep "CORRECT\|FAIL" logs/log.puzzles.with | wc -l`
+PUZZLES_TOTAL=`grep "CORRECT\|FAIL" logs/log.puzzles.without | wc -l`
 echo "Math puzzles:"
 echo "  Without equip:                    `grep FAIL logs/log.puzzles.without | wc -l` failures from $PUZZLES_TOTAL"
 echo "  With equip:                       `grep FAIL logs/log.puzzles.with | wc -l` failures from $PUZZLES_TOTAL"
