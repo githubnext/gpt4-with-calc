@@ -4,7 +4,7 @@ GPT-4 is terrible at calculation with numbers. We look at a technique to fix tha
 
 [**Read the report - GPT-4 Equipped with Calculation**](docs/report.md)
 
-[**Read the evaluation notes **](docs/eval.md)
+[**Read the evaluation notes**](docs/eval.md)
 
 ## The Code
 
