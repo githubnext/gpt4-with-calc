@@ -2,7 +2,9 @@
 
 GPT-4 is terrible at calculation with numbers. We look at a technique to fix that.
 
-[**Read the report - GPT-4 Equipped with Calculation**](docs/report.md#equipping-gpt-4-with-calculation)
+[**Read the report - GPT-4 Equipped with Calculation**](docs/report.md)
+
+[**Read the evaluation notes **](docs/eval.md)
 
 ## The Code
 
