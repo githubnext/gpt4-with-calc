@@ -1,3 +1,4 @@
+import colors from "colors/safe";
 import * as helixFetch from "@adobe/fetch";
 import { AbortError, RequestOptions } from "@adobe/fetch";
 import { Readable, Transform } from "stream";
@@ -78,7 +79,9 @@ export class Fetcher {
             result.result.body
           )}`;
           //await this.dataStore.recordModelRequest(i, "retryable-failure", message);
-          debug("Retryable error (%d of %d): %s", i, options.retryCount, message);
+          console.error(
+            colors.yellow(`Retryable error (${i} of ${options.retryCount}): ${message}`)
+          );
         } else {
           const message = `${result.reason} : ${result.message}`;
           //await this.dataStore.recordModelRequest(i, "failure", message);
@@ -116,7 +119,9 @@ export class Fetcher {
         }
       }
       const jitter = Math.floor(Math.random() * delayMs * 0.1);
-      await new Promise((resolve) => setTimeout(resolve, delayMs + jitter));
+      const delay = delayMs + jitter;
+      console.error(colors.yellow(`Waiting ${delay}ms`));
+      await new Promise((resolve) => setTimeout(resolve, delay));
       delayMs *= options.retryBackoffFactor;
     }
     //await this.dataStore.recordModelRequest(options.retryCount, "gave-up", "");

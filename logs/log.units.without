@@ -1,0 +1,546 @@
+{
+  ask: {
+    aoaiApiKey: undefined,
+    openaiApiKey: undefined,
+    aipApiKey: undefined,
+    copilotPlaygroundApiKey: undefined,
+    nextModel2ApiKey: '1095bea53ce44a0ca2d702ba05987226',
+    nextModel3ApiKey: undefined,
+    deterministic: false,
+    maxConcurrency: 30,
+    retryCount: 20,
+    retryBackoffFactor: 1.2,
+    retryInitialDelay: 2000,
+    model: 'next-model2',
+    verbose: true,
+    raiPolicyId: '112',
+    useLocalCache: true,
+    temperature: 0,
+    arith: undefined,
+    noEmitComparisons: undefined,
+    noEliminateDateTime: undefined,
+    noSuppressArbitraryCode: undefined,
+    emitChecks: undefined,
+    noEmitUnits: undefined,
+    noEmitDescriptions: undefined,
+    noIncludeCodeInFinalQuestion: undefined,
+    question: undefined,
+    questionfile: undefined,
+    singleline: undefined
+  },
+  eval: {
+    aoaiApiKey: undefined,
+    openaiApiKey: undefined,
+    aipApiKey: undefined,
+    copilotPlaygroundApiKey: undefined,
+    nextModel2ApiKey: '1095bea53ce44a0ca2d702ba05987226',
+    nextModel3ApiKey: undefined,
+    deterministic: false,
+    maxConcurrency: 30,
+    retryCount: 20,
+    retryBackoffFactor: 1.2,
+    retryInitialDelay: 2000,
+    model: 'next-model2',
+    verbose: true,
+    raiPolicyId: '112',
+    useLocalCache: true,
+    temperature: 0,
+    arith: undefined,
+    noEmitComparisons: undefined,
+    noEliminateDateTime: undefined,
+    noSuppressArbitraryCode: undefined,
+    emitChecks: undefined,
+    noEmitUnits: undefined,
+    noEmitDescriptions: undefined,
+    noIncludeCodeInFinalQuestion: undefined,
+    questionset: 'units',
+    questions: undefined
+  },
+  help: {}
+}
+    * reading request cache from .gpt4e/cache-eval-model-next-model2-v2
+[units-0001] question: Convert 92 miles per hour to meters per second. Answer using nearest whole number.
+[units-0001] expected: 41
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 92 miles per hour to meters per second. Answer using nearest whole number.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 0
+We're in!
+[units-0002] question: Convert 92 miles per hour to meters per second. Answer to one decimal place.
+[units-0002] expected: 41.1
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 92 miles per hour to meters per second. Answer to one decimal place.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 1
+We're in!
+[units-0003] question: Convert 92 miles per hour to meters per second. Answer to two decimal places.
+[units-0003] expected: 41.13
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 92 miles per hour to meters per second. Answer to two decimal places.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 2
+We're in!
+[units-0004] question: Convert 1004 millimeters to meters.
+[units-0004] expected: 1.004 (meters)
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 1004 millimeters to meters.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 3
+We're in!
+[units-0005] question: Convert 1313 newtons per square meter to pounds per square inch. Answer to two decimal places.
+[units-0005] expected: 0.19
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 1313 newtons per square meter to pounds per square inch. Answer to two decimal places.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 4
+We're in!
+[units-0006] question: Convert 1313000 newtons per square meter to pounds per square inch. Answer to two decimal places.
+[units-0006] expected: 190.43
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 1313000 newtons per square meter to pounds per square inch. Answer to two decimal places.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 5
+We're in!
+[units-0007] question: Convert 7482 joules to calories. Answer to nearest calorie.
+[units-0007] expected: 1788
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 7482 joules to calories. Answer to nearest calorie.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 6
+We're in!
+[units-0008] question: Convert 7482 joules to calories. Answer to one decimal places.
+[units-0008] expected: 1788.2
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 7482 joules to calories. Answer to one decimal places.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 7
+We're in!
+[units-0009] question: Convert 7482 joules to calories. Answer to two decimal places.
+[units-0009] expected: 1788.24
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 7482 joules to calories. Answer to two decimal places.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 8
+We're in!
+[units-0010] question: Convert 85.6C to Farenheit. Answer to two decimal places.
+[units-0010] expected: 186.08
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 85.6C to Farenheit. Answer to two decimal places.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 9
+We're in!
+[units-0011] question: Convert 85.63C to Farenheit. Answer to three decimal places.
+[units-0011] expected: 186.134
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 85.63C to Farenheit. Answer to three decimal places.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 10
+We're in!
+----------completion choice--------------
+41 (meters per second)
+-----------------------------------------
+----------completion choice--------------
+41.1 (meters per second)
+-----------------------------------------
+----------completion choice--------------
+41.15 (meters per second)
+-----------------------------------------
+----------completion choice--------------
+1.004 (meters)
+-----------------------------------------
+----------completion choice--------------
+0.19 (pounds per square inch)
+-----------------------------------------
+----------completion choice--------------
+190.28 (pounds per square inch)
+-----------------------------------------
+----------completion choice--------------
+1788 (calories)
+-----------------------------------------
+----------completion choice--------------
+1788.5 (calories)
+-----------------------------------------
+----------completion choice--------------
+1788.48 (calories)
+-----------------------------------------
+----------completion choice--------------
+186.08 (Fahrenheit)
+-----------------------------------------
+----------completion choice--------------
+186.134 (Fahrenheit)
+-----------------------------------------
+[units-0001] actual expected: 41 (meters per second)
+[units-0001]: result_numbers: 41
+[units-0001]: expected_numbers: 41
+CORRECT: [units-0001, grade 8, type unit conversions], expected: "41", actual: "41 (meters per second)", question: Convert 92 miles per hour to meters per second. Answer using nearest whole number.
+yes: 1, count: 1, accuracy: 1
+    * writing request cache to .gpt4e/cache-eval-model-next-model2-v2
+[units-0002] actual expected: 41.1 (meters per second)
+[units-0002]: result_numbers: 41.1
+[units-0002]: expected_numbers: 41.1
+CORRECT: [units-0002, grade 8, type unit conversions], expected: "41.1", actual: "41.1 (meters per second)", question: Convert 92 miles per hour to meters per second. Answer to one decimal place.
+yes: 2, count: 2, accuracy: 1
+[units-0003] actual expected: 41.15 (meters per second)
+[units-0003]: result_numbers: 41.15
+[units-0003]: expected_numbers: 41.13
+FAIL: [units-0003, grade 8, type unit conversions], expected: "41.13", actual: "41.15 (meters per second)", question: Convert 92 miles per hour to meters per second. Answer to two decimal places.
+yes: 2, count: 3, accuracy: 0.6666666666666666
+[units-0004] actual expected: 1.004 (meters)
+[units-0004]: result_numbers: 1.004
+[units-0004]: expected_numbers: 1.004
+CORRECT: [units-0004, grade 8, type unit conversions], expected: "1.004 (meters)", actual: "1.004 (meters)", question: Convert 1004 millimeters to meters.
+yes: 3, count: 4, accuracy: 0.75
+[units-0005] actual expected: 0.19 (pounds per square inch)
+[units-0005]: result_numbers: 0.19
+[units-0005]: expected_numbers: 0.19
+CORRECT: [units-0005, grade 8, type unit conversions], expected: "0.19", actual: "0.19 (pounds per square inch)", question: Convert 1313 newtons per square meter to pounds per square inch. Answer to two decimal places.
+yes: 4, count: 5, accuracy: 0.8
+[units-0006] actual expected: 190.28 (pounds per square inch)
+[units-0006]: result_numbers: 190.28
+[units-0006]: expected_numbers: 190.43
+FAIL: [units-0006, grade 8, type unit conversions], expected: "190.43", actual: "190.28 (pounds per square inch)", question: Convert 1313000 newtons per square meter to pounds per square inch. Answer to two decimal places.
+yes: 4, count: 6, accuracy: 0.6666666666666666
+[units-0007] actual expected: 1788 (calories)
+[units-0007]: result_numbers: 1788
+[units-0007]: expected_numbers: 1788
+CORRECT: [units-0007, grade 8, type unit conversions], expected: "1788", actual: "1788 (calories)", question: Convert 7482 joules to calories. Answer to nearest calorie.
+yes: 5, count: 7, accuracy: 0.7142857142857143
+[units-0008] actual expected: 1788.5 (calories)
+[units-0008]: result_numbers: 1788.5
+[units-0008]: expected_numbers: 1788.2
+FAIL: [units-0008, grade 8, type unit conversions], expected: "1788.2", actual: "1788.5 (calories)", question: Convert 7482 joules to calories. Answer to one decimal places.
+yes: 5, count: 8, accuracy: 0.625
+[units-0009] actual expected: 1788.48 (calories)
+[units-0009]: result_numbers: 1788.48
+[units-0009]: expected_numbers: 1788.24
+FAIL: [units-0009, grade 8, type unit conversions], expected: "1788.24", actual: "1788.48 (calories)", question: Convert 7482 joules to calories. Answer to two decimal places.
+yes: 5, count: 9, accuracy: 0.5555555555555556
+[units-0010] actual expected: 186.08 (Fahrenheit)
+[units-0010]: result_numbers: 186.08
+[units-0010]: expected_numbers: 186.08
+CORRECT: [units-0010, grade 8, type unit conversions], expected: "186.08", actual: "186.08 (Fahrenheit)", question: Convert 85.6C to Farenheit. Answer to two decimal places.
+yes: 6, count: 10, accuracy: 0.6
+[units-0011] actual expected: 186.134 (Fahrenheit)
+[units-0011]: result_numbers: 186.134
+[units-0011]: expected_numbers: 186.134
+CORRECT: [units-0011, grade 8, type unit conversions], expected: "186.134", actual: "186.134 (Fahrenheit)", question: Convert 85.63C to Farenheit. Answer to three decimal places.
+yes: 7, count: 11, accuracy: 0.6363636363636364

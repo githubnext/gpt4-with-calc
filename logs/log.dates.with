@@ -1,0 +1,2038 @@
+{
+  ask: {
+    aoaiApiKey: undefined,
+    openaiApiKey: undefined,
+    aipApiKey: undefined,
+    copilotPlaygroundApiKey: undefined,
+    nextModel2ApiKey: '1095bea53ce44a0ca2d702ba05987226',
+    nextModel3ApiKey: undefined,
+    deterministic: false,
+    maxConcurrency: 30,
+    retryCount: 20,
+    retryBackoffFactor: 1.2,
+    retryInitialDelay: 2000,
+    model: 'next-model2',
+    verbose: true,
+    raiPolicyId: '112',
+    useLocalCache: true,
+    temperature: 0,
+    arith: true,
+    noEmitComparisons: undefined,
+    noEliminateDateTime: undefined,
+    noSuppressArbitraryCode: undefined,
+    emitChecks: undefined,
+    noEmitUnits: undefined,
+    noEmitDescriptions: undefined,
+    noIncludeCodeInFinalQuestion: undefined,
+    question: undefined,
+    questionfile: undefined,
+    singleline: undefined
+  },
+  eval: {
+    aoaiApiKey: undefined,
+    openaiApiKey: undefined,
+    aipApiKey: undefined,
+    copilotPlaygroundApiKey: undefined,
+    nextModel2ApiKey: '1095bea53ce44a0ca2d702ba05987226',
+    nextModel3ApiKey: undefined,
+    deterministic: false,
+    maxConcurrency: 30,
+    retryCount: 20,
+    retryBackoffFactor: 1.2,
+    retryInitialDelay: 2000,
+    model: 'next-model2',
+    verbose: true,
+    raiPolicyId: '112',
+    useLocalCache: true,
+    temperature: 0,
+    arith: true,
+    noEmitComparisons: undefined,
+    noEliminateDateTime: undefined,
+    noSuppressArbitraryCode: undefined,
+    emitChecks: undefined,
+    noEmitUnits: undefined,
+    noEmitDescriptions: undefined,
+    noIncludeCodeInFinalQuestion: undefined,
+    questionset: 'dates',
+    questions: undefined
+  },
+  help: {}
+}
+    * reading request cache from .gpt4e/cache-eval-model-next-model2-v2
+[date-0001] question: If today is Monday, what day will it be in 100 days?
+[date-0001] expected: Wednesday
+[date-0001]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+If today is Monday, what day will it be in 100 days?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 0
+We're in!
+[date-0002] question: If today is January 1st 2021, what is the date in 365 days?
+[date-0002] expected: January 1st 2022
+[date-0002]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+If today is January 1st 2021, what is the date in 365 days?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 1
+We're in!
+[date-0003] question: If today is April 25th 2023, what is the date in 1 week?
+[date-0003] expected: May 2nd 2023
+[date-0003]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+If today is April 25th 2023, what is the date in 1 week?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 2
+We're in!
+[date-0004] question: If today is April 25th 2023, what is the date in 2 weeks and 2 days?
+[date-0004] expected: May 11th 2023
+[date-0004]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+If today is April 25th 2023, what is the date in 2 weeks and 2 days?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 3
+We're in!
+[date-0005] question: How many days are there between April 25th and May 11th, inclusive?
+[date-0005] expected: 17
+[date-0005]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+How many days are there between April 25th and May 11th, inclusive?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 4
+We're in!
+[date-0006] question: How many days are there between April 25th and May 11th, excluding the last day?
+[date-0006] expected: 16
+[date-0006]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+How many days are there between April 25th and May 11th, excluding the last day?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 5
+We're in!
+[date-0007] question: If today is April 25th, what day was 30 days ago?
+[date-0007] expected: March 26th
+[date-0007]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+If today is April 25th, what day was 30 days ago?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 6
+We're in!
+[date-0008] question: If today is February 27th 2004, what is the date in 2 weeks and 2 days?
+[date-0008] expected: March 14th 2004
+[date-0008]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+If today is February 27th 2004, what is the date in 2 weeks and 2 days?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 7
+We're in!
+[date-0009] question: A payment is made every Tuesday. How many payments are made between 3rd April 2023 and 26th April 2023?
+[date-0009] expected: 4
+[date-0009]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+A payment is made every Tuesday. How many payments are made between 3rd April 2023 and 26th April 2023?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 8
+We're in!
+[date-0010] question: A payment is made every Tuesday. How many payments are made between 5th April 2023 and 28th April 2023?
+[date-0010] expected: 3
+[date-0010]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+A payment is made every Tuesday. How many payments are made between 5th April 2023 and 28th April 2023?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 9
+We're in!
+----------completion choice--------------
+
+// Definitions
+const today = "Monday"; // [day of week]
+const daysInWeek = 7; // [days]
+
+// Calculations
+const daysAfterToday = 100; // [days]
+const weeksAfterToday = Math.floor(daysAfterToday / daysInWeek); // [weeks]
+const remainderDays = daysAfterToday % daysInWeek; // [days]
+
+// Comparisons
+// none
+
+// Return
+return {
+  today: today,
+  daysAfterToday: daysAfterToday,
+  weeksAfterToday: weeksAfterToday,
+  remainderDays: remainderDays
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const today = "January 1st 2021"; // [string]
+const days_in_year = 365; // [days]
+
+// Calculations
+const date_in_365_days = today + days_in_year; // [string] // This is a naive calculation that does not account for leap years or different date formats
+
+// Comparisons
+// None
+
+// Return
+return {
+  date_in_365_days: date_in_365_days
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const today = "April 25th 2023"; // [string]
+const days_in_week = 7; // [days]
+
+// Calculations
+const date_in_one_week = today + days_in_week; // [string] // This is a naive calculation that does not account for different months or leap years
+
+// Return
+return {
+  date_in_one_week: date_in_one_week
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const today = "April 25th 2023"; // [string]
+const days_in_week = 7; // [days]
+const days_in_month = [31, 28, 29, 30]; // [days] for each month index, assuming February has 29 days in 2023
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; // [string] for each month name
+
+// Calculations
+const days_to_add = 2 * days_in_week + 2; // [days] the number of days to add to today
+const today_day = parseInt(today.split(" ")[1]); // [days] the day part of today, assuming the format is "Month Dayth Year"
+const today_month = months.indexOf(today.split(" ")[0]) + 1; // [months] the month part of today, assuming the format is "Month Dayth Year" and using 1-based indexing
+const today_year = parseInt(today.split(" ")[2]); // [years] the year part of today, assuming the format is "Month Dayth Year"
+const days_in_today_month = days_in_month[today_month - 1]; // [days] the number of days in the month of today, using 0-based indexing
+const days_left_in_today_month = days_in_today_month - today_day; // [days] the number of days left in the month of today
+const days_in_next_month = days_in_month[(today_month % 12)]; // [days] the number of days in the next month, using modulo to wrap around from December to January
+const next_month = months[(today_month % 12)]; // [string] the name of the next month, using modulo to wrap around from December to January
+const next_year = today_year + Math.floor(today_month / 12); // [years] the year of the next month, using integer division to increment by one if today is December
+
+// Comparisons
+const is_next_month = days_to_add > days_left_in_today_month; // [boolean] true if the date in 2 weeks and 2 days is in the next month, false otherwise
+const is_next_year = is_next_month && today_month === 12; // [boolean] true if the date in 2 weeks and 2 days is in the next year, false otherwise
+
+// Return
+return {
+  days_to_add: days_to_add,
+  today_day: today_day,
+  today_month: today_month,
+  today_year: today_year,
+  days_in_today_month: days_in_today_month,
+  days_left_in_today_month: days_left_in_today_month,
+  days_in_next_month: days_in_next_month,
+  next_month: next_month,
+  next_year: next_year,
+  is_next_month: is_next_month,
+  is_next_year: is_next_year
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const start_date = 25; // the day of the month for the start date [days]
+const end_date = 11; // the day of the month for the end date [days]
+const april_days = 30; // the number of days in April [days]
+const may_days = 31; // the number of days in May [days]
+
+// Calculations
+const days_in_april = april_days - start_date + 1; // the number of days from the start date to the end of April, inclusive [days]
+const days_in_may = end_date; // the number of days from the start of May to the end date, inclusive [days]
+const total_days = days_in_april + days_in_may; // the total number of days between the start date and the end date, inclusive [days]
+
+// Return
+return {days_in_april, days_in_may, total_days}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const aprilDays = 30; // number of days in April [days]
+const mayDays = 11; // number of days in May until May 11th, excluding the last day [days]
+const aprilDate = 25; // the date in April [days]
+
+// Calculations
+const daysLeftInApril = aprilDays - aprilDate; // number of days left in April after April 25th [days]
+const totalDays = daysLeftInApril + mayDays; // total number of days between April 25th and May 11th, excluding the last day [days]
+
+// Return
+return {daysLeftInApril, totalDays}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const today = 25; // the day of the month today [days]
+const month = 4; // the month of the year today [months]
+const days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // the number of days in each month [days]
+
+// Calculations
+const days_left_in_month = days_in_month[month - 1] - today; // the number of days left in the current month [days]
+const days_in_previous_month = days_in_month[month - 2]; // the number of days in the previous month [days]
+const days_from_previous_month = 30 - days_left_in_month; // the number of days to go back from the previous month [days]
+const day_of_previous_month = days_in_previous_month - days_from_previous_month; // the day of the month 30 days ago [days]
+
+// Return
+return {
+  days_left_in_month: days_left_in_month,
+  days_in_previous_month: days_in_previous_month,
+  days_from_previous_month: days_from_previous_month,
+  day_of_previous_month: day_of_previous_month
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const today = 27; // the day of the month today [days]
+const month = 2; // the month of the year today [months]
+const year = 2004; // the year today [years]
+const daysInFeb = 29; // the number of days in February this year [days]
+const daysInMarch = 31; // the number of days in March [days]
+
+// Calculations
+const daysToAdd = 2 + 2; // the number of days to add to today [days]
+const daysLeftInFeb = daysInFeb - today; // the number of days left in February after today [days]
+const daysInNextMonth = daysToAdd - daysLeftInFeb; // the number of days in the next month after adding daysToAdd [days]
+const nextMonth = month + 1; // the next month after today [months]
+const nextDay = daysInNextMonth; // the day of the month after adding daysToAdd [days]
+const nextYear = year; // the year after adding daysToAdd [years]
+
+// Return
+return {
+  today: today,
+  month: month,
+  year: year,
+  daysToAdd: daysToAdd,
+  daysLeftInFeb: daysLeftInFeb,
+  daysInNextMonth: daysInNextMonth,
+  nextMonth: nextMonth,
+  nextDay: nextDay,
+  nextYear: nextYear
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const payment_day = 2; // the day of the week when the payment is made, 0 is Sunday, 1 is Monday, etc. [day]
+const start_date = new Date(2023, 3, 3); // the start date of the period, 3rd April 2023 [date]
+const end_date = new Date(2023, 3, 26); // the end date of the period, 26th April 2023 [date]
+
+// Calculations
+const days_between = (end_date - start_date) / (1000 * 60 * 60 * 24); // the number of days between the start and end dates, inclusive [days]
+const weeks_between = Math.floor(days_between / 7); // the number of full weeks between the start and end dates [weeks]
+const start_day = start_date.getDay(); // the day of the week of the start date [day]
+const end_day = end_date.getDay(); // the day of the week of the end date [day]
+const extra_payment = (start_day <= payment_day && end_day >= payment_day); // a boolean indicating whether there is an extra payment in the partial week at the start or end of the period [boolean]
+const payment_count = weeks_between + extra_payment; // the total number of payments between the start and end dates [payments]
+
+// Return
+return {
+  days_between: days_between,
+  weeks_between: weeks_between,
+  start_day: start_day,
+  end_day: end_day,
+  extra_payment: extra_payment,
+  payment_count: payment_count
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const payment_day = 2; // the day of the week when the payment is made, 0 is Sunday, 1 is Monday, etc. [day]
+const start_date = new Date(2023, 3, 5); // the start date of the period, 3 is April [date]
+const end_date = new Date(2023, 3, 28); // the end date of the period, 3 is April [date]
+
+// Calculations
+const days_between = (end_date - start_date) / (1000 * 60 * 60 * 24); // the number of days between the start and end dates, inclusive [days]
+const start_day = start_date.getDay(); // the day of the week of the start date [day]
+const end_day = end_date.getDay(); // the day of the week of the end date [day]
+const first_payment = (payment_day - start_day + 7) % 7; // the number of days from the start date to the first payment date [days]
+const last_payment = (payment_day - end_day + 7) % 7; // the number of days from the end date to the last payment date [days]
+const payment_count = (days_between - first_payment - last_payment) / 7 + 1; // the number of payments made between the start and end dates, inclusive [payments]
+
+// Return
+return {
+  days_between: days_between,
+  start_day: start_day,
+  end_day: end_day,
+  first_payment: first_payment,
+  last_payment: last_payment,
+  payment_count: payment_count
+}; //Done
+
+-----------------------------------------
+---------------- [date-0001] calculations, question: If today is Monday, what day will it be in 100 days? ----------------
+
+// Definitions
+const today = "Monday"; // [day of week]
+const daysInWeek = 7; // [days]
+
+// Calculations
+const daysAfterToday = 100; // [days]
+const weeksAfterToday = Math.floor(daysAfterToday / daysInWeek); // [weeks]
+const remainderDays = daysAfterToday % daysInWeek; // [days]
+
+// Comparisons
+// none
+
+// Return
+return {
+  today: today,
+  daysAfterToday: daysAfterToday,
+  weeksAfterToday: weeksAfterToday,
+  remainderDays: remainderDays
+}; //Done
+
+[date-0001]: Evaluating calculations...
+---------------- [date-0001] numeric calculation results ----------------
+{
+  "today": "Monday",
+  "daysAfterToday": 100,
+  "weeksAfterToday": 14,
+  "remainderDays": 2
+}
+[date-0001]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+If today is Monday, what day will it be in 100 days?
+
+### Calculations
+
+
+// Definitions
+const today = "Monday"; // [day of week]
+const daysInWeek = 7; // [days]
+
+// Calculations
+const daysAfterToday = 100; // [days]
+const weeksAfterToday = Math.floor(daysAfterToday / daysInWeek); // [weeks]
+const remainderDays = daysAfterToday % daysInWeek; // [days]
+
+// Comparisons
+// none
+
+// Return
+return {
+  today: today,
+  daysAfterToday: daysAfterToday,
+  weeksAfterToday: weeksAfterToday,
+  remainderDays: remainderDays
+}; //Done
+
+
+### Calculation results
+
+{
+  "today": "Monday",
+  "daysAfterToday": 100,
+  "weeksAfterToday": 14,
+  "remainderDays": 2
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 0
+We're in!
+---------------- [date-0002] calculations, question: If today is January 1st 2021, what is the date in 365 days? ----------------
+
+// Definitions
+const today = "January 1st 2021"; // [string]
+const days_in_year = 365; // [days]
+
+// Calculations
+const date_in_365_days = today + days_in_year; // [string] // This is a naive calculation that does not account for leap years or different date formats
+
+// Comparisons
+// None
+
+// Return
+return {
+  date_in_365_days: date_in_365_days
+}; //Done
+
+[date-0002]: Evaluating calculations...
+---------------- [date-0002] numeric calculation results ----------------
+{
+  "date_in_365_days": "January 1st 2021365"
+}
+[date-0002]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+If today is January 1st 2021, what is the date in 365 days?
+
+### Calculations
+
+
+// Definitions
+const today = "January 1st 2021"; // [string]
+const days_in_year = 365; // [days]
+
+// Calculations
+const date_in_365_days = today + days_in_year; // [string] // This is a naive calculation that does not account for leap years or different date formats
+
+// Comparisons
+// None
+
+// Return
+return {
+  date_in_365_days: date_in_365_days
+}; //Done
+
+
+### Calculation results
+
+{
+  "date_in_365_days": "January 1st 2021365"
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 1
+We're in!
+---------------- [date-0003] calculations, question: If today is April 25th 2023, what is the date in 1 week? ----------------
+
+// Definitions
+const today = "April 25th 2023"; // [string]
+const days_in_week = 7; // [days]
+
+// Calculations
+const date_in_one_week = today + days_in_week; // [string] // This is a naive calculation that does not account for different months or leap years
+
+// Return
+return {
+  date_in_one_week: date_in_one_week
+}; //Done
+
+[date-0003]: Evaluating calculations...
+---------------- [date-0003] numeric calculation results ----------------
+{
+  "date_in_one_week": "April 25th 20237"
+}
+[date-0003]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+If today is April 25th 2023, what is the date in 1 week?
+
+### Calculations
+
+
+// Definitions
+const today = "April 25th 2023"; // [string]
+const days_in_week = 7; // [days]
+
+// Calculations
+const date_in_one_week = today + days_in_week; // [string] // This is a naive calculation that does not account for different months or leap years
+
+// Return
+return {
+  date_in_one_week: date_in_one_week
+}; //Done
+
+
+### Calculation results
+
+{
+  "date_in_one_week": "April 25th 20237"
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 2
+We're in!
+---------------- [date-0004] calculations, question: If today is April 25th 2023, what is the date in 2 weeks and 2 days? ----------------
+
+// Definitions
+const today = "April 25th 2023"; // [string]
+const days_in_week = 7; // [days]
+const days_in_month = [31, 28, 29, 30]; // [days] for each month index, assuming February has 29 days in 2023
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; // [string] for each month name
+
+// Calculations
+const days_to_add = 2 * days_in_week + 2; // [days] the number of days to add to today
+const today_day = parseInt(today.split(" ")[1]); // [days] the day part of today, assuming the format is "Month Dayth Year"
+const today_month = months.indexOf(today.split(" ")[0]) + 1; // [months] the month part of today, assuming the format is "Month Dayth Year" and using 1-based indexing
+const today_year = parseInt(today.split(" ")[2]); // [years] the year part of today, assuming the format is "Month Dayth Year"
+const days_in_today_month = days_in_month[today_month - 1]; // [days] the number of days in the month of today, using 0-based indexing
+const days_left_in_today_month = days_in_today_month - today_day; // [days] the number of days left in the month of today
+const days_in_next_month = days_in_month[(today_month % 12)]; // [days] the number of days in the next month, using modulo to wrap around from December to January
+const next_month = months[(today_month % 12)]; // [string] the name of the next month, using modulo to wrap around from December to January
+const next_year = today_year + Math.floor(today_month / 12); // [years] the year of the next month, using integer division to increment by one if today is December
+
+// Comparisons
+const is_next_month = days_to_add > days_left_in_today_month; // [boolean] true if the date in 2 weeks and 2 days is in the next month, false otherwise
+const is_next_year = is_next_month && today_month === 12; // [boolean] true if the date in 2 weeks and 2 days is in the next year, false otherwise
+
+// Return
+return {
+  days_to_add: days_to_add,
+  today_day: today_day,
+  today_month: today_month,
+  today_year: today_year,
+  days_in_today_month: days_in_today_month,
+  days_left_in_today_month: days_left_in_today_month,
+  days_in_next_month: days_in_next_month,
+  next_month: next_month,
+  next_year: next_year,
+  is_next_month: is_next_month,
+  is_next_year: is_next_year
+}; //Done
+
+[date-0004]: Evaluating calculations...
+---------------- [date-0004] numeric calculation results ----------------
+{
+  "days_to_add": 16,
+  "today_day": 25,
+  "today_month": 4,
+  "today_year": 2023,
+  "days_in_today_month": 30,
+  "days_left_in_today_month": 5,
+  "next_month": "May",
+  "next_year": 2023,
+  "is_next_month": true,
+  "is_next_year": false
+}
+[date-0004]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+If today is April 25th 2023, what is the date in 2 weeks and 2 days?
+
+### Calculations
+
+
+// Definitions
+const today = "April 25th 2023"; // [string]
+const days_in_week = 7; // [days]
+const days_in_month = [31, 28, 29, 30]; // [days] for each month index, assuming February has 29 days in 2023
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; // [string] for each month name
+
+// Calculations
+const days_to_add = 2 * days_in_week + 2; // [days] the number of days to add to today
+const today_day = parseInt(today.split(" ")[1]); // [days] the day part of today, assuming the format is "Month Dayth Year"
+const today_month = months.indexOf(today.split(" ")[0]) + 1; // [months] the month part of today, assuming the format is "Month Dayth Year" and using 1-based indexing
+const today_year = parseInt(today.split(" ")[2]); // [years] the year part of today, assuming the format is "Month Dayth Year"
+const days_in_today_month = days_in_month[today_month - 1]; // [days] the number of days in the month of today, using 0-based indexing
+const days_left_in_today_month = days_in_today_month - today_day; // [days] the number of days left in the month of today
+const days_in_next_month = days_in_month[(today_month % 12)]; // [days] the number of days in the next month, using modulo to wrap around from December to January
+const next_month = months[(today_month % 12)]; // [string] the name of the next month, using modulo to wrap around from December to January
+const next_year = today_year + Math.floor(today_month / 12); // [years] the year of the next month, using integer division to increment by one if today is December
+
+// Comparisons
+const is_next_month = days_to_add > days_left_in_today_month; // [boolean] true if the date in 2 weeks and 2 days is in the next month, false otherwise
+const is_next_year = is_next_month && today_month === 12; // [boolean] true if the date in 2 weeks and 2 days is in the next year, false otherwise
+
+// Return
+return {
+  days_to_add: days_to_add,
+  today_day: today_day,
+  today_month: today_month,
+  today_year: today_year,
+  days_in_today_month: days_in_today_month,
+  days_left_in_today_month: days_left_in_today_month,
+  days_in_next_month: days_in_next_month,
+  next_month: next_month,
+  next_year: next_year,
+  is_next_month: is_next_month,
+  is_next_year: is_next_year
+}; //Done
+
+
+### Calculation results
+
+{
+  "days_to_add": 16,
+  "today_day": 25,
+  "today_month": 4,
+  "today_year": 2023,
+  "days_in_today_month": 30,
+  "days_left_in_today_month": 5,
+  "next_month": "May",
+  "next_year": 2023,
+  "is_next_month": true,
+  "is_next_year": false
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 3
+We're in!
+---------------- [date-0005] calculations, question: How many days are there between April 25th and May 11th, inclusive? ----------------
+
+// Definitions
+const start_date = 25; // the day of the month for the start date [days]
+const end_date = 11; // the day of the month for the end date [days]
+const april_days = 30; // the number of days in April [days]
+const may_days = 31; // the number of days in May [days]
+
+// Calculations
+const days_in_april = april_days - start_date + 1; // the number of days from the start date to the end of April, inclusive [days]
+const days_in_may = end_date; // the number of days from the start of May to the end date, inclusive [days]
+const total_days = days_in_april + days_in_may; // the total number of days between the start date and the end date, inclusive [days]
+
+// Return
+return {days_in_april, days_in_may, total_days}; //Done
+
+[date-0005]: Evaluating calculations...
+---------------- [date-0005] numeric calculation results ----------------
+{
+  "days_in_april": 6,
+  "days_in_may": 11,
+  "total_days": 17
+}
+[date-0005]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+How many days are there between April 25th and May 11th, inclusive?
+
+### Calculations
+
+
+// Definitions
+const start_date = 25; // the day of the month for the start date [days]
+const end_date = 11; // the day of the month for the end date [days]
+const april_days = 30; // the number of days in April [days]
+const may_days = 31; // the number of days in May [days]
+
+// Calculations
+const days_in_april = april_days - start_date + 1; // the number of days from the start date to the end of April, inclusive [days]
+const days_in_may = end_date; // the number of days from the start of May to the end date, inclusive [days]
+const total_days = days_in_april + days_in_may; // the total number of days between the start date and the end date, inclusive [days]
+
+// Return
+return {days_in_april, days_in_may, total_days}; //Done
+
+
+### Calculation results
+
+{
+  "days_in_april": 6,
+  "days_in_may": 11,
+  "total_days": 17
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 4
+We're in!
+---------------- [date-0006] calculations, question: How many days are there between April 25th and May 11th, excluding the last day? ----------------
+
+// Definitions
+const aprilDays = 30; // number of days in April [days]
+const mayDays = 11; // number of days in May until May 11th, excluding the last day [days]
+const aprilDate = 25; // the date in April [days]
+
+// Calculations
+const daysLeftInApril = aprilDays - aprilDate; // number of days left in April after April 25th [days]
+const totalDays = daysLeftInApril + mayDays; // total number of days between April 25th and May 11th, excluding the last day [days]
+
+// Return
+return {daysLeftInApril, totalDays}; //Done
+
+[date-0006]: Evaluating calculations...
+---------------- [date-0006] numeric calculation results ----------------
+{
+  "daysLeftInApril": 5,
+  "totalDays": 16
+}
+[date-0006]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+How many days are there between April 25th and May 11th, excluding the last day?
+
+### Calculations
+
+
+// Definitions
+const aprilDays = 30; // number of days in April [days]
+const mayDays = 11; // number of days in May until May 11th, excluding the last day [days]
+const aprilDate = 25; // the date in April [days]
+
+// Calculations
+const daysLeftInApril = aprilDays - aprilDate; // number of days left in April after April 25th [days]
+const totalDays = daysLeftInApril + mayDays; // total number of days between April 25th and May 11th, excluding the last day [days]
+
+// Return
+return {daysLeftInApril, totalDays}; //Done
+
+
+### Calculation results
+
+{
+  "daysLeftInApril": 5,
+  "totalDays": 16
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 5
+We're in!
+---------------- [date-0007] calculations, question: If today is April 25th, what day was 30 days ago? ----------------
+
+// Definitions
+const today = 25; // the day of the month today [days]
+const month = 4; // the month of the year today [months]
+const days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // the number of days in each month [days]
+
+// Calculations
+const days_left_in_month = days_in_month[month - 1] - today; // the number of days left in the current month [days]
+const days_in_previous_month = days_in_month[month - 2]; // the number of days in the previous month [days]
+const days_from_previous_month = 30 - days_left_in_month; // the number of days to go back from the previous month [days]
+const day_of_previous_month = days_in_previous_month - days_from_previous_month; // the day of the month 30 days ago [days]
+
+// Return
+return {
+  days_left_in_month: days_left_in_month,
+  days_in_previous_month: days_in_previous_month,
+  days_from_previous_month: days_from_previous_month,
+  day_of_previous_month: day_of_previous_month
+}; //Done
+
+[date-0007]: Evaluating calculations...
+---------------- [date-0007] numeric calculation results ----------------
+{
+  "days_left_in_month": 5,
+  "days_in_previous_month": 31,
+  "days_from_previous_month": 25,
+  "day_of_previous_month": 6
+}
+[date-0007]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+If today is April 25th, what day was 30 days ago?
+
+### Calculations
+
+
+// Definitions
+const today = 25; // the day of the month today [days]
+const month = 4; // the month of the year today [months]
+const days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // the number of days in each month [days]
+
+// Calculations
+const days_left_in_month = days_in_month[month - 1] - today; // the number of days left in the current month [days]
+const days_in_previous_month = days_in_month[month - 2]; // the number of days in the previous month [days]
+const days_from_previous_month = 30 - days_left_in_month; // the number of days to go back from the previous month [days]
+const day_of_previous_month = days_in_previous_month - days_from_previous_month; // the day of the month 30 days ago [days]
+
+// Return
+return {
+  days_left_in_month: days_left_in_month,
+  days_in_previous_month: days_in_previous_month,
+  days_from_previous_month: days_from_previous_month,
+  day_of_previous_month: day_of_previous_month
+}; //Done
+
+
+### Calculation results
+
+{
+  "days_left_in_month": 5,
+  "days_in_previous_month": 31,
+  "days_from_previous_month": 25,
+  "day_of_previous_month": 6
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 6
+We're in!
+---------------- [date-0008] calculations, question: If today is February 27th 2004, what is the date in 2 weeks and 2 days? ----------------
+
+// Definitions
+const today = 27; // the day of the month today [days]
+const month = 2; // the month of the year today [months]
+const year = 2004; // the year today [years]
+const daysInFeb = 29; // the number of days in February this year [days]
+const daysInMarch = 31; // the number of days in March [days]
+
+// Calculations
+const daysToAdd = 2 + 2; // the number of days to add to today [days]
+const daysLeftInFeb = daysInFeb - today; // the number of days left in February after today [days]
+const daysInNextMonth = daysToAdd - daysLeftInFeb; // the number of days in the next month after adding daysToAdd [days]
+const nextMonth = month + 1; // the next month after today [months]
+const nextDay = daysInNextMonth; // the day of the month after adding daysToAdd [days]
+const nextYear = year; // the year after adding daysToAdd [years]
+
+// Return
+return {
+  today: today,
+  month: month,
+  year: year,
+  daysToAdd: daysToAdd,
+  daysLeftInFeb: daysLeftInFeb,
+  daysInNextMonth: daysInNextMonth,
+  nextMonth: nextMonth,
+  nextDay: nextDay,
+  nextYear: nextYear
+}; //Done
+
+[date-0008]: Evaluating calculations...
+---------------- [date-0008] numeric calculation results ----------------
+{
+  "today": 27,
+  "month": 2,
+  "year": 2004,
+  "daysToAdd": 4,
+  "daysLeftInFeb": 2,
+  "daysInNextMonth": 2,
+  "nextMonth": 3,
+  "nextDay": 2,
+  "nextYear": 2004
+}
+[date-0008]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+If today is February 27th 2004, what is the date in 2 weeks and 2 days?
+
+### Calculations
+
+
+// Definitions
+const today = 27; // the day of the month today [days]
+const month = 2; // the month of the year today [months]
+const year = 2004; // the year today [years]
+const daysInFeb = 29; // the number of days in February this year [days]
+const daysInMarch = 31; // the number of days in March [days]
+
+// Calculations
+const daysToAdd = 2 + 2; // the number of days to add to today [days]
+const daysLeftInFeb = daysInFeb - today; // the number of days left in February after today [days]
+const daysInNextMonth = daysToAdd - daysLeftInFeb; // the number of days in the next month after adding daysToAdd [days]
+const nextMonth = month + 1; // the next month after today [months]
+const nextDay = daysInNextMonth; // the day of the month after adding daysToAdd [days]
+const nextYear = year; // the year after adding daysToAdd [years]
+
+// Return
+return {
+  today: today,
+  month: month,
+  year: year,
+  daysToAdd: daysToAdd,
+  daysLeftInFeb: daysLeftInFeb,
+  daysInNextMonth: daysInNextMonth,
+  nextMonth: nextMonth,
+  nextDay: nextDay,
+  nextYear: nextYear
+}; //Done
+
+
+### Calculation results
+
+{
+  "today": 27,
+  "month": 2,
+  "year": 2004,
+  "daysToAdd": 4,
+  "daysLeftInFeb": 2,
+  "daysInNextMonth": 2,
+  "nextMonth": 3,
+  "nextDay": 2,
+  "nextYear": 2004
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 7
+We're in!
+---------------- [date-0009] calculations, question: A payment is made every Tuesday. How many payments are made between 3rd April 2023 and 26th April 2023? ----------------
+
+// Definitions
+const payment_day = 2; // the day of the week when the payment is made, 0 is Sunday, 1 is Monday, etc. [day]
+const start_date = new Date(2023, 3, 3); // the start date of the period, 3rd April 2023 [date]
+const end_date = new Date(2023, 3, 26); // the end date of the period, 26th April 2023 [date]
+
+// Calculations
+const days_between = (end_date - start_date) / (1000 * 60 * 60 * 24); // the number of days between the start and end dates, inclusive [days]
+const weeks_between = Math.floor(days_between / 7); // the number of full weeks between the start and end dates [weeks]
+const start_day = start_date.getDay(); // the day of the week of the start date [day]
+const end_day = end_date.getDay(); // the day of the week of the end date [day]
+const extra_payment = (start_day <= payment_day && end_day >= payment_day); // a boolean indicating whether there is an extra payment in the partial week at the start or end of the period [boolean]
+const payment_count = weeks_between + extra_payment; // the total number of payments between the start and end dates [payments]
+
+// Return
+return {
+  days_between: days_between,
+  weeks_between: weeks_between,
+  start_day: start_day,
+  end_day: end_day,
+  extra_payment: extra_payment,
+  payment_count: payment_count
+}; //Done
+
+[date-0009]: Evaluating calculations...
+---------------- [date-0009] numeric calculation results ----------------
+{
+  "days_between": 23,
+  "weeks_between": 3,
+  "start_day": 1,
+  "end_day": 3,
+  "extra_payment": true,
+  "payment_count": 4
+}
+[date-0009]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A payment is made every Tuesday. How many payments are made between 3rd April 2023 and 26th April 2023?
+
+### Calculations
+
+
+// Definitions
+const payment_day = 2; // the day of the week when the payment is made, 0 is Sunday, 1 is Monday, etc. [day]
+const start_date = new Date(2023, 3, 3); // the start date of the period, 3rd April 2023 [date]
+const end_date = new Date(2023, 3, 26); // the end date of the period, 26th April 2023 [date]
+
+// Calculations
+const days_between = (end_date - start_date) / (1000 * 60 * 60 * 24); // the number of days between the start and end dates, inclusive [days]
+const weeks_between = Math.floor(days_between / 7); // the number of full weeks between the start and end dates [weeks]
+const start_day = start_date.getDay(); // the day of the week of the start date [day]
+const end_day = end_date.getDay(); // the day of the week of the end date [day]
+const extra_payment = (start_day <= payment_day && end_day >= payment_day); // a boolean indicating whether there is an extra payment in the partial week at the start or end of the period [boolean]
+const payment_count = weeks_between + extra_payment; // the total number of payments between the start and end dates [payments]
+
+// Return
+return {
+  days_between: days_between,
+  weeks_between: weeks_between,
+  start_day: start_day,
+  end_day: end_day,
+  extra_payment: extra_payment,
+  payment_count: payment_count
+}; //Done
+
+
+### Calculation results
+
+{
+  "days_between": 23,
+  "weeks_between": 3,
+  "start_day": 1,
+  "end_day": 3,
+  "extra_payment": true,
+  "payment_count": 4
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 8
+We're in!
+---------------- [date-0010] calculations, question: A payment is made every Tuesday. How many payments are made between 5th April 2023 and 28th April 2023? ----------------
+
+// Definitions
+const payment_day = 2; // the day of the week when the payment is made, 0 is Sunday, 1 is Monday, etc. [day]
+const start_date = new Date(2023, 3, 5); // the start date of the period, 3 is April [date]
+const end_date = new Date(2023, 3, 28); // the end date of the period, 3 is April [date]
+
+// Calculations
+const days_between = (end_date - start_date) / (1000 * 60 * 60 * 24); // the number of days between the start and end dates, inclusive [days]
+const start_day = start_date.getDay(); // the day of the week of the start date [day]
+const end_day = end_date.getDay(); // the day of the week of the end date [day]
+const first_payment = (payment_day - start_day + 7) % 7; // the number of days from the start date to the first payment date [days]
+const last_payment = (payment_day - end_day + 7) % 7; // the number of days from the end date to the last payment date [days]
+const payment_count = (days_between - first_payment - last_payment) / 7 + 1; // the number of payments made between the start and end dates, inclusive [payments]
+
+// Return
+return {
+  days_between: days_between,
+  start_day: start_day,
+  end_day: end_day,
+  first_payment: first_payment,
+  last_payment: last_payment,
+  payment_count: payment_count
+}; //Done
+
+[date-0010]: Evaluating calculations...
+---------------- [date-0010] numeric calculation results ----------------
+{
+  "days_between": 23,
+  "start_day": 3,
+  "end_day": 5,
+  "first_payment": 6,
+  "last_payment": 4,
+  "payment_count": 2.857142857142857
+}
+[date-0010]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A payment is made every Tuesday. How many payments are made between 5th April 2023 and 28th April 2023?
+
+### Calculations
+
+
+// Definitions
+const payment_day = 2; // the day of the week when the payment is made, 0 is Sunday, 1 is Monday, etc. [day]
+const start_date = new Date(2023, 3, 5); // the start date of the period, 3 is April [date]
+const end_date = new Date(2023, 3, 28); // the end date of the period, 3 is April [date]
+
+// Calculations
+const days_between = (end_date - start_date) / (1000 * 60 * 60 * 24); // the number of days between the start and end dates, inclusive [days]
+const start_day = start_date.getDay(); // the day of the week of the start date [day]
+const end_day = end_date.getDay(); // the day of the week of the end date [day]
+const first_payment = (payment_day - start_day + 7) % 7; // the number of days from the start date to the first payment date [days]
+const last_payment = (payment_day - end_day + 7) % 7; // the number of days from the end date to the last payment date [days]
+const payment_count = (days_between - first_payment - last_payment) / 7 + 1; // the number of payments made between the start and end dates, inclusive [payments]
+
+// Return
+return {
+  days_between: days_between,
+  start_day: start_day,
+  end_day: end_day,
+  first_payment: first_payment,
+  last_payment: last_payment,
+  payment_count: payment_count
+}; //Done
+
+
+### Calculation results
+
+{
+  "days_between": 23,
+  "start_day": 3,
+  "end_day": 5,
+  "first_payment": 6,
+  "last_payment": 4,
+  "payment_count": 2.857142857142857
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 9
+We're in!
+----------completion choice--------------
+ Wednesday
+-----------------------------------------
+----------completion choice--------------
+ January 1st 2022
+-----------------------------------------
+----------completion choice--------------
+ May 2nd 2023
+-----------------------------------------
+----------completion choice--------------
+ May 11th 2023
+-----------------------------------------
+----------completion choice--------------
+17 (days)
+-----------------------------------------
+----------completion choice--------------
+16 (days)
+-----------------------------------------
+----------completion choice--------------
+6 (March)
+-----------------------------------------
+----------completion choice--------------
+3/2/2004 (date)
+-----------------------------------------
+----------completion choice--------------
+4 (payments)
+-----------------------------------------
+----------completion choice--------------
+3 (payments)
+-----------------------------------------
+[date-0001] actual expected:  Wednesday
+CORRECT: [date-0001, grade 8, type date], expected: "Wednesday", actual: " Wednesday", question: If today is Monday, what day will it be in 100 days?
+yes: 1, count: 1, accuracy: 1
+    * writing request cache to .gpt4e/cache-eval-model-next-model2-v2
+[date-0002] actual expected:  January 1st 2022
+[date-0002]: result_numbers: 1,2022
+[date-0002]: expected_numbers: 1,2022
+CORRECT: [date-0002, grade 8, type date], expected: "January 1st 2022", actual: " January 1st 2022", question: If today is January 1st 2021, what is the date in 365 days?
+yes: 2, count: 2, accuracy: 1
+[date-0003] actual expected:  May 2nd 2023
+[date-0003]: result_numbers: 2,2023
+[date-0003]: expected_numbers: 2,2023
+CORRECT: [date-0003, grade 8, type date], expected: "May 2nd 2023", actual: " May 2nd 2023", question: If today is April 25th 2023, what is the date in 1 week?
+yes: 3, count: 3, accuracy: 1
+[date-0004] actual expected:  May 11th 2023
+[date-0004]: result_numbers: 11,2023
+[date-0004]: expected_numbers: 11,2023
+CORRECT: [date-0004, grade 8, type date], expected: "May 11th 2023", actual: " May 11th 2023", question: If today is April 25th 2023, what is the date in 2 weeks and 2 days?
+yes: 4, count: 4, accuracy: 1
+[date-0005] actual expected: 17 (days)
+[date-0005]: result_numbers: 17
+[date-0005]: expected_numbers: 17
+CORRECT: [date-0005, grade 8, type date], expected: "17", actual: "17 (days)", question: How many days are there between April 25th and May 11th, inclusive?
+yes: 5, count: 5, accuracy: 1
+[date-0006] actual expected: 16 (days)
+[date-0006]: result_numbers: 16
+[date-0006]: expected_numbers: 16
+CORRECT: [date-0006, grade 8, type date], expected: "16", actual: "16 (days)", question: How many days are there between April 25th and May 11th, excluding the last day?
+yes: 6, count: 6, accuracy: 1
+[date-0007] actual expected: 6 (March)
+[date-0007]: result_numbers: 6
+[date-0007]: expected_numbers: 26
+FAIL: [date-0007, grade 8, type date], expected: "March 26th", actual: "6 (March)", question: If today is April 25th, what day was 30 days ago?
+yes: 6, count: 7, accuracy: 0.8571428571428571
+[date-0008] actual expected: 3/2/2004 (date)
+[date-0008]: result_numbers: 2,2004,3
+[date-0008]: expected_numbers: 14,2004
+FAIL: [date-0008, grade 8, type date], expected: "March 14th 2004", actual: "3/2/2004 (date)", question: If today is February 27th 2004, what is the date in 2 weeks and 2 days?
+yes: 6, count: 8, accuracy: 0.75
+[date-0009] actual expected: 4 (payments)
+[date-0009]: result_numbers: 4
+[date-0009]: expected_numbers: 4
+CORRECT: [date-0009, grade 8, type date], expected: "4", actual: "4 (payments)", question: A payment is made every Tuesday. How many payments are made between 3rd April 2023 and 26th April 2023?
+yes: 7, count: 9, accuracy: 0.7777777777777778
+[date-0010] actual expected: 3 (payments)
+[date-0010]: result_numbers: 3
+[date-0010]: expected_numbers: 3
+CORRECT: [date-0010, grade 8, type date], expected: "3", actual: "3 (payments)", question: A payment is made every Tuesday. How many payments are made between 5th April 2023 and 28th April 2023?
+yes: 8, count: 10, accuracy: 0.8

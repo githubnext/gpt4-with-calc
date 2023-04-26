@@ -1,0 +1,678 @@
+{
+  ask: {
+    aoaiApiKey: undefined,
+    openaiApiKey: undefined,
+    aipApiKey: undefined,
+    copilotPlaygroundApiKey: undefined,
+    nextModel2ApiKey: '1095bea53ce44a0ca2d702ba05987226',
+    nextModel3ApiKey: undefined,
+    deterministic: false,
+    maxConcurrency: 30,
+    retryCount: 20,
+    retryBackoffFactor: 1.2,
+    retryInitialDelay: 2000,
+    model: 'next-model2',
+    verbose: true,
+    raiPolicyId: '112',
+    useLocalCache: true,
+    temperature: 0,
+    arith: undefined,
+    noEmitComparisons: undefined,
+    noEliminateDateTime: undefined,
+    noSuppressArbitraryCode: undefined,
+    emitChecks: undefined,
+    noEmitUnits: undefined,
+    noEmitDescriptions: undefined,
+    noIncludeCodeInFinalQuestion: undefined,
+    question: undefined,
+    questionfile: undefined,
+    singleline: undefined
+  },
+  eval: {
+    aoaiApiKey: undefined,
+    openaiApiKey: undefined,
+    aipApiKey: undefined,
+    copilotPlaygroundApiKey: undefined,
+    nextModel2ApiKey: '1095bea53ce44a0ca2d702ba05987226',
+    nextModel3ApiKey: undefined,
+    deterministic: false,
+    maxConcurrency: 30,
+    retryCount: 20,
+    retryBackoffFactor: 1.2,
+    retryInitialDelay: 2000,
+    model: 'next-model2',
+    verbose: true,
+    raiPolicyId: '112',
+    useLocalCache: true,
+    temperature: 0,
+    arith: undefined,
+    noEmitComparisons: undefined,
+    noEliminateDateTime: undefined,
+    noSuppressArbitraryCode: undefined,
+    emitChecks: undefined,
+    noEmitUnits: undefined,
+    noEmitDescriptions: undefined,
+    noIncludeCodeInFinalQuestion: undefined,
+    questionset: 'finance',
+    questions: undefined
+  },
+  help: {}
+}
+    * reading request cache from .gpt4e/cache-eval-model-next-model2-v2
+[fin-0001] question: A mortgage of £200,000 is taken out over 30 years at an interest rate of 3% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+[fin-0001] expected: 800 (pounds)
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £200,000 is taken out over 30 years at an interest rate of 3% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 0
+We're in!
+[fin-0002] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+[fin-0002] expected: 2300
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 1
+We're in!
+[fin-0003] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £1000?
+[fin-0003] expected: 413000
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £1000?
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 2
+We're in!
+[fin-0004] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is interest? Give answer as a whole number percentage e.g. "76%" without quotes.
+[fin-0004] expected: 27
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is interest? Give answer as a whole number percentage e.g. "76%" without quotes.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 3
+We're in!
+[fin-0005] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is principal? Give answer as a whole number percentage e.g. "76%" without quotes.
+[fin-0005] expected: 73
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is principal? Give answer as a whole number percentage e.g. "76%" without quotes.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 4
+We're in!
+[fin-0006] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the ending balance remaining on the mortgage after 10 years to the nearest £1000?
+[fin-0006] expected: 123000
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the ending balance remaining on the mortgage after 10 years to the nearest £1000?
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 5
+We're in!
+[fin-0007] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the first 12 repayments, how much in total goes to paying interest (rather than principal), to the nearest £100?
+[fin-0007] expected: 13200
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the first 12 repayments, how much in total goes to paying interest (rather than principal), to the nearest £100?
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 6
+We're in!
+[fin-0008] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £100?
+[fin-0008] expected: 413100
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £100?
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 7
+We're in!
+[fin-0009] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £10?
+[fin-0009] expected: 413100
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £10?
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 8
+We're in!
+[fin-rate-0001] question: Suppose you buy 100 shares of XYZ stock for $50 per share. One year later, you sell all 100 shares for $60 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock, as a percentage?
+[fin-rate-0001] expected: 24 (percent)
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Suppose you buy 100 shares of XYZ stock for $50 per share. One year later, you sell all 100 shares for $60 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock, as a percentage?
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 9
+We're in!
+[fin-rate-0002] question: Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock? Round to nearest percent.
+[fin-rate-0002] expected: 32 (percent)
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock? Round to nearest percent.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 10
+We're in!
+[fin-rate-0003] question: Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock as a percentage, rounded to one decimal place?
+[fin-rate-0003] expected: 32.2 (percent)
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock as a percentage, rounded to one decimal place?
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 11
+We're in!
+[fin-rate-0004] question: Suppose a firm has Cost of equity 8.5%, Equity $1,983,800, Cost of debt 4.2% and Debt $100,422 and corporate tax rate of 30%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+[fin-rate-0004] expected: 8.2 (percent)
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Suppose a firm has Cost of equity 8.5%, Equity $1,983,800, Cost of debt 4.2% and Debt $100,422 and corporate tax rate of 30%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 12
+We're in!
+[fin-rate-0005] question: Suppose a firm has Cost of equity 4.2%, Equity $1934143, Cost of debt 4.2% and Debt $50,042 and corporate tax rate of 22%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+[fin-rate-0005] expected: 4.2 (percent)
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Suppose a firm has Cost of equity 4.2%, Equity $1934143, Cost of debt 4.2% and Debt $50,042 and corporate tax rate of 22%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 13
+We're in!
+----------completion choice--------------
+800 (pounds)
+-----------------------------------------
+----------completion choice--------------
+2300 (pounds)
+-----------------------------------------
+----------completion choice--------------
+411,000
+-----------------------------------------
+----------completion choice--------------
+24%
+-----------------------------------------
+----------completion choice--------------
+67%
+-----------------------------------------
+----------completion choice--------------
+126000 (pounds)
+-----------------------------------------
+----------completion choice--------------
+13100
+-----------------------------------------
+----------completion choice--------------
+411,100
+-----------------------------------------
+----------completion choice--------------
+410,910 (pounds)
+-----------------------------------------
+----------completion choice--------------
+40%
+-----------------------------------------
+----------completion choice--------------
+32%
+-----------------------------------------
+----------completion choice--------------
+32.1 (percent)
+-----------------------------------------
+----------completion choice--------------
+7.7%
+-----------------------------------------
+----------completion choice--------------
+4.2%
+-----------------------------------------
+[fin-0001] actual expected: 800 (pounds)
+[fin-0001]: result_numbers: 800
+[fin-0001]: expected_numbers: 800
+CORRECT: [fin-0001, grade 8, type financial], expected: "800 (pounds)", actual: "800 (pounds)", question: A mortgage of £200,000 is taken out over 30 years at an interest rate of 3% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+yes: 1, count: 1, accuracy: 1
+    * writing request cache to .gpt4e/cache-eval-model-next-model2-v2
+[fin-0002] actual expected: 2300 (pounds)
+[fin-0002]: result_numbers: 2300
+[fin-0002]: expected_numbers: 2300
+CORRECT: [fin-0002, grade 8, type financial], expected: "2300", actual: "2300 (pounds)", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+yes: 2, count: 2, accuracy: 1
+[fin-0003] actual expected: 411,000
+[fin-0003]: result_numbers: 411,000
+[fin-0003]: expected_numbers: 413000
+FAIL: [fin-0003, grade 8, type financial], expected: "413000", actual: "411,000", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £1000?
+yes: 2, count: 3, accuracy: 0.6666666666666666
+[fin-0004] actual expected: 24%
+[fin-0004]: result_numbers: 24
+[fin-0004]: expected_numbers: 27
+FAIL: [fin-0004, grade 8, type financial], expected: "27", actual: "24%", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is interest? Give answer as a whole number percentage e.g. "76%" without quotes.
+yes: 2, count: 4, accuracy: 0.5
+[fin-0005] actual expected: 67%
+[fin-0005]: result_numbers: 67
+[fin-0005]: expected_numbers: 73
+FAIL: [fin-0005, grade 8, type financial], expected: "73", actual: "67%", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is principal? Give answer as a whole number percentage e.g. "76%" without quotes.
+yes: 2, count: 5, accuracy: 0.4
+[fin-0006] actual expected: 126000 (pounds)
+[fin-0006]: result_numbers: 126000
+[fin-0006]: expected_numbers: 123000
+FAIL: [fin-0006, grade 8, type financial], expected: "123000", actual: "126000 (pounds)", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the ending balance remaining on the mortgage after 10 years to the nearest £1000?
+yes: 2, count: 6, accuracy: 0.3333333333333333
+[fin-0007] actual expected: 13100
+[fin-0007]: result_numbers: 13100
+[fin-0007]: expected_numbers: 13200
+FAIL: [fin-0007, grade 8, type financial], expected: "13200", actual: "13100", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the first 12 repayments, how much in total goes to paying interest (rather than principal), to the nearest £100?
+yes: 2, count: 7, accuracy: 0.2857142857142857
+[fin-0008] actual expected: 411,100
+[fin-0008]: result_numbers: 411,100
+[fin-0008]: expected_numbers: 413100
+FAIL: [fin-0008, grade 8, type financial], expected: "413100", actual: "411,100", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £100?
+yes: 2, count: 8, accuracy: 0.25
+[fin-0009] actual expected: 410,910 (pounds)
+[fin-0009]: result_numbers: 410,910
+[fin-0009]: expected_numbers: 413100
+FAIL: [fin-0009, grade 8, type financial], expected: "413100", actual: "410,910 (pounds)", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £10?
+yes: 2, count: 9, accuracy: 0.2222222222222222
+[fin-rate-0001] actual expected: 40%
+[fin-rate-0001]: result_numbers: 40
+[fin-rate-0001]: expected_numbers: 24
+FAIL: [fin-rate-0001, grade 8, type financial], expected: "24 (percent)", actual: "40%", question: Suppose you buy 100 shares of XYZ stock for $50 per share. One year later, you sell all 100 shares for $60 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock, as a percentage?
+yes: 2, count: 10, accuracy: 0.2
+[fin-rate-0002] actual expected: 32%
+[fin-rate-0002]: result_numbers: 32
+[fin-rate-0002]: expected_numbers: 32
+CORRECT: [fin-rate-0002, grade 8, type financial], expected: "32 (percent)", actual: "32%", question: Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock? Round to nearest percent.
+yes: 3, count: 11, accuracy: 0.2727272727272727
+[fin-rate-0003] actual expected: 32.1 (percent)
+[fin-rate-0003]: result_numbers: 32.1
+[fin-rate-0003]: expected_numbers: 32.2
+FAIL: [fin-rate-0003, grade 8, type financial], expected: "32.2 (percent)", actual: "32.1 (percent)", question: Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock as a percentage, rounded to one decimal place?
+yes: 3, count: 12, accuracy: 0.25
+[fin-rate-0004] actual expected: 7.7%
+[fin-rate-0004]: result_numbers: 7.7
+[fin-rate-0004]: expected_numbers: 8.2
+FAIL: [fin-rate-0004, grade 8, type financial], expected: "8.2 (percent)", actual: "7.7%", question: Suppose a firm has Cost of equity 8.5%, Equity $1,983,800, Cost of debt 4.2% and Debt $100,422 and corporate tax rate of 30%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+yes: 3, count: 13, accuracy: 0.23076923076923078
+[fin-rate-0005] actual expected: 4.2%
+[fin-rate-0005]: result_numbers: 4.2
+[fin-rate-0005]: expected_numbers: 4.2
+CORRECT: [fin-rate-0005, grade 8, type financial], expected: "4.2 (percent)", actual: "4.2%", question: Suppose a firm has Cost of equity 4.2%, Equity $1934143, Cost of debt 4.2% and Debt $50,042 and corporate tax rate of 22%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+yes: 4, count: 14, accuracy: 0.2857142857142857

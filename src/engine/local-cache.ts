@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import * as crypto from "crypto";
 import * as settings from "./settings";
 import { EngineContext } from "./context";
 
@@ -81,7 +82,13 @@ export function lookupLocalCache(
   if (cache) {
     const key = JSON.stringify(keyData);
     lastKey = key;
-    return cache.entries[key];
+    const result = cache.entries[key];
+    if (!result) {
+      const hash = crypto.createHash("sha256");
+      hash.write(key);
+      console.error("cache miss: " + hash.update(key).digest("hex") + "");
+    }
+    return result;
   }
   return undefined;
 }
@@ -96,9 +103,9 @@ export function setLocalCache(
     const cache = ctxt.requestCache;
     if (cache) {
       const key = JSON.stringify(keyData);
-      // const hash = crypto.createHash("sha256");
-      // hash.write(key);
-      // console.log("cache set: " + hash.update(key).digest("hex") + "");
+      const hash = crypto.createHash("sha256");
+      hash.write(key);
+      console.error("cache set: " + hash.update(key).digest("hex") + "");
       if (ctxt.deterministic && lastKey != key) {
         console.error("cache match: no match");
         console.error("   cache key1: " + lastKey);

@@ -73,7 +73,7 @@ const parallelismArgs = {
     description: "The maximum number of concurrent requests to make to the GitHub API",
     type: "number",
     modes: ["everything", "cli"],
-    defaults: { all: 30 },
+    defaults: { all: 2 },
   },
 };
 
@@ -94,7 +94,7 @@ const modelRetryArgs = {
     description: "The initial delay (in ms) for retrying a failed request",
     type: "number",
     modes: ["everything", "cli"],
-    defaults: { all: 1000, cli: 2000 },
+    defaults: { all: 1000, cli: 5000 },
   },
 };
 

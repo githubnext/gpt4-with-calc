@@ -15,6 +15,16 @@ npm run build
 ./gpt4e eval --questionset dates --verbose > logs/log.dates.without
 ./gpt4e eval --questionset dates --arith --verbose > logs/log.dates.with
 
+./gpt4e eval --questionset puzzles --verbose > logs/log.puzzles.without
+./gpt4e eval --questionset puzzles --arith --verbose > logs/log.puzzles.with
+
+# variations
+./gpt4e eval --questionset puzzles --arith --verbose --emitChecks > logs/log.puzzles.with.emitChecks
+./gpt4e eval --questionset puzzles --arith --verbose --noEliminateDateTime > logs/log.puzzles.with.noEliminateDateTime
+./gpt4e eval --questionset puzzles --arith --verbose --noEmitComparisons > logs/log.puzzles.with.noEmitComparisons
+./gpt4e eval --questionset puzzles --arith --verbose --noEmitUnits > logs/log.puzzles.with.noEmitUnits
+./gpt4e eval --questionset puzzles --arith --verbose --noEmitDescriptions > logs/log.puzzles.with.noEmitDescriptions
+ 
 CALC_TOTAL=`grep "CORRECT\|FAIL" logs/log.calc.with | wc -l`
 echo "Raw calculation:"
 echo "  Without equip:                    `grep CORRECT logs/log.calc.without | wc -l`/$CALC_TOTAL"
@@ -40,18 +50,6 @@ echo "Raw calculation:"
 echo "  Without equip:                    `grep CORRECT logs/log.dates.without | wc -l`/$DATES_TOTAL"
 echo "  With equip:                       `grep CORRECT logs/log.dates.with | wc -l`/$DATES_TOTAL"
 
-
-
-./gpt4e eval --questionset puzzles --verbose > logs/log.puzzles.without
-./gpt4e eval --questionset puzzles --arith --verbose > logs/log.puzzles.with
-
-# variations
-./gpt4e eval --questionset puzzles --arith --verbose --noEliminateDateTime > logs/log.puzzles.with.noEliminateDateTime
-./gpt4e eval --questionset puzzles --arith --verbose --noEmitComparisons > logs/log.puzzles.with.noEmitComparisons
-./gpt4e eval --questionset puzzles --arith --verbose --noEmitUnits > logs/log.puzzles.with.noEmitUnits
-./gpt4e eval --questionset puzzles --arith --verbose --noEmitDescriptions > logs/log.puzzles.with.noEmitDescriptions
-./gpt4e eval --questionset puzzles --arith --verbose --emitChecks > logs/log.puzzles.with.emitChecks
- 
 PUZZLES_TOTAL=`grep "CORRECT\|FAIL" logs/log.puzzles.without | wc -l`
 echo "Math puzzles:"
 echo "  Without equip:                    `grep FAIL logs/log.puzzles.without | wc -l` failures from $PUZZLES_TOTAL"
