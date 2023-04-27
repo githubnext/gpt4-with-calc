@@ -12,11 +12,11 @@ Date: 24 April 2023
 
 ## The Problem
 
-GPT-4 is catastrophically terrible at calculating with numbers. It makes egregious, basic mistakes all the time that lead to terrible user experiences on texts involving even the most basic numeric problems.
+GPT-4 is terrible at calculating with numbers. It makes basic mistakes all the time that lead to problematic user experiences on texts involving even the most basic numeric problems.
 
-Take for example [this problem with Bing AI](https://dkb.blog/p/bing-ai-cant-be-trusted#%C2%A7gap-financial-statement-summary). To quote from the author:
+Take for example [this problem](https://dkb.blog/p/bing-ai-cant-be-trusted#%C2%A7gap-financial-statement-summary). To quote from the author:
 
-> This is by far the worst mistake made during the demo. It’s also the most unexpected. I would have thought that summarizing a document would be trivial for AI at this point.
+> This is by far the worst mistake made during the demo. It’s also the most unexpected. 
 
 GPT-4 is also terrible at comparative logic involving numbers. It quite happily writes sentences like this (emphasis added):
 
@@ -33,7 +33,7 @@ There is, however, hope, and it is in this simple logic:
 1. GPT-4 is terrible at **numeric calculation** but good at **writing numeric calculation code**
 2. Python and many other tools are perfect at **evaluating numeric calculation code**.
 
-The answer is obvious: get GPT-4 to write the numeric calculation code, and get Python or some other tool to evaluate it, and use GPT-4 for the rest.
+The answer is obvious: get GPT-4 to write the numeric calculation code relevant to the question, and get Python or some other tool to evaluate it, and use GPT-4 for the rest.
 
 ## The Approach
 
@@ -679,7 +679,16 @@ There's a recent survey paper on techniques to augment Language Models, see http
 
 Much of the work on math and GPT-4 attempts to improve its more advanced mathematical capabilities, e.g. for algebra, geometry, problem solving, see https://arxiv.org/abs/2303.05398 for a recent paper from MSR.
 
-The basic idea that you can get LLMs to emit Python to handle arithemtic calculation as part of chain-of-reason prompting has been around a long time, e.g. see the prompt here: https://huggingface.co/datasets/LangChainHub-Prompts/LLM_Math.
+The basic idea that you can get LLMs to emit Python to handle arithemtic calculation as part of chain-of-reason prompting has been around a long time, e.g. see the prompt here: https://huggingface.co/datasets/LangChainHub-Prompts/LLM_Math and the [source code for the LangChain module](https://python.langchain.com/en/latest/modules/chains/examples/llm_math.html). The work here can be seen as a focused, dedicated elaboration of this technique, notably
+
+* Trying harder to focus on emitting reliable numeric calculation only, rather than arbitrary code
+* Focusing also on numeric comparisons
+* Focusing on code that is "relevant to answering the question" rather than just answering it
+* Emitting documentation and units of measure
+* Emitting mathematical checks
+* Evaluating the technique
+
+Some of these could be factored into other chain of reasoning modules.
 
 ## Conclusion
 
