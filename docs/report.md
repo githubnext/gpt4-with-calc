@@ -1,8 +1,10 @@
 # Equipping GPT-4 with Numeric Calculation
 
-GPT-4 is terrible at calculating with numbers. It makes mistakes all the time that lead to problematic user experiences on texts involving even the most basic numeric problems. We describe a simple, general technique to address this. [![image](https://user-images.githubusercontent.com/7204669/233200133-1263d0d1-6be2-494a-abb2-b03b5f1964df.png)](https://githubnext.com/).
+[![image](https://user-images.githubusercontent.com/7204669/233200133-1263d0d1-6be2-494a-abb2-b03b5f1964df.png)](https://githubnext.com/)
 
-Author: Don Syme, Albert Ziegler and Johan Rosenkilder at [GitHub Next](https://githubnext.com/).
+GPT-4 is terrible at calculating with numbers. It makes mistakes all the time that lead to problematic user experiences on texts involving even the most basic numeric problems. We describe a simple, general technique to address this. 
+
+Author: Don Syme, Albert Ziegler and Johan Rosenkilde at [GitHub Next](https://githubnext.com/).
 
 Proof-of-concept implementation: [GitHub internal](https://github.com/githubnext/gpt4e). [Microsoft clone](https://devdiv.visualstudio.com/DefaultCollection/Personal/_git/dsyme). Access available on request.
 
