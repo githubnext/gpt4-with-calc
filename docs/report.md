@@ -41,13 +41,13 @@ Our aim is to ["equip"](https://arxiv.org/abs/2211.10435) or ["augment"](https:/
 
 Without numeric calculation equipping:
 
-1. **GPT-4**: Question ➡️ Answer
+1. **GPT-4**: Question --> Answer
 
 With numeric calculation equipping:
 
-1. **GPT-4**: Question ➡️ Numeric calculation code
-2. **Evaluator**: Numeric calculation code ➡️ Numeric calculation answers
-3. **GPT-4**: Question + Numeric calculation code + Numeric calculation answers ➡️ Answer
+1. **GPT-4**: Question --> Numeric calculation code
+2. **Evaluator**: Numeric calculation code --> Numeric calculation answers
+3. **GPT-4**: Question + Numeric calculation code + Numeric calculation answers --> Answer
 
 We call this "equipping" GPT-4 with numeric calculation. GPT-4 has a new tool in the box, and it turns out it loves to use it.
 
@@ -362,7 +362,7 @@ n = ln(2) / ln(1 + 0.3)
 
 Using a calculator, we get:
 
-n ≈ 2.53
+n ~= 2.53
 
 Therefore, it takes about 2.53 years for an item growing at 30% annually to double.
 ```
