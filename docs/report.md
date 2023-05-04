@@ -6,9 +6,11 @@ author-meta: "Don Syme, Albert Ziegler and Johan Rosenkilder"
 date-meta: "04 May 2023"
 ---
 
+[![image](https://user-images.githubusercontent.com/7204669/233200133-1263d0d1-6be2-494a-abb2-b03b5f1964df.png)](https://githubnext.com/)
+
 # Equipping GPT-4 with Numeric Calculation
 
-GPT-4 is terrible at calculating with numbers. It makes mistakes all the time that lead to problematic user experiences on texts involving even the most basic numeric problems. We describe a simple, general technique to address this and discuss related issues. [![image](https://user-images.githubusercontent.com/7204669/233200133-1263d0d1-6be2-494a-abb2-b03b5f1964df.png)](https://githubnext.com/)
+Abstract: GPT-4 is terrible at calculating with numbers. It makes mistakes all the time that lead to problematic user experiences on texts involving even the most basic numeric problems. We describe a simple, general technique to address this, apply it to some widely reported real-world failures of GPT-4-based AI, do some evaluation and discuss related issues.
 
 Authors: Don Syme, Albert Ziegler and Johan Rosenkilder at [GitHub Next](https://githubnext.com/).
 
