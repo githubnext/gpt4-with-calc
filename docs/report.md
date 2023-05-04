@@ -1,14 +1,28 @@
+---
+documentclass: extarticle
+fontsize: 11pt
+title-meta: "Equipping GPT-4 with Numeric Calculation"
+author-meta: "Don Syme, Albert Ziegler and Johan Rosenkilder"
+date-meta: "04 May 2023"
+---
+
 # Equipping GPT-4 with Numeric Calculation
 
-GPT-4 is terrible at calculating with numbers. It makes mistakes all the time that lead to problematic user experiences on texts involving even the most basic numeric problems. We describe a simple, general technique to address this. [![image](https://user-images.githubusercontent.com/7204669/233200133-1263d0d1-6be2-494a-abb2-b03b5f1964df.png)](https://githubnext.com/).
+GPT-4 is terrible at calculating with numbers. It makes mistakes all the time that lead to problematic user experiences on texts involving even the most basic numeric problems. We describe a simple, general technique to address this and discuss related issues. [![image](https://user-images.githubusercontent.com/7204669/233200133-1263d0d1-6be2-494a-abb2-b03b5f1964df.png)](https://githubnext.com/)
 
-Author: Don Syme, Albert Ziegler and Johan Rosenkilder at [GitHub Next](https://githubnext.com/).
+Authors: Don Syme, Albert Ziegler and Johan Rosenkilder at [GitHub Next](https://githubnext.com/).
 
-Proof-of-concept implementation: [GitHub internal](https://github.com/githubnext/gpt4e). [Microsoft clone](https://devdiv.visualstudio.com/DefaultCollection/Personal/_git/dsyme). Access available on request.
+Proof-of-concept implementation - Access available on request
+
+- [GitHub internal](https://github.com/githubnext/gpt4e)
+- [Microsoft clone](https://devdiv.visualstudio.com/DefaultCollection/Personal/_git/dsyme).
+
+See the [evaluation report](eval.md).
+
+- [GitHub internal](https://github.com/githubnext/gpt4e/tree/main/docs/eval.md)
+- [Microsoft clone](https://devdiv.visualstudio.com/DefaultCollection/Personal/_git/dsyme?path=/docs/eval.md&_a=preview).
 
 We encourage collaboration. Please iterate with us and/or take this further. If publishing please include us as co-authors.
-
-[Evaluation](eval.md).
 
 ## The Problem
 
@@ -58,20 +72,25 @@ In Step 1 we prompt GPT-4 to produce relevant numeric calculation code. There ar
 ```
 # Guidance
 
-Do not answer the question. Instead, your task is to write some numeric calculation and comparisons relevant to answering the question.
+Do not answer the question. Instead, your task is to write some numeric
+calculation and comparisons relevant to answering the question.
 
-After the question write a code block with up to three sections containing content relevant to answering the question.
+After the question write a code block with up to three sections containing
+content relevant to answering the question.
 
-In the "Definitions" section define a label for each number in the original question like `car_count` or `speed_of_car_in_km_per_hour`.
+In the "Definitions" section define a label for each number in the
+original question like `car_count` or `speed_of_car_in_km_per_hour`.
 * Every label name should include the unit of measure if known.
-* This section should be valid Python and can include valid Python single-dimensional arrays.
+* This section should be valid Python and can include valid Python
+  single-dimensional arrays.
 * Do not use or create multi-dimensional arrays.
 * Give each label a unit of measure in a comment after each definition.
 * Document the meaning of each definition in the comment.
 * If the unit of measure is unknown use "unknown".
 * Omit this section if there are no numbers in the question.
 
-In the "Calculations" section define additional relevant labels using Python or numpy formulae.
+In the "Calculations" section define additional relevant labels using
+Python or numpy formulae.
 * Define each label using a formula, referencing previously defined labels.
 * Avoid new assumptions in this section, if you make an assumption document it.
 * Every label name should include the unit of measure if known.
@@ -82,7 +101,9 @@ In the "Calculations" section define additional relevant labels using Python or 
 * This section should be valid Python using regular Python or numpy.
 * Omit this section if there are no additional labels relevant to the answer.
 
-In the "Comparisons" section define additional labels using Python or numpy formulae by comparing labels using comparison operators and functions and evaluating to single boolean values.
+In the "Comparisons" section define additional labels using Python or numpy
+formulae by comparing labels using comparison operators and functions and
+evaluating to single boolean values.
 * Do NOT include the calculated true/false values for these labels.
 * This section should be valid Python using regular Python or numpy.
 * Document the meaning of each definition in the comment.
@@ -105,7 +126,8 @@ Take this problem:
 ```
 This is an extract from the Microsoft annual report for 2022:
 
-Microsoft repurchased the following shares of common stock under the share repurchase programs:
+Microsoft repurchased the following shares of common stock under the
+share repurchase programs:
 (In millions)	Shares		Amount		Shares		Amount		Shares		Amount
 Year Ended June 30,			2022				2021				2020
 First Quarter	21		$6,200		25		$5,270		29		$4,000
@@ -113,7 +135,8 @@ Second Quarter	20		6,233		27		5,750		32		4,600
 Third Quarter	26		7,800		25		5,750		37		6,000
 Fourth Quarter	28		7,800		24		6,200		28		5,088
 
-What is the overall average and standard deviation of shares repurchased per quarter over these three years in dollars?
+What is the overall average and standard deviation of shares
+repurchased per quarter over these three years in dollars?
 ```
 
 The correct numeric answers are:
@@ -214,12 +237,10 @@ more_shares_2022 False
 
 The GPT-4 generated answer is now correct:
 
-```md
-The overall average and standard deviation of shares repurchased per quarter over these three years in dollars are:
-
-- Average: $5,890.92 million
-- Standard deviation: $1,077.08 million
-```
+> The overall average and standard deviation of shares repurchased per quarter over these three years in dollars are:
+>
+> - Average: $5,890.92 million
+> - Standard deviation: $1,077.08 million
 
 ## Example 2
 
@@ -228,7 +249,8 @@ Take this harder example:
 ```
 This is an extract from the Microsoft annual report for 2022:
 
-Microsoft repurchased the following shares of common stock under the share repurchase programs:
+Microsoft repurchased the following shares of common stock under the
+share repurchase programs:
 
 (In millions)	Shares		Amount		Shares		Amount		Shares		Amount
 Year Ended June 30,			2022				2021				2020
@@ -240,23 +262,32 @@ Fourth Quarter	28		7,800		24		6,200		28		5,088
 This is an extract from the Google annual report for 2022:
 
 Share Repurchases
-In April 2022, the Board of Directors of Alphabet authorized the company to repurchase up to $70.0 billion of its
-Class A and Class C shares. As of December 31, 2022, $28.1 billion remains available for Class A and Class C share
+In April 2022, the Board of Directors of Alphabet authorized
+the company to repurchase up to $70.0 billion of its
+Class A and Class C shares. As of December 31, 2022, $28.1
+billion remains available for Class A and Class C share
 repurchases.
-The following table presents Class A and Class C shares repurchased and subsequently retired (in millions):
+The following table presents Class A and Class C shares
+repurchased and subsequently retired (in millions):
 Year Ended December 31, 2021 Year Ended December 31, 2022
 Shares Amount Shares Amount
 Class A share repurchases 24 $ 3,399 61 $ 6,719
 Class C share repurchases 383 46,875 469 52,577
 Total share repurchases 407 $ 50,274 530 $ 59,296
-Class A and Class C shares are repurchased in a manner deemed in the best interest of the company and its
-stockholders, taking into account the economic cost and prevailing market conditions, including the relative trading
-prices and volumes of the Class A and Class C shares. Repurchases are executed from time to time, subject to
-general business and market conditions and other investment opportunities, through open market purchases or
-privately negotiated transactions, including through Rule 10b5-1 plans. The repurchase program does not have an
-expiration date.
+Class A and Class C shares are repurchased in a manner deemed
+in the best interest of the company and its
+stockholders, taking into account the economic cost and
+prevailing market conditions, including the relative trading
+prices and volumes of the Class A and Class C shares. Repurchases
+are executed from time to time, subject to
+general business and market conditions and other investment
+opportunities, through open market purchases or
+privately negotiated transactions, including through Rule 10b5-1 plans.
+The repurchase program does not have an expiration date.
 
-Which company repurchased more a greater amount of shares, in total value, in 2021 and 2022 combined. What are the respective total amounts for the two companies?
+Which company repurchased more a greater amount of shares,
+in total value, in 2021 and 2022 combined. What are the
+respective total amounts for the two companies?
 ```
 
 Here are the extracted calculations:
@@ -313,21 +344,17 @@ ms_more_than_goog False
 
 And now GPT-4 produces the correct answer:
 
-```
-Google repurchased more a greater amount of shares, in total value, in 2021 and 2022 combined. The respective total amounts for the two companies are:
-
-- Google: $109.57 billion
-- Microsoft: $51.003 billion
-```
+> Google repurchased more a greater amount of shares, in total value, in 2021 and 2022 combined. The respective total amounts for the two companies are:
+>
+> - Google: $109.57 billion
+> - Microsoft: $51.003 billion
 
 Without this technique, GPT-4 sometimes gets the answer wrong, e.g. one sample gave:
 
-```
-Microsoft repurchased more a greater amount of shares, in total value, in 2021 and 2022 combined. The respective total amounts for the two companies are:
-
-- Microsoft: $6,200 + $6,233 + $7,800 + $7,800 + $5,270 + $5,750 + $5,750 + $6,200 + $4,000 + $4,600 + $6,000 + $5,088 = $70,691 million
-- Google: $50,274 + $59,296 = $109,570 million
-```
+> Microsoft repurchased more a greater amount of shares, in total value, in 2021 and 2022 combined. The respective total amounts for the two companies are:
+>
+> - Microsoft: $6,200 + $6,233 + $7,800 + $7,800 + $5,270 + $5,750 + $5,750 + $6,200 + $4,000 + $4,600 + $6,000 + $5,088 = $70,691 million
+> - Google: $50,274 + $59,296 = $109,570 million
 
 ## Example 3
 
