@@ -17,14 +17,14 @@ Authors: Don Syme, Albert Ziegler and Johan Rosenkilder at [GitHub Next](https:/
 Proof-of-concept implementation (access available on request)
 
 - [GitHub internal](https://github.com/githubnext/gpt4e)
-- [Microsoft clone](https://devdiv.visualstudio.com/DefaultCollection/Personal/_git/dsyme).
+- [Microsoft internal clone](https://devdiv.visualstudio.com/DefaultCollection/Personal/_git/dsyme).
 
 See the [evaluation report](eval.md).
 
 - [GitHub internal](https://github.com/githubnext/gpt4e/tree/main/docs/eval.md)
-- [Microsoft clone](https://devdiv.visualstudio.com/DefaultCollection/Personal/_git/dsyme?path=/docs/eval.md&_a=preview).
+- [Microsoft internal clone](https://devdiv.visualstudio.com/DefaultCollection/Personal/_git/dsyme?path=/docs/eval.md&_a=preview).
 
-We encourage collaboration. Please iterate with us and/or take this further. If publishing please include us as co-authors.
+We encourage collaboration. Please iterate with us and/or take this further. If publishing please include us as co-authors :)
 
 ## The Problem
 
