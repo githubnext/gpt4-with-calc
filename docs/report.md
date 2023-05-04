@@ -12,7 +12,7 @@ GPT-4 is terrible at calculating with numbers. It makes mistakes all the time th
 
 Authors: Don Syme, Albert Ziegler and Johan Rosenkilder at [GitHub Next](https://githubnext.com/).
 
-Proof-of-concept implementation - Access available on request
+Proof-of-concept implementation (access available on request)
 
 - [GitHub internal](https://github.com/githubnext/gpt4e)
 - [Microsoft clone](https://devdiv.visualstudio.com/DefaultCollection/Personal/_git/dsyme).
