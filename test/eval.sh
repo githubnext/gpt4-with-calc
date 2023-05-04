@@ -30,11 +30,6 @@ echo "Raw calculation:"
 echo "  Without equip:                    `grep CORRECT logs/log.calc.without | wc -l`/$CALC_TOTAL"
 echo "  With equip:                       `grep CORRECT logs/log.calc.with | wc -l`/$CALC_TOTAL"
 
-UNITS_TOTAL=`grep "CORRECT\|FAIL" logs/log.units.with | wc -l`
-echo "Raw calculation:"
-echo "  Without equip:                    `grep CORRECT logs/log.units.without | wc -l`/$UNITS_TOTAL"
-echo "  With equip:                       `grep CORRECT logs/log.units.with | wc -l`/$UNITS_TOTAL"
-
 FINANCE_TOTAL=`grep "CORRECT\|FAIL" logs/log.finance.with | wc -l`
 echo "Raw calculation:"
 echo "  Without equip:                    `grep CORRECT logs/log.finance.without | wc -l`/$FINANCE_TOTAL"
@@ -50,15 +45,19 @@ echo "Raw calculation:"
 echo "  Without equip:                    `grep CORRECT logs/log.dates.without | wc -l`/$DATES_TOTAL"
 echo "  With equip:                       `grep CORRECT logs/log.dates.with | wc -l`/$DATES_TOTAL"
 
-PUZZLES_TOTAL=`grep "CORRECT\|FAIL" logs/log.puzzles.without | wc -l`
+UNITS_TOTAL=`grep "CORRECT\|FAIL" logs/log.units.with | wc -l`
+echo "Raw calculation:"
+echo "  Without equip:                    `grep CORRECT logs/log.units.without | wc -l`/$UNITS_TOTAL"
+echo "  With equip:                       `grep CORRECT logs/log.units.with | wc -l`/$UNITS_TOTAL"
+
 echo "Math puzzles:"
-echo "  Without equip:                    `grep FAIL logs/log.puzzles.without | wc -l` failures from $PUZZLES_TOTAL"
-echo "  With equip:                       `grep FAIL logs/log.puzzles.with | wc -l` failures from $PUZZLES_TOTAL"
-echo "  With equip (emitChecks):          `grep FAIL logs/log.puzzles.with.emitChecks | wc -l` failures from $PUZZLES_TOTAL"
-echo "  With equip (noEliminateDateTime): `grep FAIL logs/log.puzzles.with.noEliminateDateTime | wc -l` failures from $PUZZLES_TOTAL"
-echo "  With equip (noEmitComparisons):   `grep FAIL logs/log.puzzles.with.noEmitComparisons | wc -l` failures from $PUZZLES_TOTAL"
-echo "  With equip (noEmitUnits):         `grep FAIL logs/log.puzzles.with.noEmitUnits | wc -l` failures from $PUZZLES_TOTAL"
-echo "  With equip (noEmitDescriptions):  `grep FAIL logs/log.puzzles.with.noEmitDescriptions | wc -l` failures from $PUZZLES_TOTAL"
+echo "  Without equip:                    `grep FAIL logs/log.puzzles.without | wc -l` failures `grep CORRECT logs/log.puzzles.without | wc -l`/`grep \"CORRECT\|FAIL\" logs/log.puzzles.without | wc -l`"
+echo "  With equip:                       `grep FAIL logs/log.puzzles.with | wc -l` failures `grep CORRECT logs/log.puzzles.with | wc -l`/`grep \"CORRECT\|FAIL\" logs/log.puzzles.with | wc -l`"
+echo "  With equip (emitChecks):          `grep FAIL logs/log.puzzles.with.emitChecks | wc -l` failures `grep CORRECT logs/log.puzzles.with.emitChecks | wc -l`/`grep \"CORRECT\|FAIL\" logs/log.puzzles.with.emitChecks | wc -l`"
+echo "  With equip (noEliminateDateTime): `grep FAIL logs/log.puzzles.with.noEliminateDateTime | wc -l` failures `grep CORRECT logs/log.puzzles.with.noEliminateDateTime | wc -l`/`grep \"CORRECT\|FAIL\" logs/log.puzzles.with.noEliminateDateTime | wc -l`"
+echo "  With equip (noEmitComparisons):   `grep FAIL logs/log.puzzles.with.noEmitComparisons | wc -l` failures `grep CORRECT logs/log.puzzles.with.noEmitComparisons | wc -l`/`grep \"CORRECT\|FAIL\" logs/log.puzzles.with.noEmitComparisons | wc -l`"
+echo "  With equip (noEmitUnits):         `grep FAIL logs/log.puzzles.with.noEmitUnits | wc -l` failures `grep CORRECT logs/log.puzzles.with.noEmitUnits | wc -l`/`grep \"CORRECT\|FAIL\" logs/log.puzzles.with.noEmitUnits | wc -l`"
+echo "  With equip (noEmitDescriptions):  `grep FAIL logs/log.puzzles.with.noEmitDescriptions | wc -l` failures `grep CORRECT logs/log.puzzles.with.noEmitDescriptions | wc -l`/`grep \"CORRECT\|FAIL\" logs/log.puzzles.with.noEmitDescriptions | wc -l`"
 
 for k in \
    "grade 1"\

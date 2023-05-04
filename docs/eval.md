@@ -8,12 +8,12 @@ See [the report](report.md) for an overview of the technique.
 
 ### TLDR
 
-We developed some indicative problem sets that exhibit the following characteristics:
+We developed some indicative problem sets that exhibit the following characteristics. These sets were developed partly in order to explore the boundary of what this technique can handle.
 
 [**Raw calculation**](/src/problems/calc.ts) (decimals, integers, math functions):
 
-- without equip: **50% mistake rate**, many extreme mistakes
-- with equip: **0% mistake rate**
+- without equip: **50% mistake rate** (77/153), many extreme mistakes
+- with equip: **0% mistake rate** (153/153)
 
 [**Financial calculations**](/src/problems/finance.ts) (mortgage, rate of return, WACC):
 
@@ -22,8 +22,8 @@ We developed some indicative problem sets that exhibit the following characteris
 
 [**Tabular data calculations**](/src/problems/tables.ts):
 
-- without equip: **50% mistake rate**
-- with equip: **0% mistake rate**
+- without equip: **50% mistake rate** 4/8
+- with equip: **0% mistake rate** 8/8
 
 [**Unit conversion calculations**](/src/problems/units.ts) problems
 
@@ -35,14 +35,17 @@ We developed some indicative problem sets that exhibit the following characteris
 - without equip: **30% mistake rate** 7/10
 - with equip: **20% mistake rate** 8/10
 
-These sets were developed partly in order to explore the boundary of what this technique can handle, so we encourage you to look at the data sets and we will develop these further over time. Of these, we estimate the date-time problems are an area we should proactively try to **not** apply this technique without much more confidence that results improve and accuracy is achieved. This is discussed in the report.
+[**Word puzzles**](/test/dataset/ASDiv.xml):
 
-Not all "math" is dramatically improved, and indeed that's not the point (see above). For example, we looked at [Mathematical word puzzles with small integers](/test/dataset/ASDiv.xml):
+- Without equip: **11% mistake rate** (253 failures 2050/2303)
+- With equip: **6.2% mistake rate** (145 failures 2158/2303)
 
-- without equip: **11% mistake rate**
-- with equip: **7% mistake rate**
+The impact of some variations on codegen were also tested:
 
-However this is still a significant improvement in a partially-ambiguous problem set.
+- With equip (emitChecks): 140 failures 2163/2303
+- With equip (noEliminateDateTime): 153 failures 2150/2303
+- With equip (noEmitComparisons): 164 failures 2139/2303
+- With equip (noEmitUnits): 166 failures 2137/2303
 
 ### Details: Raw Calculation
 
@@ -225,12 +228,17 @@ Example:
 How many days are there between April 25th and May 11th, excluding the last day?
 ```
 
+> Note, we estimate the date-time problems are an area we should proactively try to **not** apply this technique without much more confidence that results improve and accuracy is achieved. This is discussed in the report.
+
 ### Assessing variations of calculation code
 
 Taking the mathematical word puzzles, we tried variations on the prompt that eliminated some characteristics of the generated calculations. This really gives a measure of the proportion of word puzzles sensitive to this aspect of calculation.
 
 ```
-Without numeric calculation equip: 254 failures
-With numeric calculation equip:    167 failures
-With numeric calculation equip:    161 failures (emitChecks)
+  Without equip:                    253 failures 2050/2303
+  With equip:                       145 failures 2158/2303
+  With equip (emitChecks):          140 failures 2163/2303
+  With equip (noEliminateDateTime): 153 failures 2150/2303
+  With equip (noEmitComparisons):   164 failures 2139/2303
+  With equip (noEmitUnits):         166 failures 2137/2303
 ```

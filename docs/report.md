@@ -1,22 +1,18 @@
 # Equipping GPT-4 with Numeric Calculation
 
-Author: Don Syme, GitHub Next, with input from others at [GitHub Next](https://githubnext.com/). [![image](https://user-images.githubusercontent.com/7204669/233200133-1263d0d1-6be2-494a-abb2-b03b5f1964df.png)](https://githubnext.com/)
+GPT-4 is terrible at calculating with numbers. It makes mistakes all the time that lead to problematic user experiences on texts involving even the most basic numeric problems. We describe a simple, general technique to address this.
 
-[Proof-of-concept implementation](https://github.com/githubnext/gpt4e). Access available on request.
+Author: Don Syme at [GitHub Next](https://githubnext.com/). [![image](https://user-images.githubusercontent.com/7204669/233200133-1263d0d1-6be2-494a-abb2-b03b5f1964df.png)](https://githubnext.com/). Proof-of-concept implementation: [GitHub internal](https://github.com/githubnext/gpt4e). [Microsoft clone](https://devdiv.visualstudio.com/DefaultCollection/Personal/_git/dsyme). Access available on request. We encourage collaboration. Please iterate with us and/or take this further. If publishing please include us as co-authors.
 
 [Evaluation](eval.md).
 
-> NOTE: The technique needs rigorous evaluation and refinement and we encourage collaboration. Please iterate with us and take this further. If publishing externally please contact us and include us as co-authors.
-
-Date: 24 April 2023
-
 ## The Problem
 
-GPT-4 is terrible at calculating with numbers. It makes basic mistakes all the time that lead to problematic user experiences on texts involving even the most basic numeric problems.
+GPT-4 is terrible at calculating with numbers. It makes mistakes all the time that lead to problematic user experiences on texts involving even the most basic numeric problems.
 
 Take for example [this problem](https://dkb.blog/p/bing-ai-cant-be-trusted#%C2%A7gap-financial-statement-summary). To quote from the author:
 
-> This is by far the worst mistake made during the demo. It’s also the most unexpected. 
+> This is by far the worst mistake made during the demo. It’s also the most unexpected.
 
 GPT-4 is also terrible at comparative logic involving numbers. It quite happily writes sentences like this (emphasis added):
 
@@ -24,7 +20,7 @@ GPT-4 is also terrible at comparative logic involving numbers. It quite happily 
 
 Ugh, 2 is not greater than 28. Half right but totally wrong.
 
-In short, GPT-4 can't handle numbers or comparisons of numbers, period. In our opinion, _GPT-4 should not be trusted to write a number that is not present verbatim in the input, nor to reason about numbers in any significant way. In trust scenarios, don't allow GPT-4 to write numbers, and beware that every numeric comparison may be flawed._
+In short, **GPT-4 can't handle numbers or comparisons of numbers, period**. In our opinion, _GPT-4 should not be trusted to write a number that is not present verbatim in the input, nor to reason about numbers in any significant way. In trust scenarios, don't allow GPT-4 to write numbers, and beware that every numeric comparison may be flawed._
 
 ## The Hope
 
@@ -37,7 +33,7 @@ The answer is obvious: get GPT-4 to write the numeric calculation code relevant 
 
 ## The Approach
 
-Our aim is to “equip” or ["augment"](https://arxiv.org/abs/2302.07842) GPT-4 with an numeric calculator. The approach is simple:
+Our aim is to ["equip"](https://arxiv.org/abs/2211.10435) or ["augment"](https://arxiv.org/abs/2302.07842) GPT-4 with a numeric calculator. The approach is simple:
 
 Without numeric calculation equipping:
 
@@ -94,15 +90,9 @@ In the "Comparisons" section define additional labels using Python or numpy form
 
 > NOTE: in our manual testing, we generated Python calculation code. In our prototype, for convenience we generated Javascript calculation code. There are many choices here and it is not strictly necessary to generate a general-purpose programming language. See discussion in Appendix.
 
-GPT-4 then writes the calculation code and stops.
+GPT-4 then writes the calculation code and stops. Step 2 evaluates this calculation code. Step 3 combines the original question with both the calculation code and answers and generates the answer to the question.
 
-Step 2 evaluates this calculation code.
-
-Step 3 combines the original question with both the calculation code and answers and generates the answer to the question.
-
-> NOTE: In Step 3 the calculation code is included as it contains relevant explanation text - this could be omitted if the explanation text is combined with the answers.
-
-> NOTE: In Step 3 a prompt directive can be added saying "only use numbers that are exactly present in the question or calculation".
+In Step 3 the calculation code is included as it contains relevant explanation text - this could be omitted if the explanation text is combined with the answers. Further, in Step 3 a prompt directive can be added saying "only use numbers that are exactly present in the question or calculation".
 
 ## Example 1
 
@@ -677,18 +667,18 @@ See [evaluation](eval.md).
 
 There's a recent survey paper on techniques to augment Language Models, see https://arxiv.org/abs/2302.07842. Most the papers used retraining or fine tuning specifically to use such tools, but the survey is comprehensive and a useful guide to equips (augmentations).
 
+The concept of specifically augmenting reasoning by generating programs in specific target langauges (e.g. calculation code) is surprisingly relatively new, and has an exposition in [Program-aided Language Models](https://arxiv.org/abs/2211.10435) from Nov 2022. The technique described here is a variation of this technique.
+
 Much of the work on math and GPT-4 attempts to improve its more advanced mathematical capabilities, e.g. for algebra, geometry, problem solving, see https://arxiv.org/abs/2303.05398 for a recent paper from MSR.
 
 The basic idea that you can get LLMs to emit Python to handle arithemtic calculation as part of chain-of-reason prompting has been around a long time, e.g. see the prompt here: https://huggingface.co/datasets/LangChainHub-Prompts/LLM_Math and the [source code for the LangChain module](https://python.langchain.com/en/latest/modules/chains/examples/llm_math.html). The work here can be seen as a focused, dedicated elaboration of this technique, notably
 
-* Trying harder to focus on emitting reliable numeric calculation only, rather than arbitrary code
-* Focusing also on numeric comparisons
-* Focusing on code that is "relevant to answering the question" rather than just answering it
-* Emitting documentation and units of measure
-* Emitting mathematical checks
-* Evaluating the technique
-
-Some of these could be factored into other chain of reasoning modules.
+- Trying harder to focus on emitting reliable numeric calculation only, rather than arbitrary code
+- Focusing also on numeric comparisons
+- Focusing on code that is "relevant to answering the question" rather than just answering it
+- Emitting documentation and units of measure
+- Emitting mathematical checks
+- Evaluating the technique
 
 ## Conclusion
 
