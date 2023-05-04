@@ -28,9 +28,7 @@ We encourage collaboration. Please iterate with us and/or take this further. If 
 
 ## The Problem
 
-GPT-4 is terrible at calculating with numbers. It makes mistakes all the time that lead to problematic user experiences on texts involving even the most basic numeric problems.
-
-Take for example [this problem](https://dkb.blog/p/bing-ai-cant-be-trusted#%C2%A7gap-financial-statement-summary). To quote from the author:
+GPT-4 is terrible at calculating with numbers. It makes mistakes all the time that lead to problematic user experiences on texts involving even the most basic numeric problems. Take for example [this problem](https://dkb.blog/p/bing-ai-cant-be-trusted#%C2%A7gap-financial-statement-summary). To quote from the author:
 
 > This is by far the worst mistake made during the demo. It’s also the most unexpected.
 
@@ -38,9 +36,7 @@ GPT-4 is also terrible at comparative logic involving numbers. It quite happily 
 
 > Both companies reported an increase in net sales compared to the same quarter last year, but Gap Inc. had a much **larger** absolute **and relative** increase ($4.04 billion, **up 2%**) than lululemon ($1.9 billion, **up 28%**).
 
-Ugh, 2 is not greater than 28. Half right but totally wrong.
-
-In short, **GPT-4 can't handle numbers or comparisons of numbers, period**. In our opinion, _GPT-4 should not be trusted to write a number that is not present verbatim in the input, nor to reason about numbers in any significant way. In trust scenarios, don't allow GPT-4 to write numbers, and beware that every numeric comparison may be flawed._
+Ugh, 2 is not greater than 28. Half right but totally wrong. In short, **GPT-4 can't handle numbers or comparisons of numbers, period**. In our opinion, _GPT-4 should not be trusted to write a number that is not present verbatim in the input, nor to reason about numbers in any significant way. In trust scenarios, don't allow GPT-4 to write numbers, and beware that every numeric comparison may be flawed._
 
 ## The Hope
 
