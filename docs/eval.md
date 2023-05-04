@@ -46,6 +46,9 @@ The impact of some variations on codegen were also tested:
 - With equip (noEliminateDateTime): 153 failures 2150/2303
 - With equip (noEmitComparisons): 164 failures 2139/2303
 - With equip (noEmitUnits): 166 failures 2137/2303
+- With equip (noEmitDescriptions): 157 failures 2146/2303
+
+These indicate that for these word problems, the given emits do play some role in solving additional problems.
 
 ### Details: Raw Calculation
 
