@@ -571,7 +571,7 @@ However the risk that code-generation will encode new hallucinations is real. So
 - Filtering or rejection of calculations that don't conform to expected requriements
 - Size restrictions rejecting new hallucinated calculations when inputs are small
 
-For end user-experience it may also be very important to have the models include a textual explanation of any assumptions made in generating the calculations. This is feasible given the above through another model invocation to explain any assumptins made.
+For end user-experience it may also be very important to have the models include a textual explanation of any assumptions made in generating the calculations. This is feasible given the above through another model invocation to explain any assumptions made.
 
 ## Example 5
 
