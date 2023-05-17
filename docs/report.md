@@ -58,7 +58,7 @@ The answer is obvious: get GPT-4 to write the numeric calculation code relevant 
 
 Variations on this technique are known and emerging in the literature and in practical prototypes such as the [_Code Interpreter Plugin for Chat-GPT_](https://openai.com/blog/chatgpt-plugins). Good literature overviews are [_PAL: Program-aided Language Models_](https://arxiv.org/abs/2211.10435) and [_Augmented Language Models: a Survey_](https://arxiv.org/abs/2302.07842). We discuss some of these in the related work further below. Some specific contributions of this work include:
 
-- we emit calculation code for "relevant" calculations (rather than rying to answer entirely by calculation),
+- we emit calculation code for "relevant" calculations (rather than trying to answer entirely by calculation),
 - we emit calculation code for reievant comparisons (not just calculations), to assist later text formation for comparative phrases in the question answering phase,
 - we emit calculation code containing information about units of measure,
 - we consider the problem of fabrication and hallucination during calculation generation,
