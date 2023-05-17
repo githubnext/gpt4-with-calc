@@ -1,0 +1,1983 @@
+{
+  ask: {
+    aoaiApiKey: undefined,
+    openaiApiKey: undefined,
+    aipApiKey: undefined,
+    copilotPlaygroundApiKey: undefined,
+    nextModel2ApiKey: '1095bea53ce44a0ca2d702ba05987226',
+    nextModel3ApiKey: undefined,
+    deterministic: false,
+    maxConcurrency: 30,
+    retryCount: 20,
+    retryBackoffFactor: 1.2,
+    retryInitialDelay: 2000,
+    model: 'next-model2',
+    verbose: true,
+    raiPolicyId: '112',
+    useLocalCache: true,
+    temperature: 0,
+    arith: true,
+    noEmitComparisons: undefined,
+    noEliminateDateTime: undefined,
+    noSuppressArbitraryCode: undefined,
+    emitChecks: undefined,
+    noEmitUnits: undefined,
+    noEmitDescriptions: undefined,
+    noIncludeCodeInFinalQuestion: undefined,
+    question: undefined,
+    questionfile: undefined,
+    singleline: undefined
+  },
+  eval: {
+    aoaiApiKey: undefined,
+    openaiApiKey: undefined,
+    aipApiKey: undefined,
+    copilotPlaygroundApiKey: undefined,
+    nextModel2ApiKey: '1095bea53ce44a0ca2d702ba05987226',
+    nextModel3ApiKey: undefined,
+    deterministic: false,
+    maxConcurrency: 30,
+    retryCount: 20,
+    retryBackoffFactor: 1.2,
+    retryInitialDelay: 2000,
+    model: 'next-model2',
+    verbose: true,
+    raiPolicyId: '112',
+    useLocalCache: true,
+    temperature: 0,
+    arith: true,
+    noEmitComparisons: undefined,
+    noEliminateDateTime: undefined,
+    noSuppressArbitraryCode: undefined,
+    emitChecks: undefined,
+    noEmitUnits: undefined,
+    noEmitDescriptions: undefined,
+    noIncludeCodeInFinalQuestion: undefined,
+    questionset: 'units',
+    questions: undefined
+  },
+  help: {}
+}
+    * reading request cache from .gpte/cache-eval-model-next-model2-v2
+[units-0001] question: Convert 92 miles per hour to meters per second. Answer using nearest whole number.
+[units-0001] expected: 41
+[units-0001]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Convert 92 miles per hour to meters per second. Answer using nearest whole number.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 0
+We're in!
+[units-0002] question: Convert 92 miles per hour to meters per second. Answer to one decimal place.
+[units-0002] expected: 41.1
+[units-0002]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Convert 92 miles per hour to meters per second. Answer to one decimal place.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 1
+We're in!
+[units-0003] question: Convert 92 miles per hour to meters per second. Answer to two decimal places.
+[units-0003] expected: 41.13
+[units-0003]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Convert 92 miles per hour to meters per second. Answer to two decimal places.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 2
+We're in!
+[units-0004] question: Convert 1004 millimeters to meters.
+[units-0004] expected: 1.004 (meters)
+[units-0004]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Convert 1004 millimeters to meters.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 3
+We're in!
+[units-0005] question: Convert 1313 newtons per square meter to pounds per square inch. Answer to two decimal places.
+[units-0005] expected: 0.19
+[units-0005]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Convert 1313 newtons per square meter to pounds per square inch. Answer to two decimal places.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 4
+We're in!
+[units-0006] question: Convert 1313000 newtons per square meter to pounds per square inch. Answer to two decimal places.
+[units-0006] expected: 190.43
+[units-0006]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Convert 1313000 newtons per square meter to pounds per square inch. Answer to two decimal places.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 5
+We're in!
+[units-0007] question: Convert 7482 joules to calories. Answer to nearest calorie.
+[units-0007] expected: 1788
+[units-0007]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Convert 7482 joules to calories. Answer to nearest calorie.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 6
+We're in!
+[units-0008] question: Convert 7482 joules to calories. Answer to one decimal places.
+[units-0008] expected: 1788.2
+[units-0008]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Convert 7482 joules to calories. Answer to one decimal places.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 7
+We're in!
+[units-0009] question: Convert 7482 joules to calories. Answer to two decimal places.
+[units-0009] expected: 1788.24
+[units-0009]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Convert 7482 joules to calories. Answer to two decimal places.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 8
+We're in!
+[units-0010] question: Convert 85.6C to Farenheit. Answer to two decimal places.
+[units-0010] expected: 186.08
+[units-0010]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Convert 85.6C to Farenheit. Answer to two decimal places.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 9
+We're in!
+[units-0011] question: Convert 85.63C to Farenheit. Answer to three decimal places.
+[units-0011] expected: 186.134
+[units-0011]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Convert 85.63C to Farenheit. Answer to three decimal places.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 10
+We're in!
+----------completion choice--------------
+
+// Definitions
+const miles_per_hour = 92; // [miles/hour]
+const meters_per_mile = 1609.34; // [meters/mile]
+const seconds_per_hour = 3600; // [seconds/hour]
+
+// Calculations
+const meters_per_hour = miles_per_hour * meters_per_mile; // [meters/hour]
+const meters_per_second = meters_per_hour / seconds_per_hour; // [meters/second]
+const rounded_meters_per_second = Math.round(meters_per_second); // [meters/second]
+
+// Return
+return {
+  miles_per_hour: miles_per_hour,
+  meters_per_second: meters_per_second,
+  rounded_meters_per_second: rounded_meters_per_second
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const miles_per_hour = 92; // [miles/hour]
+const meters_per_mile = 1609.34; // [meters/mile]
+const seconds_per_hour = 3600; // [seconds/hour]
+
+// Calculations
+const meters_per_hour = miles_per_hour * meters_per_mile; // [meters/hour]
+const meters_per_second = meters_per_hour / seconds_per_hour; // [meters/second]
+const rounded_meters_per_second = Math.round(meters_per_second * 10) / 10; // [meters/second] rounded to one decimal place
+
+// Return
+return {
+  miles_per_hour: miles_per_hour,
+  meters_per_second: rounded_meters_per_second
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const miles_per_hour = 92; // [miles/hour]
+const meters_per_mile = 1609.34; // [meters/mile]
+const seconds_per_hour = 3600; // [seconds/hour]
+
+// Calculations
+const meters_per_hour = miles_per_hour * meters_per_mile; // [meters/hour]
+const meters_per_second = meters_per_hour / seconds_per_hour; // [meters/second]
+const rounded_meters_per_second = Math.round(meters_per_second * 100) / 100; // [meters/second] rounded to two decimal places
+
+// Return
+return {
+  miles_per_hour: miles_per_hour,
+  meters_per_mile: meters_per_mile,
+  seconds_per_hour: seconds_per_hour,
+  meters_per_hour: meters_per_hour,
+  meters_per_second: meters_per_second,
+  rounded_meters_per_second: rounded_meters_per_second
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const millimeters = 1004; // [mm]
+const millimeters_per_meter = 1000; // [mm/m]
+
+// Calculations
+const meters = millimeters / millimeters_per_meter; // [m]
+
+// Return
+return {meters}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const newtons_per_square_meter = 1313; // [N/m^2]
+const pounds_per_newton = 0.224809; // [lb/N]
+const inches_per_meter = 39.3701; // [in/m]
+
+// Calculations
+const newtons_per_square_inch = newtons_per_square_meter / (inches_per_meter * inches_per_meter); // [N/in^2]
+const pounds_per_square_inch = newtons_per_square_inch * pounds_per_newton; // [lb/in^2]
+const rounded_pounds_per_square_inch = Math.round(pounds_per_square_inch * 100) / 100; // [lb/in^2] rounded to two decimal places
+
+// Return
+return {
+  newtons_per_square_meter: newtons_per_square_meter,
+  pounds_per_newton: pounds_per_newton,
+  inches_per_meter: inches_per_meter,
+  newtons_per_square_inch: newtons_per_square_inch,
+  pounds_per_square_inch: pounds_per_square_inch,
+  rounded_pounds_per_square_inch: rounded_pounds_per_square_inch
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const n_per_m2 = 1313000; // newtons per square meter [N/m^2]
+const psi_per_n_per_m2 = 0.000145038; // pounds per square inch per newton per square meter [psi/N/m^2]
+
+// Calculations
+const psi = n_per_m2 * psi_per_n_per_m2; // pounds per square inch [psi]
+const psi_rounded = Math.round(psi * 100) / 100; // pounds per square inch rounded to two decimal places [psi]
+
+// Return
+return {n_per_m2, psi_per_n_per_m2, psi, psi_rounded};
+// Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const joules = 7482; // [joules]
+const joules_per_calorie = 4.184; // [joules/calorie]
+
+// Calculations
+const calories = Math.round(joules / joules_per_calorie); // [calories]
+
+// Return
+return {calories}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const joules = 7482; // [joules]
+const joules_per_calorie = 4.184; // [joules/calorie]
+
+// Calculations
+const calories = joules / joules_per_calorie; // [calories]
+const rounded_calories = Math.round(calories * 10) / 10; // [calories] rounded to one decimal place
+
+// Return
+return {calories, rounded_calories}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const joules = 7482; // [joules]
+const joules_per_calorie = 4.184; // [joules/calorie]
+
+// Calculations
+const calories = joules / joules_per_calorie; // [calories]
+const rounded_calories = Math.round(calories * 100) / 100; // [calories] rounded to two decimal places
+
+// Return
+return {calories, rounded_calories}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const celsius = 85.6; // [degrees Celsius]
+
+// Calculations
+const fahrenheit = celsius * 9 / 5 + 32; // [degrees Fahrenheit]
+const roundedFahrenheit = Math.round(fahrenheit * 100) / 100; // [degrees Fahrenheit] rounded to two decimal places
+
+// Return
+return {celsius, fahrenheit, roundedFahrenheit};
+// Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const celsius = 85.63; // [degrees Celsius]
+
+// Calculations
+const fahrenheit = celsius * 9 / 5 + 32; // [degrees Fahrenheit]
+const rounded = Math.round(fahrenheit * 1000) / 1000; // [degrees Fahrenheit] rounded to three decimal places
+
+// Return
+return {celsius, fahrenheit, rounded};
+// Done
+
+-----------------------------------------
+---------------- [units-0001] calculations, question: Convert 92 miles per hour to meters per second. Answer using nearest whole number. ----------------
+
+// Definitions
+const miles_per_hour = 92; // [miles/hour]
+const meters_per_mile = 1609.34; // [meters/mile]
+const seconds_per_hour = 3600; // [seconds/hour]
+
+// Calculations
+const meters_per_hour = miles_per_hour * meters_per_mile; // [meters/hour]
+const meters_per_second = meters_per_hour / seconds_per_hour; // [meters/second]
+const rounded_meters_per_second = Math.round(meters_per_second); // [meters/second]
+
+// Return
+return {
+  miles_per_hour: miles_per_hour,
+  meters_per_second: meters_per_second,
+  rounded_meters_per_second: rounded_meters_per_second
+}; //Done
+
+[units-0001]: Evaluating calculations...
+---------------- [units-0001] numeric calculation results ----------------
+{
+  "miles_per_hour": 92,
+  "meters_per_second": 41.12757777777778,
+  "rounded_meters_per_second": 41
+}
+[units-0001]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 92 miles per hour to meters per second. Answer using nearest whole number.
+
+### Calculations
+
+
+// Definitions
+const miles_per_hour = 92; // [miles/hour]
+const meters_per_mile = 1609.34; // [meters/mile]
+const seconds_per_hour = 3600; // [seconds/hour]
+
+// Calculations
+const meters_per_hour = miles_per_hour * meters_per_mile; // [meters/hour]
+const meters_per_second = meters_per_hour / seconds_per_hour; // [meters/second]
+const rounded_meters_per_second = Math.round(meters_per_second); // [meters/second]
+
+// Return
+return {
+  miles_per_hour: miles_per_hour,
+  meters_per_second: meters_per_second,
+  rounded_meters_per_second: rounded_meters_per_second
+}; //Done
+
+
+### Calculation results
+
+{
+  "miles_per_hour": 92,
+  "meters_per_second": 41.12757777777778,
+  "rounded_meters_per_second": 41
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 0
+We're in!
+---------------- [units-0002] calculations, question: Convert 92 miles per hour to meters per second. Answer to one decimal place. ----------------
+
+// Definitions
+const miles_per_hour = 92; // [miles/hour]
+const meters_per_mile = 1609.34; // [meters/mile]
+const seconds_per_hour = 3600; // [seconds/hour]
+
+// Calculations
+const meters_per_hour = miles_per_hour * meters_per_mile; // [meters/hour]
+const meters_per_second = meters_per_hour / seconds_per_hour; // [meters/second]
+const rounded_meters_per_second = Math.round(meters_per_second * 10) / 10; // [meters/second] rounded to one decimal place
+
+// Return
+return {
+  miles_per_hour: miles_per_hour,
+  meters_per_second: rounded_meters_per_second
+}; //Done
+
+[units-0002]: Evaluating calculations...
+---------------- [units-0002] numeric calculation results ----------------
+{
+  "miles_per_hour": 92,
+  "meters_per_second": 41.1
+}
+[units-0002]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 92 miles per hour to meters per second. Answer to one decimal place.
+
+### Calculations
+
+
+// Definitions
+const miles_per_hour = 92; // [miles/hour]
+const meters_per_mile = 1609.34; // [meters/mile]
+const seconds_per_hour = 3600; // [seconds/hour]
+
+// Calculations
+const meters_per_hour = miles_per_hour * meters_per_mile; // [meters/hour]
+const meters_per_second = meters_per_hour / seconds_per_hour; // [meters/second]
+const rounded_meters_per_second = Math.round(meters_per_second * 10) / 10; // [meters/second] rounded to one decimal place
+
+// Return
+return {
+  miles_per_hour: miles_per_hour,
+  meters_per_second: rounded_meters_per_second
+}; //Done
+
+
+### Calculation results
+
+{
+  "miles_per_hour": 92,
+  "meters_per_second": 41.1
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 1
+We're in!
+---------------- [units-0003] calculations, question: Convert 92 miles per hour to meters per second. Answer to two decimal places. ----------------
+
+// Definitions
+const miles_per_hour = 92; // [miles/hour]
+const meters_per_mile = 1609.34; // [meters/mile]
+const seconds_per_hour = 3600; // [seconds/hour]
+
+// Calculations
+const meters_per_hour = miles_per_hour * meters_per_mile; // [meters/hour]
+const meters_per_second = meters_per_hour / seconds_per_hour; // [meters/second]
+const rounded_meters_per_second = Math.round(meters_per_second * 100) / 100; // [meters/second] rounded to two decimal places
+
+// Return
+return {
+  miles_per_hour: miles_per_hour,
+  meters_per_mile: meters_per_mile,
+  seconds_per_hour: seconds_per_hour,
+  meters_per_hour: meters_per_hour,
+  meters_per_second: meters_per_second,
+  rounded_meters_per_second: rounded_meters_per_second
+}; //Done
+
+[units-0003]: Evaluating calculations...
+---------------- [units-0003] numeric calculation results ----------------
+{
+  "miles_per_hour": 92,
+  "meters_per_mile": 1609.34,
+  "seconds_per_hour": 3600,
+  "meters_per_hour": 148059.28,
+  "meters_per_second": 41.12757777777778,
+  "rounded_meters_per_second": 41.13
+}
+[units-0003]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 92 miles per hour to meters per second. Answer to two decimal places.
+
+### Calculations
+
+
+// Definitions
+const miles_per_hour = 92; // [miles/hour]
+const meters_per_mile = 1609.34; // [meters/mile]
+const seconds_per_hour = 3600; // [seconds/hour]
+
+// Calculations
+const meters_per_hour = miles_per_hour * meters_per_mile; // [meters/hour]
+const meters_per_second = meters_per_hour / seconds_per_hour; // [meters/second]
+const rounded_meters_per_second = Math.round(meters_per_second * 100) / 100; // [meters/second] rounded to two decimal places
+
+// Return
+return {
+  miles_per_hour: miles_per_hour,
+  meters_per_mile: meters_per_mile,
+  seconds_per_hour: seconds_per_hour,
+  meters_per_hour: meters_per_hour,
+  meters_per_second: meters_per_second,
+  rounded_meters_per_second: rounded_meters_per_second
+}; //Done
+
+
+### Calculation results
+
+{
+  "miles_per_hour": 92,
+  "meters_per_mile": 1609.34,
+  "seconds_per_hour": 3600,
+  "meters_per_hour": 148059.28,
+  "meters_per_second": 41.12757777777778,
+  "rounded_meters_per_second": 41.13
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 2
+We're in!
+---------------- [units-0004] calculations, question: Convert 1004 millimeters to meters. ----------------
+
+// Definitions
+const millimeters = 1004; // [mm]
+const millimeters_per_meter = 1000; // [mm/m]
+
+// Calculations
+const meters = millimeters / millimeters_per_meter; // [m]
+
+// Return
+return {meters}; //Done
+
+[units-0004]: Evaluating calculations...
+---------------- [units-0004] numeric calculation results ----------------
+{
+  "meters": 1.004
+}
+[units-0004]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 1004 millimeters to meters.
+
+### Calculations
+
+
+// Definitions
+const millimeters = 1004; // [mm]
+const millimeters_per_meter = 1000; // [mm/m]
+
+// Calculations
+const meters = millimeters / millimeters_per_meter; // [m]
+
+// Return
+return {meters}; //Done
+
+
+### Calculation results
+
+{
+  "meters": 1.004
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 3
+We're in!
+---------------- [units-0005] calculations, question: Convert 1313 newtons per square meter to pounds per square inch. Answer to two decimal places. ----------------
+
+// Definitions
+const newtons_per_square_meter = 1313; // [N/m^2]
+const pounds_per_newton = 0.224809; // [lb/N]
+const inches_per_meter = 39.3701; // [in/m]
+
+// Calculations
+const newtons_per_square_inch = newtons_per_square_meter / (inches_per_meter * inches_per_meter); // [N/in^2]
+const pounds_per_square_inch = newtons_per_square_inch * pounds_per_newton; // [lb/in^2]
+const rounded_pounds_per_square_inch = Math.round(pounds_per_square_inch * 100) / 100; // [lb/in^2] rounded to two decimal places
+
+// Return
+return {
+  newtons_per_square_meter: newtons_per_square_meter,
+  pounds_per_newton: pounds_per_newton,
+  inches_per_meter: inches_per_meter,
+  newtons_per_square_inch: newtons_per_square_inch,
+  pounds_per_square_inch: pounds_per_square_inch,
+  rounded_pounds_per_square_inch: rounded_pounds_per_square_inch
+}; //Done
+
+[units-0005]: Evaluating calculations...
+---------------- [units-0005] numeric calculation results ----------------
+{
+  "newtons_per_square_meter": 1313,
+  "pounds_per_newton": 0.224809,
+  "inches_per_meter": 39.3701,
+  "newtons_per_square_inch": 0.8470941651380546,
+  "pounds_per_square_inch": 0.1904343921705209,
+  "rounded_pounds_per_square_inch": 0.19
+}
+[units-0005]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 1313 newtons per square meter to pounds per square inch. Answer to two decimal places.
+
+### Calculations
+
+
+// Definitions
+const newtons_per_square_meter = 1313; // [N/m^2]
+const pounds_per_newton = 0.224809; // [lb/N]
+const inches_per_meter = 39.3701; // [in/m]
+
+// Calculations
+const newtons_per_square_inch = newtons_per_square_meter / (inches_per_meter * inches_per_meter); // [N/in^2]
+const pounds_per_square_inch = newtons_per_square_inch * pounds_per_newton; // [lb/in^2]
+const rounded_pounds_per_square_inch = Math.round(pounds_per_square_inch * 100) / 100; // [lb/in^2] rounded to two decimal places
+
+// Return
+return {
+  newtons_per_square_meter: newtons_per_square_meter,
+  pounds_per_newton: pounds_per_newton,
+  inches_per_meter: inches_per_meter,
+  newtons_per_square_inch: newtons_per_square_inch,
+  pounds_per_square_inch: pounds_per_square_inch,
+  rounded_pounds_per_square_inch: rounded_pounds_per_square_inch
+}; //Done
+
+
+### Calculation results
+
+{
+  "newtons_per_square_meter": 1313,
+  "pounds_per_newton": 0.224809,
+  "inches_per_meter": 39.3701,
+  "newtons_per_square_inch": 0.8470941651380546,
+  "pounds_per_square_inch": 0.1904343921705209,
+  "rounded_pounds_per_square_inch": 0.19
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 4
+We're in!
+---------------- [units-0006] calculations, question: Convert 1313000 newtons per square meter to pounds per square inch. Answer to two decimal places. ----------------
+
+// Definitions
+const n_per_m2 = 1313000; // newtons per square meter [N/m^2]
+const psi_per_n_per_m2 = 0.000145038; // pounds per square inch per newton per square meter [psi/N/m^2]
+
+// Calculations
+const psi = n_per_m2 * psi_per_n_per_m2; // pounds per square inch [psi]
+const psi_rounded = Math.round(psi * 100) / 100; // pounds per square inch rounded to two decimal places [psi]
+
+// Return
+return {n_per_m2, psi_per_n_per_m2, psi, psi_rounded};
+// Done
+
+[units-0006]: Evaluating calculations...
+---------------- [units-0006] numeric calculation results ----------------
+{
+  "n_per_m2": 1313000,
+  "psi_per_n_per_m2": 0.000145038,
+  "psi": 190.434894,
+  "psi_rounded": 190.43
+}
+[units-0006]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 1313000 newtons per square meter to pounds per square inch. Answer to two decimal places.
+
+### Calculations
+
+
+// Definitions
+const n_per_m2 = 1313000; // newtons per square meter [N/m^2]
+const psi_per_n_per_m2 = 0.000145038; // pounds per square inch per newton per square meter [psi/N/m^2]
+
+// Calculations
+const psi = n_per_m2 * psi_per_n_per_m2; // pounds per square inch [psi]
+const psi_rounded = Math.round(psi * 100) / 100; // pounds per square inch rounded to two decimal places [psi]
+
+// Return
+return {n_per_m2, psi_per_n_per_m2, psi, psi_rounded};
+// Done
+
+
+### Calculation results
+
+{
+  "n_per_m2": 1313000,
+  "psi_per_n_per_m2": 0.000145038,
+  "psi": 190.434894,
+  "psi_rounded": 190.43
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 5
+We're in!
+---------------- [units-0007] calculations, question: Convert 7482 joules to calories. Answer to nearest calorie. ----------------
+
+// Definitions
+const joules = 7482; // [joules]
+const joules_per_calorie = 4.184; // [joules/calorie]
+
+// Calculations
+const calories = Math.round(joules / joules_per_calorie); // [calories]
+
+// Return
+return {calories}; //Done
+
+[units-0007]: Evaluating calculations...
+---------------- [units-0007] numeric calculation results ----------------
+{
+  "calories": 1788
+}
+[units-0007]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 7482 joules to calories. Answer to nearest calorie.
+
+### Calculations
+
+
+// Definitions
+const joules = 7482; // [joules]
+const joules_per_calorie = 4.184; // [joules/calorie]
+
+// Calculations
+const calories = Math.round(joules / joules_per_calorie); // [calories]
+
+// Return
+return {calories}; //Done
+
+
+### Calculation results
+
+{
+  "calories": 1788
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 6
+We're in!
+---------------- [units-0008] calculations, question: Convert 7482 joules to calories. Answer to one decimal places. ----------------
+
+// Definitions
+const joules = 7482; // [joules]
+const joules_per_calorie = 4.184; // [joules/calorie]
+
+// Calculations
+const calories = joules / joules_per_calorie; // [calories]
+const rounded_calories = Math.round(calories * 10) / 10; // [calories] rounded to one decimal place
+
+// Return
+return {calories, rounded_calories}; //Done
+
+[units-0008]: Evaluating calculations...
+---------------- [units-0008] numeric calculation results ----------------
+{
+  "calories": 1788.2409177820266,
+  "rounded_calories": 1788.2
+}
+[units-0008]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 7482 joules to calories. Answer to one decimal places.
+
+### Calculations
+
+
+// Definitions
+const joules = 7482; // [joules]
+const joules_per_calorie = 4.184; // [joules/calorie]
+
+// Calculations
+const calories = joules / joules_per_calorie; // [calories]
+const rounded_calories = Math.round(calories * 10) / 10; // [calories] rounded to one decimal place
+
+// Return
+return {calories, rounded_calories}; //Done
+
+
+### Calculation results
+
+{
+  "calories": 1788.2409177820266,
+  "rounded_calories": 1788.2
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 7
+We're in!
+---------------- [units-0009] calculations, question: Convert 7482 joules to calories. Answer to two decimal places. ----------------
+
+// Definitions
+const joules = 7482; // [joules]
+const joules_per_calorie = 4.184; // [joules/calorie]
+
+// Calculations
+const calories = joules / joules_per_calorie; // [calories]
+const rounded_calories = Math.round(calories * 100) / 100; // [calories] rounded to two decimal places
+
+// Return
+return {calories, rounded_calories}; //Done
+
+[units-0009]: Evaluating calculations...
+---------------- [units-0009] numeric calculation results ----------------
+{
+  "calories": 1788.2409177820266,
+  "rounded_calories": 1788.24
+}
+[units-0009]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 7482 joules to calories. Answer to two decimal places.
+
+### Calculations
+
+
+// Definitions
+const joules = 7482; // [joules]
+const joules_per_calorie = 4.184; // [joules/calorie]
+
+// Calculations
+const calories = joules / joules_per_calorie; // [calories]
+const rounded_calories = Math.round(calories * 100) / 100; // [calories] rounded to two decimal places
+
+// Return
+return {calories, rounded_calories}; //Done
+
+
+### Calculation results
+
+{
+  "calories": 1788.2409177820266,
+  "rounded_calories": 1788.24
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 8
+We're in!
+---------------- [units-0010] calculations, question: Convert 85.6C to Farenheit. Answer to two decimal places. ----------------
+
+// Definitions
+const celsius = 85.6; // [degrees Celsius]
+
+// Calculations
+const fahrenheit = celsius * 9 / 5 + 32; // [degrees Fahrenheit]
+const roundedFahrenheit = Math.round(fahrenheit * 100) / 100; // [degrees Fahrenheit] rounded to two decimal places
+
+// Return
+return {celsius, fahrenheit, roundedFahrenheit};
+// Done
+
+[units-0010]: Evaluating calculations...
+---------------- [units-0010] numeric calculation results ----------------
+{
+  "celsius": 85.6,
+  "fahrenheit": 186.07999999999998,
+  "roundedFahrenheit": 186.08
+}
+[units-0010]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 85.6C to Farenheit. Answer to two decimal places.
+
+### Calculations
+
+
+// Definitions
+const celsius = 85.6; // [degrees Celsius]
+
+// Calculations
+const fahrenheit = celsius * 9 / 5 + 32; // [degrees Fahrenheit]
+const roundedFahrenheit = Math.round(fahrenheit * 100) / 100; // [degrees Fahrenheit] rounded to two decimal places
+
+// Return
+return {celsius, fahrenheit, roundedFahrenheit};
+// Done
+
+
+### Calculation results
+
+{
+  "celsius": 85.6,
+  "fahrenheit": 186.07999999999998,
+  "roundedFahrenheit": 186.08
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 9
+We're in!
+---------------- [units-0011] calculations, question: Convert 85.63C to Farenheit. Answer to three decimal places. ----------------
+
+// Definitions
+const celsius = 85.63; // [degrees Celsius]
+
+// Calculations
+const fahrenheit = celsius * 9 / 5 + 32; // [degrees Fahrenheit]
+const rounded = Math.round(fahrenheit * 1000) / 1000; // [degrees Fahrenheit] rounded to three decimal places
+
+// Return
+return {celsius, fahrenheit, rounded};
+// Done
+
+[units-0011]: Evaluating calculations...
+---------------- [units-0011] numeric calculation results ----------------
+{
+  "celsius": 85.63,
+  "fahrenheit": 186.134,
+  "rounded": 186.134
+}
+[units-0011]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Convert 85.63C to Farenheit. Answer to three decimal places.
+
+### Calculations
+
+
+// Definitions
+const celsius = 85.63; // [degrees Celsius]
+
+// Calculations
+const fahrenheit = celsius * 9 / 5 + 32; // [degrees Fahrenheit]
+const rounded = Math.round(fahrenheit * 1000) / 1000; // [degrees Fahrenheit] rounded to three decimal places
+
+// Return
+return {celsius, fahrenheit, rounded};
+// Done
+
+
+### Calculation results
+
+{
+  "celsius": 85.63,
+  "fahrenheit": 186.134,
+  "rounded": 186.134
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 10
+We're in!
+----------completion choice--------------
+41 (meters/second)
+-----------------------------------------
+----------completion choice--------------
+41.1 (meters/second)
+-----------------------------------------
+----------completion choice--------------
+41.13 (meters/second)
+-----------------------------------------
+----------completion choice--------------
+1.004 (meters)
+-----------------------------------------
+----------completion choice--------------
+0.19 (pounds per square inch)
+-----------------------------------------
+----------completion choice--------------
+190.43 (pounds per square inch)
+-----------------------------------------
+----------completion choice--------------
+1788 (calories)
+-----------------------------------------
+----------completion choice--------------
+1788.2 (calories)
+-----------------------------------------
+----------completion choice--------------
+1788.24 (calories)
+-----------------------------------------
+----------completion choice--------------
+186.08 (degrees Fahrenheit)
+-----------------------------------------
+----------completion choice--------------
+186.134 (degrees Fahrenheit)
+-----------------------------------------
+[units-0001] actual expected: 41 (meters/second)
+[units-0001]: result_numbers: 41
+[units-0001]: expected_numbers: 41
+CORRECT: [units-0001, grade 8, type unit conversions], expected: "41", actual: "41 (meters/second)", question: Convert 92 miles per hour to meters per second. Answer using nearest whole number.
+yes: 1, count: 1, accuracy: 1
+    * writing request cache to .gpte/cache-eval-model-next-model2-v2
+[units-0002] actual expected: 41.1 (meters/second)
+[units-0002]: result_numbers: 41.1
+[units-0002]: expected_numbers: 41.1
+CORRECT: [units-0002, grade 8, type unit conversions], expected: "41.1", actual: "41.1 (meters/second)", question: Convert 92 miles per hour to meters per second. Answer to one decimal place.
+yes: 2, count: 2, accuracy: 1
+[units-0003] actual expected: 41.13 (meters/second)
+[units-0003]: result_numbers: 41.13
+[units-0003]: expected_numbers: 41.13
+CORRECT: [units-0003, grade 8, type unit conversions], expected: "41.13", actual: "41.13 (meters/second)", question: Convert 92 miles per hour to meters per second. Answer to two decimal places.
+yes: 3, count: 3, accuracy: 1
+[units-0004] actual expected: 1.004 (meters)
+[units-0004]: result_numbers: 1.004
+[units-0004]: expected_numbers: 1.004
+CORRECT: [units-0004, grade 8, type unit conversions], expected: "1.004 (meters)", actual: "1.004 (meters)", question: Convert 1004 millimeters to meters.
+yes: 4, count: 4, accuracy: 1
+[units-0005] actual expected: 0.19 (pounds per square inch)
+[units-0005]: result_numbers: 0.19
+[units-0005]: expected_numbers: 0.19
+CORRECT: [units-0005, grade 8, type unit conversions], expected: "0.19", actual: "0.19 (pounds per square inch)", question: Convert 1313 newtons per square meter to pounds per square inch. Answer to two decimal places.
+yes: 5, count: 5, accuracy: 1
+[units-0006] actual expected: 190.43 (pounds per square inch)
+[units-0006]: result_numbers: 190.43
+[units-0006]: expected_numbers: 190.43
+CORRECT: [units-0006, grade 8, type unit conversions], expected: "190.43", actual: "190.43 (pounds per square inch)", question: Convert 1313000 newtons per square meter to pounds per square inch. Answer to two decimal places.
+yes: 6, count: 6, accuracy: 1
+[units-0007] actual expected: 1788 (calories)
+[units-0007]: result_numbers: 1788
+[units-0007]: expected_numbers: 1788
+CORRECT: [units-0007, grade 8, type unit conversions], expected: "1788", actual: "1788 (calories)", question: Convert 7482 joules to calories. Answer to nearest calorie.
+yes: 7, count: 7, accuracy: 1
+[units-0008] actual expected: 1788.2 (calories)
+[units-0008]: result_numbers: 1788.2
+[units-0008]: expected_numbers: 1788.2
+CORRECT: [units-0008, grade 8, type unit conversions], expected: "1788.2", actual: "1788.2 (calories)", question: Convert 7482 joules to calories. Answer to one decimal places.
+yes: 8, count: 8, accuracy: 1
+[units-0009] actual expected: 1788.24 (calories)
+[units-0009]: result_numbers: 1788.24
+[units-0009]: expected_numbers: 1788.24
+CORRECT: [units-0009, grade 8, type unit conversions], expected: "1788.24", actual: "1788.24 (calories)", question: Convert 7482 joules to calories. Answer to two decimal places.
+yes: 9, count: 9, accuracy: 1
+[units-0010] actual expected: 186.08 (degrees Fahrenheit)
+[units-0010]: result_numbers: 186.08
+[units-0010]: expected_numbers: 186.08
+CORRECT: [units-0010, grade 8, type unit conversions], expected: "186.08", actual: "186.08 (degrees Fahrenheit)", question: Convert 85.6C to Farenheit. Answer to two decimal places.
+yes: 10, count: 10, accuracy: 1
+[units-0011] actual expected: 186.134 (degrees Fahrenheit)
+[units-0011]: result_numbers: 186.134
+[units-0011]: expected_numbers: 186.134
+CORRECT: [units-0011, grade 8, type unit conversions], expected: "186.134", actual: "186.134 (degrees Fahrenheit)", question: Convert 85.63C to Farenheit. Answer to three decimal places.
+yes: 11, count: 11, accuracy: 1

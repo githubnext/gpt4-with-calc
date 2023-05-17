@@ -1,0 +1,2983 @@
+{
+  ask: {
+    aoaiApiKey: undefined,
+    openaiApiKey: undefined,
+    aipApiKey: undefined,
+    copilotPlaygroundApiKey: undefined,
+    nextModel2ApiKey: '1095bea53ce44a0ca2d702ba05987226',
+    nextModel3ApiKey: undefined,
+    deterministic: false,
+    maxConcurrency: 30,
+    retryCount: 20,
+    retryBackoffFactor: 1.2,
+    retryInitialDelay: 2000,
+    model: 'next-model2',
+    verbose: true,
+    raiPolicyId: '112',
+    useLocalCache: true,
+    temperature: 0,
+    arith: true,
+    noEmitComparisons: undefined,
+    noEliminateDateTime: undefined,
+    noSuppressArbitraryCode: undefined,
+    emitChecks: undefined,
+    noEmitUnits: undefined,
+    noEmitDescriptions: undefined,
+    noIncludeCodeInFinalQuestion: undefined,
+    question: undefined,
+    questionfile: undefined,
+    singleline: undefined
+  },
+  eval: {
+    aoaiApiKey: undefined,
+    openaiApiKey: undefined,
+    aipApiKey: undefined,
+    copilotPlaygroundApiKey: undefined,
+    nextModel2ApiKey: '1095bea53ce44a0ca2d702ba05987226',
+    nextModel3ApiKey: undefined,
+    deterministic: false,
+    maxConcurrency: 30,
+    retryCount: 20,
+    retryBackoffFactor: 1.2,
+    retryInitialDelay: 2000,
+    model: 'next-model2',
+    verbose: true,
+    raiPolicyId: '112',
+    useLocalCache: true,
+    temperature: 0,
+    arith: true,
+    noEmitComparisons: undefined,
+    noEliminateDateTime: undefined,
+    noSuppressArbitraryCode: undefined,
+    emitChecks: undefined,
+    noEmitUnits: undefined,
+    noEmitDescriptions: undefined,
+    noIncludeCodeInFinalQuestion: undefined,
+    questionset: 'finance',
+    questions: undefined
+  },
+  help: {}
+}
+    * reading request cache from .gpte/cache-eval-model-next-model2-v2
+[fin-0001] question: A mortgage of £200,000 is taken out over 30 years at an interest rate of 3% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+[fin-0001] expected: 800 (pounds)
+[fin-0001]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+A mortgage of £200,000 is taken out over 30 years at an interest rate of 3% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 0
+We're in!
+[fin-0002] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+[fin-0002] expected: 2300
+[fin-0002]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 1
+We're in!
+[fin-0003] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £1000?
+[fin-0003] expected: 413000
+[fin-0003]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £1000?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 2
+We're in!
+[fin-0004] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is interest? Give answer as a whole number percentage e.g. "76%" without quotes.
+[fin-0004] expected: 27
+[fin-0004]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is interest? Give answer as a whole number percentage e.g. "76%" without quotes.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 3
+We're in!
+[fin-0005] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is principal? Give answer as a whole number percentage e.g. "76%" without quotes.
+[fin-0005] expected: 73
+[fin-0005]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is principal? Give answer as a whole number percentage e.g. "76%" without quotes.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 4
+We're in!
+[fin-0006] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the ending balance remaining on the mortgage after 10 years to the nearest £1000?
+[fin-0006] expected: 123000
+[fin-0006]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the ending balance remaining on the mortgage after 10 years to the nearest £1000?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 5
+We're in!
+[fin-0007] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the first 12 repayments, how much in total goes to paying interest (rather than principal), to the nearest £100?
+[fin-0007] expected: 13200
+[fin-0007]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the first 12 repayments, how much in total goes to paying interest (rather than principal), to the nearest £100?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 6
+We're in!
+[fin-0008] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £100?
+[fin-0008] expected: 413100
+[fin-0008]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £100?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 7
+We're in!
+[fin-0009] question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £10?
+[fin-0009] expected: 413100
+[fin-0009]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £10?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 8
+We're in!
+[fin-rate-0001] question: Suppose you buy 100 shares of XYZ stock for $50 per share. One year later, you sell all 100 shares for $60 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock, as a percentage?
+[fin-rate-0001] expected: 24 (percent)
+[fin-rate-0001]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Suppose you buy 100 shares of XYZ stock for $50 per share. One year later, you sell all 100 shares for $60 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock, as a percentage?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 9
+We're in!
+[fin-rate-0002] question: Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock? Round to nearest percent.
+[fin-rate-0002] expected: 32 (percent)
+[fin-rate-0002]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock? Round to nearest percent.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 10
+We're in!
+[fin-rate-0003] question: Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock as a percentage, rounded to one decimal place?
+[fin-rate-0003] expected: 32.2 (percent)
+[fin-rate-0003]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock as a percentage, rounded to one decimal place?
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 11
+We're in!
+[fin-rate-0004] question: Suppose a firm has Cost of equity 8.5%, Equity $1,983,800, Cost of debt 4.2% and Debt $100,422 and corporate tax rate of 30%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+[fin-rate-0004] expected: 8.2 (percent)
+[fin-rate-0004]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Suppose a firm has Cost of equity 8.5%, Equity $1,983,800, Cost of debt 4.2% and Debt $100,422 and corporate tax rate of 30%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 12
+We're in!
+[fin-rate-0005] question: Suppose a firm has Cost of equity 4.2%, Equity $1934143, Cost of debt 4.2% and Debt $50,042 and corporate tax rate of 22%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+[fin-rate-0005] expected: 4.2 (percent)
+[fin-rate-0005]: Generating numeric calculation code...
+-------------------------prompt ------------------------
+# Guidance
+
+Do not answer the question. Instead, write some calculations and comparisons relevant to answering the question. Do this by writing a code block with sections:
+* Definitions
+* Calculations* Comparisons
+
+* Return
+
+General guidance for all sections about labels:
+* Use names like `car_count` or `speed_of_car_in_km_per_h` for each label.
+* Document each label with a descriptive comment at end of line.
+
+
+General guidance for all sections about units:
+* Every label name should include the unit if known.
+* End each definition with a semicolon.
+* Include a unit at the end of the comment, like [billions_of_dollars], [metric_tons], [square meters], [apples] or [meetings/week].
+* If the unit is unknown use [unknown].
+
+General guidance for all sections about code:
+* Do NOT use lambda expressions, loops, 'if/else', 'return', '=>' or function definitions.
+* Avoid all date/time calculations. Reduce to whole days, hours, minutes and arbitrary seconds.
+In the optional "Definitions" section:
+* Define a label for each number in the question.
+* Define labels using Javascript 'const'.
+* This section can include valid Javascript single-dimensional arrays.
+* Do not use or create multi-dimensional arrays.
+* Omit this section completely if it contains no definitions.
+
+In the optional "Calculations" section:
+* Define additional relevant labels using Javascript 'const'.
+* Define each label using an expression that references previously defined labels.
+* Do NOT include the calculated values for labels in code or comments.
+* Do NOT solve equations, simply write relevant calculations.
+* Avoid new assumptions in this section. If you make an assumption document it.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+* Use integer division when appropriate.
+* Calculate rounding in code where appropriate.
+* Use values for constants such as pi and e from the Javascript Math library. 
+
+In the optional "Comparisons" section:
+* Define additional labels relevant to the question using Javascript 'const' by comparing labels using comparison operators and functions and evaluating to single boolean values.
+* Do NOT include the calculated true/false values for these labels.
+* This section should be valid Javascript definitions.
+* Omit this section completely if it contains no definitions.
+
+In the "Return" section (always present):
+* A single "return" statement that puts all the defined values from the Calculations and Comparisons sections into a single object
+* Then "//Done" and a new line 
+
+
+# Question
+
+Suppose a firm has Cost of equity 4.2%, Equity $1934143, Cost of debt 4.2% and Debt $50,042 and corporate tax rate of 22%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+
+
+## Relevant calculations and comparisons
+
+```javascript
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 13
+We're in!
+----------completion choice--------------
+
+// Definitions
+const mortgage_amount = 200000; // [pounds]
+const mortgage_term = 30; // [years]
+const interest_rate = 0.03; // [decimal]
+const payments_per_year = 12; // [payments]
+
+// Calculations
+const monthly_interest_rate = interest_rate / payments_per_year; // [decimal]
+const total_payments = mortgage_term * payments_per_year; // [payments]
+const monthly_payment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_payments) / (Math.pow(1 + monthly_interest_rate, total_payments) - 1); // [pounds]
+const rounded_monthly_payment = Math.round(monthly_payment / 100) * 100; // [pounds]
+
+// Return
+return {
+  mortgage_amount,
+  mortgage_term,
+  interest_rate,
+  payments_per_year,
+  monthly_interest_rate,
+  total_payments,
+  monthly_payment,
+  rounded_monthly_payment
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const payments_per_year = 12; // [payments]
+
+// Calculations
+const monthly_interest_rate = interest_rate / payments_per_year; // [decimal]
+const total_payments = mortgage_term * payments_per_year; // [payments]
+const monthly_payment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_payments) / (Math.pow(1 + monthly_interest_rate, total_payments) - 1); // [pounds]
+const rounded_monthly_payment = Math.round(monthly_payment / 100) * 100; // [pounds]
+
+// Return
+return {
+  mortgage_amount,
+  mortgage_term,
+  interest_rate,
+  payments_per_year,
+  monthly_interest_rate,
+  total_payments,
+  monthly_payment,
+  rounded_monthly_payment
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const repayments_per_year = 12; // [months]
+
+// Calculations
+const monthly_interest_rate = interest_rate / repayments_per_year; // [decimal]
+const total_repayments = mortgage_term * repayments_per_year; // [months]
+const monthly_repayment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_repayments) / (Math.pow(1 + monthly_interest_rate, total_repayments) - 1); // [pounds]
+const total_amount_paid = monthly_repayment * total_repayments; // [pounds]
+const rounded_total_amount_paid = Math.round(total_amount_paid / 1000) * 1000; // [pounds]
+
+// Return
+return {
+  monthly_repayment: monthly_repayment,
+  total_amount_paid: total_amount_paid,
+  rounded_total_amount_paid: rounded_total_amount_paid
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const monthly_repayments = 12; // [per year]
+
+// Calculations
+const monthly_interest_rate = interest_rate / monthly_repayments; // [decimal]
+const monthly_payment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, mortgage_term * monthly_repayments) / (Math.pow(1 + monthly_interest_rate, mortgage_term * monthly_repayments) - 1); // [pounds]
+const total_payment = monthly_payment * mortgage_term * monthly_repayments; // [pounds]
+const total_interest = total_payment - mortgage_amount; // [pounds]
+const interest_proportion = total_interest / total_payment; // [decimal]
+
+// Comparisons
+// None
+
+// Return
+return {
+  monthly_payment: monthly_payment,
+  total_payment: total_payment,
+  total_interest: total_interest,
+  interest_proportion: interest_proportion
+}; // Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const monthly_repayments = 12; // [per year]
+
+// Calculations
+const monthly_interest_rate = interest_rate / monthly_repayments; // [decimal]
+const monthly_payment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, mortgage_term * monthly_repayments) / (Math.pow(1 + monthly_interest_rate, mortgage_term * monthly_repayments) - 1); // [pounds]
+const total_payment = monthly_payment * mortgage_term * monthly_repayments; // [pounds]
+const total_interest = total_payment - mortgage_amount; // [pounds]
+const principal_proportion = mortgage_amount / total_payment; // [decimal]
+
+// Comparisons
+// None
+
+// Return
+return {
+  monthly_payment: monthly_payment,
+  total_payment: total_payment,
+  total_interest: total_interest,
+  principal_proportion: principal_proportion
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const monthly_repayments = 2300; // [pounds]
+
+// Calculations
+const monthly_interest_rate = interest_rate / 12; // [decimal]
+const number_of_payments = mortgage_term * 12; // [months]
+const remaining_payments = number_of_payments - 10 * 12; // [months]
+const ending_balance = mortgage_amount * Math.pow(1 + monthly_interest_rate, remaining_payments) - monthly_repayments * (Math.pow(1 + monthly_interest_rate, remaining_payments) - 1) / monthly_interest_rate; // [pounds]
+const rounded_ending_balance = Math.round(ending_balance / 1000) * 1000; // [pounds]
+
+// Return
+return {
+  mortgage_amount: mortgage_amount,
+  mortgage_term: mortgage_term,
+  interest_rate: interest_rate,
+  monthly_repayments: monthly_repayments,
+  monthly_interest_rate: monthly_interest_rate,
+  number_of_payments: number_of_payments,
+  remaining_payments: remaining_payments,
+  ending_balance: ending_balance,
+  rounded_ending_balance: rounded_ending_balance
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const repayments_per_year = 12; // [months]
+
+// Calculations
+const monthly_interest_rate = interest_rate / repayments_per_year; // [decimal]
+const total_repayments = mortgage_term * repayments_per_year; // [months]
+const monthly_repayment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_repayments) / (Math.pow(1 + monthly_interest_rate, total_repayments) - 1); // [pounds]
+const interest_paid_in_first_year = monthly_repayment * repayments_per_year - (mortgage_amount - monthly_repayment * (Math.pow(1 + monthly_interest_rate, repayments_per_year) - 1) / monthly_interest_rate); // [pounds]
+const interest_paid_in_first_year_rounded = Math.round(interest_paid_in_first_year / 100) * 100; // [pounds]
+
+// Return
+return {
+  mortgage_amount: mortgage_amount,
+  mortgage_term: mortgage_term,
+  interest_rate: interest_rate,
+  repayments_per_year: repayments_per_year,
+  monthly_interest_rate: monthly_interest_rate,
+  total_repayments: total_repayments,
+  monthly_repayment: monthly_repayment,
+  interest_paid_in_first_year: interest_paid_in_first_year,
+  interest_paid_in_first_year_rounded: interest_paid_in_first_year_rounded
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const repayments_per_year = 12; // [months]
+
+// Calculations
+const monthly_interest_rate = interest_rate / repayments_per_year; // [decimal]
+const total_repayments = mortgage_term * repayments_per_year; // [months]
+const monthly_repayment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_repayments) / (Math.pow(1 + monthly_interest_rate, total_repayments) - 1); // [pounds]
+const total_amount_paid = monthly_repayment * total_repayments; // [pounds]
+const rounded_total_amount_paid = Math.round(total_amount_paid / 100) * 100; // [pounds]
+
+// Return
+return {
+  monthly_repayment: monthly_repayment,
+  total_amount_paid: total_amount_paid,
+  rounded_total_amount_paid: rounded_total_amount_paid
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const repayments_per_year = 12; // [months]
+
+// Calculations
+const monthly_interest_rate = interest_rate / repayments_per_year; // [decimal]
+const total_repayments = mortgage_term * repayments_per_year; // [months]
+const monthly_repayment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_repayments) / (Math.pow(1 + monthly_interest_rate, total_repayments) - 1); // [pounds]
+const total_amount_paid = monthly_repayment * total_repayments; // [pounds]
+const rounded_total_amount_paid = Math.round(total_amount_paid / 10) * 10; // [pounds]
+
+// Return
+return {
+  monthly_repayment: monthly_repayment,
+  total_amount_paid: total_amount_paid,
+  rounded_total_amount_paid: rounded_total_amount_paid
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const initial_shares = 100; // [shares]
+const initial_price = 50; // [dollars/share]
+const final_price = 60; // [dollars/share]
+const dividends = 200; // [dollars]
+
+// Calculations
+const initial_investment = initial_shares * initial_price; // [dollars]
+const final_value = initial_shares * final_price + dividends; // [dollars]
+const profit = final_value - initial_investment; // [dollars]
+const rate_of_return = profit / initial_investment * 100; // [percent]
+
+// Return
+return {
+  initial_investment: initial_investment,
+  final_value: final_value,
+  profit: profit,
+  rate_of_return: rate_of_return
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const initial_shares = 121; // [shares]
+const initial_price = 53; // [dollars/share]
+const final_price = 68.4; // [dollars/share]
+const dividends = 200; // [dollars]
+
+// Calculations
+const initial_investment = initial_shares * initial_price; // [dollars]
+const final_value = initial_shares * final_price + dividends; // [dollars]
+const profit = final_value - initial_investment; // [dollars]
+const rate_of_return = profit / initial_investment; // [fraction]
+const rate_of_return_percent = Math.round(rate_of_return * 100); // [percent]
+
+// Return
+return {
+  initial_investment: initial_investment,
+  final_value: final_value,
+  profit: profit,
+  rate_of_return: rate_of_return,
+  rate_of_return_percent: rate_of_return_percent
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const initial_shares = 121; // [shares]
+const initial_price = 53; // [dollars/share]
+const final_price = 68.4; // [dollars/share]
+const dividends = 200; // [dollars]
+
+// Calculations
+const initial_investment = initial_shares * initial_price; // [dollars]
+const final_value = initial_shares * final_price + dividends; // [dollars]
+const profit = final_value - initial_investment; // [dollars]
+const rate_of_return = profit / initial_investment * 100; // [percent]
+const rounded_rate_of_return = Math.round(rate_of_return * 10) / 10; // [percent]
+
+// Return
+return {
+  initial_investment: initial_investment,
+  final_value: final_value,
+  profit: profit,
+  rate_of_return: rate_of_return,
+  rounded_rate_of_return: rounded_rate_of_return
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const cost_of_equity = 0.085; // Cost of equity as a decimal
+const equity = 1983800; // Equity in dollars
+const cost_of_debt = 0.042; // Cost of debt as a decimal
+const debt = 100422; // Debt in dollars
+const tax_rate = 0.3; // Corporate tax rate as a decimal
+
+// Calculations
+const total_value = equity + debt; // Total value of the firm in dollars
+const equity_weight = equity / total_value; // Weight of equity in the capital structure as a decimal
+const debt_weight = debt / total_value; // Weight of debt in the capital structure as a decimal
+const after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate); // After-tax cost of debt as a decimal
+const wacc = equity_weight * cost_of_equity + debt_weight * after_tax_cost_of_debt; // Weighted average cost of capital as a decimal
+const wacc_percentage = wacc * 100; // Weighted average cost of capital as a percentage
+const wacc_rounded = Math.round(wacc_percentage * 10) / 10; // Weighted average cost of capital rounded to one decimal place
+
+// Return
+return {
+  total_value: total_value,
+  equity_weight: equity_weight,
+  debt_weight: debt_weight,
+  after_tax_cost_of_debt: after_tax_cost_of_debt,
+  wacc: wacc,
+  wacc_percentage: wacc_percentage,
+  wacc_rounded: wacc_rounded
+}; //Done
+
+-----------------------------------------
+----------completion choice--------------
+
+// Definitions
+const cost_of_equity = 0.042; // cost of equity as a decimal
+const equity = 1934143; // equity in dollars
+const cost_of_debt = 0.042; // cost of debt as a decimal
+const debt = 50042; // debt in dollars
+const tax_rate = 0.22; // corporate tax rate as a decimal
+
+// Calculations
+const total_value = equity + debt; // total value of the firm in dollars
+const equity_weight = equity / total_value; // weight of equity in the capital structure
+const debt_weight = debt / total_value; // weight of debt in the capital structure
+const after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate); // cost of debt after tax deduction
+const wacc = equity_weight * cost_of_equity + debt_weight * after_tax_cost_of_debt; // weighted average cost of capital as a decimal
+
+// Comparisons
+// none
+
+// Return
+return {
+  total_value: total_value,
+  equity_weight: equity_weight,
+  debt_weight: debt_weight,
+  after_tax_cost_of_debt: after_tax_cost_of_debt,
+  wacc: wacc
+}; //Done
+
+-----------------------------------------
+---------------- [fin-0001] calculations, question: A mortgage of £200,000 is taken out over 30 years at an interest rate of 3% with monthly repayments. What is the monthly repayment rounded to the nearest £100? ----------------
+
+// Definitions
+const mortgage_amount = 200000; // [pounds]
+const mortgage_term = 30; // [years]
+const interest_rate = 0.03; // [decimal]
+const payments_per_year = 12; // [payments]
+
+// Calculations
+const monthly_interest_rate = interest_rate / payments_per_year; // [decimal]
+const total_payments = mortgage_term * payments_per_year; // [payments]
+const monthly_payment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_payments) / (Math.pow(1 + monthly_interest_rate, total_payments) - 1); // [pounds]
+const rounded_monthly_payment = Math.round(monthly_payment / 100) * 100; // [pounds]
+
+// Return
+return {
+  mortgage_amount,
+  mortgage_term,
+  interest_rate,
+  payments_per_year,
+  monthly_interest_rate,
+  total_payments,
+  monthly_payment,
+  rounded_monthly_payment
+}; //Done
+
+[fin-0001]: Evaluating calculations...
+---------------- [fin-0001] numeric calculation results ----------------
+{
+  "mortgage_amount": 200000,
+  "mortgage_term": 30,
+  "interest_rate": 0.03,
+  "payments_per_year": 12,
+  "monthly_interest_rate": 0.0025,
+  "total_payments": 360,
+  "monthly_payment": 843.2080674589121,
+  "rounded_monthly_payment": 800
+}
+[fin-0001]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £200,000 is taken out over 30 years at an interest rate of 3% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+
+### Calculations
+
+
+// Definitions
+const mortgage_amount = 200000; // [pounds]
+const mortgage_term = 30; // [years]
+const interest_rate = 0.03; // [decimal]
+const payments_per_year = 12; // [payments]
+
+// Calculations
+const monthly_interest_rate = interest_rate / payments_per_year; // [decimal]
+const total_payments = mortgage_term * payments_per_year; // [payments]
+const monthly_payment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_payments) / (Math.pow(1 + monthly_interest_rate, total_payments) - 1); // [pounds]
+const rounded_monthly_payment = Math.round(monthly_payment / 100) * 100; // [pounds]
+
+// Return
+return {
+  mortgage_amount,
+  mortgage_term,
+  interest_rate,
+  payments_per_year,
+  monthly_interest_rate,
+  total_payments,
+  monthly_payment,
+  rounded_monthly_payment
+}; //Done
+
+
+### Calculation results
+
+{
+  "mortgage_amount": 200000,
+  "mortgage_term": 30,
+  "interest_rate": 0.03,
+  "payments_per_year": 12,
+  "monthly_interest_rate": 0.0025,
+  "total_payments": 360,
+  "monthly_payment": 843.2080674589121,
+  "rounded_monthly_payment": 800
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 0
+We're in!
+---------------- [fin-0002] calculations, question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the monthly repayment rounded to the nearest £100? ----------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const payments_per_year = 12; // [payments]
+
+// Calculations
+const monthly_interest_rate = interest_rate / payments_per_year; // [decimal]
+const total_payments = mortgage_term * payments_per_year; // [payments]
+const monthly_payment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_payments) / (Math.pow(1 + monthly_interest_rate, total_payments) - 1); // [pounds]
+const rounded_monthly_payment = Math.round(monthly_payment / 100) * 100; // [pounds]
+
+// Return
+return {
+  mortgage_amount,
+  mortgage_term,
+  interest_rate,
+  payments_per_year,
+  monthly_interest_rate,
+  total_payments,
+  monthly_payment,
+  rounded_monthly_payment
+}; //Done
+
+[fin-0002]: Evaluating calculations...
+---------------- [fin-0002] numeric calculation results ----------------
+{
+  "mortgage_amount": 300000,
+  "mortgage_term": 15,
+  "interest_rate": 0.045,
+  "payments_per_year": 12,
+  "monthly_interest_rate": 0.00375,
+  "total_payments": 180,
+  "monthly_payment": 2294.9798664403893,
+  "rounded_monthly_payment": 2300
+}
+[fin-0002]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+
+### Calculations
+
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const payments_per_year = 12; // [payments]
+
+// Calculations
+const monthly_interest_rate = interest_rate / payments_per_year; // [decimal]
+const total_payments = mortgage_term * payments_per_year; // [payments]
+const monthly_payment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_payments) / (Math.pow(1 + monthly_interest_rate, total_payments) - 1); // [pounds]
+const rounded_monthly_payment = Math.round(monthly_payment / 100) * 100; // [pounds]
+
+// Return
+return {
+  mortgage_amount,
+  mortgage_term,
+  interest_rate,
+  payments_per_year,
+  monthly_interest_rate,
+  total_payments,
+  monthly_payment,
+  rounded_monthly_payment
+}; //Done
+
+
+### Calculation results
+
+{
+  "mortgage_amount": 300000,
+  "mortgage_term": 15,
+  "interest_rate": 0.045,
+  "payments_per_year": 12,
+  "monthly_interest_rate": 0.00375,
+  "total_payments": 180,
+  "monthly_payment": 2294.9798664403893,
+  "rounded_monthly_payment": 2300
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 1
+We're in!
+---------------- [fin-0003] calculations, question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £1000? ----------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const repayments_per_year = 12; // [months]
+
+// Calculations
+const monthly_interest_rate = interest_rate / repayments_per_year; // [decimal]
+const total_repayments = mortgage_term * repayments_per_year; // [months]
+const monthly_repayment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_repayments) / (Math.pow(1 + monthly_interest_rate, total_repayments) - 1); // [pounds]
+const total_amount_paid = monthly_repayment * total_repayments; // [pounds]
+const rounded_total_amount_paid = Math.round(total_amount_paid / 1000) * 1000; // [pounds]
+
+// Return
+return {
+  monthly_repayment: monthly_repayment,
+  total_amount_paid: total_amount_paid,
+  rounded_total_amount_paid: rounded_total_amount_paid
+}; //Done
+
+[fin-0003]: Evaluating calculations...
+---------------- [fin-0003] numeric calculation results ----------------
+{
+  "monthly_repayment": 2294.9798664403893,
+  "total_amount_paid": 413096.37595927005,
+  "rounded_total_amount_paid": 413000
+}
+[fin-0003]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £1000?
+
+### Calculations
+
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const repayments_per_year = 12; // [months]
+
+// Calculations
+const monthly_interest_rate = interest_rate / repayments_per_year; // [decimal]
+const total_repayments = mortgage_term * repayments_per_year; // [months]
+const monthly_repayment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_repayments) / (Math.pow(1 + monthly_interest_rate, total_repayments) - 1); // [pounds]
+const total_amount_paid = monthly_repayment * total_repayments; // [pounds]
+const rounded_total_amount_paid = Math.round(total_amount_paid / 1000) * 1000; // [pounds]
+
+// Return
+return {
+  monthly_repayment: monthly_repayment,
+  total_amount_paid: total_amount_paid,
+  rounded_total_amount_paid: rounded_total_amount_paid
+}; //Done
+
+
+### Calculation results
+
+{
+  "monthly_repayment": 2294.9798664403893,
+  "total_amount_paid": 413096.37595927005,
+  "rounded_total_amount_paid": 413000
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 2
+We're in!
+---------------- [fin-0004] calculations, question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is interest? Give answer as a whole number percentage e.g. "76%" without quotes. ----------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const monthly_repayments = 12; // [per year]
+
+// Calculations
+const monthly_interest_rate = interest_rate / monthly_repayments; // [decimal]
+const monthly_payment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, mortgage_term * monthly_repayments) / (Math.pow(1 + monthly_interest_rate, mortgage_term * monthly_repayments) - 1); // [pounds]
+const total_payment = monthly_payment * mortgage_term * monthly_repayments; // [pounds]
+const total_interest = total_payment - mortgage_amount; // [pounds]
+const interest_proportion = total_interest / total_payment; // [decimal]
+
+// Comparisons
+// None
+
+// Return
+return {
+  monthly_payment: monthly_payment,
+  total_payment: total_payment,
+  total_interest: total_interest,
+  interest_proportion: interest_proportion
+}; // Done
+
+[fin-0004]: Evaluating calculations...
+---------------- [fin-0004] numeric calculation results ----------------
+{
+  "monthly_payment": 2294.9798664403893,
+  "total_payment": 413096.3759592701,
+  "total_interest": 113096.37595927011,
+  "interest_proportion": 0.2737772165070289
+}
+[fin-0004]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is interest? Give answer as a whole number percentage e.g. "76%" without quotes.
+
+### Calculations
+
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const monthly_repayments = 12; // [per year]
+
+// Calculations
+const monthly_interest_rate = interest_rate / monthly_repayments; // [decimal]
+const monthly_payment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, mortgage_term * monthly_repayments) / (Math.pow(1 + monthly_interest_rate, mortgage_term * monthly_repayments) - 1); // [pounds]
+const total_payment = monthly_payment * mortgage_term * monthly_repayments; // [pounds]
+const total_interest = total_payment - mortgage_amount; // [pounds]
+const interest_proportion = total_interest / total_payment; // [decimal]
+
+// Comparisons
+// None
+
+// Return
+return {
+  monthly_payment: monthly_payment,
+  total_payment: total_payment,
+  total_interest: total_interest,
+  interest_proportion: interest_proportion
+}; // Done
+
+
+### Calculation results
+
+{
+  "monthly_payment": 2294.9798664403893,
+  "total_payment": 413096.3759592701,
+  "total_interest": 113096.37595927011,
+  "interest_proportion": 0.2737772165070289
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 3
+We're in!
+---------------- [fin-0005] calculations, question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is principal? Give answer as a whole number percentage e.g. "76%" without quotes. ----------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const monthly_repayments = 12; // [per year]
+
+// Calculations
+const monthly_interest_rate = interest_rate / monthly_repayments; // [decimal]
+const monthly_payment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, mortgage_term * monthly_repayments) / (Math.pow(1 + monthly_interest_rate, mortgage_term * monthly_repayments) - 1); // [pounds]
+const total_payment = monthly_payment * mortgage_term * monthly_repayments; // [pounds]
+const total_interest = total_payment - mortgage_amount; // [pounds]
+const principal_proportion = mortgage_amount / total_payment; // [decimal]
+
+// Comparisons
+// None
+
+// Return
+return {
+  monthly_payment: monthly_payment,
+  total_payment: total_payment,
+  total_interest: total_interest,
+  principal_proportion: principal_proportion
+}; //Done
+
+[fin-0005]: Evaluating calculations...
+---------------- [fin-0005] numeric calculation results ----------------
+{
+  "monthly_payment": 2294.9798664403893,
+  "total_payment": 413096.3759592701,
+  "total_interest": 113096.37595927011,
+  "principal_proportion": 0.7262227834929711
+}
+[fin-0005]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is principal? Give answer as a whole number percentage e.g. "76%" without quotes.
+
+### Calculations
+
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const monthly_repayments = 12; // [per year]
+
+// Calculations
+const monthly_interest_rate = interest_rate / monthly_repayments; // [decimal]
+const monthly_payment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, mortgage_term * monthly_repayments) / (Math.pow(1 + monthly_interest_rate, mortgage_term * monthly_repayments) - 1); // [pounds]
+const total_payment = monthly_payment * mortgage_term * monthly_repayments; // [pounds]
+const total_interest = total_payment - mortgage_amount; // [pounds]
+const principal_proportion = mortgage_amount / total_payment; // [decimal]
+
+// Comparisons
+// None
+
+// Return
+return {
+  monthly_payment: monthly_payment,
+  total_payment: total_payment,
+  total_interest: total_interest,
+  principal_proportion: principal_proportion
+}; //Done
+
+
+### Calculation results
+
+{
+  "monthly_payment": 2294.9798664403893,
+  "total_payment": 413096.3759592701,
+  "total_interest": 113096.37595927011,
+  "principal_proportion": 0.7262227834929711
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 4
+We're in!
+---------------- [fin-0006] calculations, question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the ending balance remaining on the mortgage after 10 years to the nearest £1000? ----------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const monthly_repayments = 2300; // [pounds]
+
+// Calculations
+const monthly_interest_rate = interest_rate / 12; // [decimal]
+const number_of_payments = mortgage_term * 12; // [months]
+const remaining_payments = number_of_payments - 10 * 12; // [months]
+const ending_balance = mortgage_amount * Math.pow(1 + monthly_interest_rate, remaining_payments) - monthly_repayments * (Math.pow(1 + monthly_interest_rate, remaining_payments) - 1) / monthly_interest_rate; // [pounds]
+const rounded_ending_balance = Math.round(ending_balance / 1000) * 1000; // [pounds]
+
+// Return
+return {
+  mortgage_amount: mortgage_amount,
+  mortgage_term: mortgage_term,
+  interest_rate: interest_rate,
+  monthly_repayments: monthly_repayments,
+  monthly_interest_rate: monthly_interest_rate,
+  number_of_payments: number_of_payments,
+  remaining_payments: remaining_payments,
+  ending_balance: ending_balance,
+  rounded_ending_balance: rounded_ending_balance
+}; //Done
+
+[fin-0006]: Evaluating calculations...
+---------------- [fin-0006] numeric calculation results ----------------
+{
+  "mortgage_amount": 300000,
+  "mortgage_term": 15,
+  "interest_rate": 0.045,
+  "monthly_repayments": 2300,
+  "monthly_interest_rate": 0.00375,
+  "number_of_payments": 180,
+  "remaining_payments": 60,
+  "ending_balance": 221103.9762357606,
+  "rounded_ending_balance": 221000
+}
+[fin-0006]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the ending balance remaining on the mortgage after 10 years to the nearest £1000?
+
+### Calculations
+
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const monthly_repayments = 2300; // [pounds]
+
+// Calculations
+const monthly_interest_rate = interest_rate / 12; // [decimal]
+const number_of_payments = mortgage_term * 12; // [months]
+const remaining_payments = number_of_payments - 10 * 12; // [months]
+const ending_balance = mortgage_amount * Math.pow(1 + monthly_interest_rate, remaining_payments) - monthly_repayments * (Math.pow(1 + monthly_interest_rate, remaining_payments) - 1) / monthly_interest_rate; // [pounds]
+const rounded_ending_balance = Math.round(ending_balance / 1000) * 1000; // [pounds]
+
+// Return
+return {
+  mortgage_amount: mortgage_amount,
+  mortgage_term: mortgage_term,
+  interest_rate: interest_rate,
+  monthly_repayments: monthly_repayments,
+  monthly_interest_rate: monthly_interest_rate,
+  number_of_payments: number_of_payments,
+  remaining_payments: remaining_payments,
+  ending_balance: ending_balance,
+  rounded_ending_balance: rounded_ending_balance
+}; //Done
+
+
+### Calculation results
+
+{
+  "mortgage_amount": 300000,
+  "mortgage_term": 15,
+  "interest_rate": 0.045,
+  "monthly_repayments": 2300,
+  "monthly_interest_rate": 0.00375,
+  "number_of_payments": 180,
+  "remaining_payments": 60,
+  "ending_balance": 221103.9762357606,
+  "rounded_ending_balance": 221000
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 5
+We're in!
+---------------- [fin-0007] calculations, question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the first 12 repayments, how much in total goes to paying interest (rather than principal), to the nearest £100? ----------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const repayments_per_year = 12; // [months]
+
+// Calculations
+const monthly_interest_rate = interest_rate / repayments_per_year; // [decimal]
+const total_repayments = mortgage_term * repayments_per_year; // [months]
+const monthly_repayment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_repayments) / (Math.pow(1 + monthly_interest_rate, total_repayments) - 1); // [pounds]
+const interest_paid_in_first_year = monthly_repayment * repayments_per_year - (mortgage_amount - monthly_repayment * (Math.pow(1 + monthly_interest_rate, repayments_per_year) - 1) / monthly_interest_rate); // [pounds]
+const interest_paid_in_first_year_rounded = Math.round(interest_paid_in_first_year / 100) * 100; // [pounds]
+
+// Return
+return {
+  mortgage_amount: mortgage_amount,
+  mortgage_term: mortgage_term,
+  interest_rate: interest_rate,
+  repayments_per_year: repayments_per_year,
+  monthly_interest_rate: monthly_interest_rate,
+  total_repayments: total_repayments,
+  monthly_repayment: monthly_repayment,
+  interest_paid_in_first_year: interest_paid_in_first_year,
+  interest_paid_in_first_year_rounded: interest_paid_in_first_year_rounded
+}; //Done
+
+[fin-0007]: Evaluating calculations...
+---------------- [fin-0007] numeric calculation results ----------------
+{
+  "mortgage_amount": 300000,
+  "mortgage_term": 15,
+  "interest_rate": 0.045,
+  "repayments_per_year": 12,
+  "monthly_interest_rate": 0.00375,
+  "total_repayments": 180,
+  "monthly_repayment": 2294.9798664403893,
+  "interest_paid_in_first_year": -244345.3153264628,
+  "interest_paid_in_first_year_rounded": -244300
+}
+[fin-0007]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the first 12 repayments, how much in total goes to paying interest (rather than principal), to the nearest £100?
+
+### Calculations
+
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const repayments_per_year = 12; // [months]
+
+// Calculations
+const monthly_interest_rate = interest_rate / repayments_per_year; // [decimal]
+const total_repayments = mortgage_term * repayments_per_year; // [months]
+const monthly_repayment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_repayments) / (Math.pow(1 + monthly_interest_rate, total_repayments) - 1); // [pounds]
+const interest_paid_in_first_year = monthly_repayment * repayments_per_year - (mortgage_amount - monthly_repayment * (Math.pow(1 + monthly_interest_rate, repayments_per_year) - 1) / monthly_interest_rate); // [pounds]
+const interest_paid_in_first_year_rounded = Math.round(interest_paid_in_first_year / 100) * 100; // [pounds]
+
+// Return
+return {
+  mortgage_amount: mortgage_amount,
+  mortgage_term: mortgage_term,
+  interest_rate: interest_rate,
+  repayments_per_year: repayments_per_year,
+  monthly_interest_rate: monthly_interest_rate,
+  total_repayments: total_repayments,
+  monthly_repayment: monthly_repayment,
+  interest_paid_in_first_year: interest_paid_in_first_year,
+  interest_paid_in_first_year_rounded: interest_paid_in_first_year_rounded
+}; //Done
+
+
+### Calculation results
+
+{
+  "mortgage_amount": 300000,
+  "mortgage_term": 15,
+  "interest_rate": 0.045,
+  "repayments_per_year": 12,
+  "monthly_interest_rate": 0.00375,
+  "total_repayments": 180,
+  "monthly_repayment": 2294.9798664403893,
+  "interest_paid_in_first_year": -244345.3153264628,
+  "interest_paid_in_first_year_rounded": -244300
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 6
+We're in!
+---------------- [fin-0008] calculations, question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £100? ----------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const repayments_per_year = 12; // [months]
+
+// Calculations
+const monthly_interest_rate = interest_rate / repayments_per_year; // [decimal]
+const total_repayments = mortgage_term * repayments_per_year; // [months]
+const monthly_repayment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_repayments) / (Math.pow(1 + monthly_interest_rate, total_repayments) - 1); // [pounds]
+const total_amount_paid = monthly_repayment * total_repayments; // [pounds]
+const rounded_total_amount_paid = Math.round(total_amount_paid / 100) * 100; // [pounds]
+
+// Return
+return {
+  monthly_repayment: monthly_repayment,
+  total_amount_paid: total_amount_paid,
+  rounded_total_amount_paid: rounded_total_amount_paid
+}; //Done
+
+[fin-0008]: Evaluating calculations...
+---------------- [fin-0008] numeric calculation results ----------------
+{
+  "monthly_repayment": 2294.9798664403893,
+  "total_amount_paid": 413096.37595927005,
+  "rounded_total_amount_paid": 413100
+}
+[fin-0008]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £100?
+
+### Calculations
+
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const repayments_per_year = 12; // [months]
+
+// Calculations
+const monthly_interest_rate = interest_rate / repayments_per_year; // [decimal]
+const total_repayments = mortgage_term * repayments_per_year; // [months]
+const monthly_repayment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_repayments) / (Math.pow(1 + monthly_interest_rate, total_repayments) - 1); // [pounds]
+const total_amount_paid = monthly_repayment * total_repayments; // [pounds]
+const rounded_total_amount_paid = Math.round(total_amount_paid / 100) * 100; // [pounds]
+
+// Return
+return {
+  monthly_repayment: monthly_repayment,
+  total_amount_paid: total_amount_paid,
+  rounded_total_amount_paid: rounded_total_amount_paid
+}; //Done
+
+
+### Calculation results
+
+{
+  "monthly_repayment": 2294.9798664403893,
+  "total_amount_paid": 413096.37595927005,
+  "rounded_total_amount_paid": 413100
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 7
+We're in!
+---------------- [fin-0009] calculations, question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £10? ----------------
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const repayments_per_year = 12; // [months]
+
+// Calculations
+const monthly_interest_rate = interest_rate / repayments_per_year; // [decimal]
+const total_repayments = mortgage_term * repayments_per_year; // [months]
+const monthly_repayment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_repayments) / (Math.pow(1 + monthly_interest_rate, total_repayments) - 1); // [pounds]
+const total_amount_paid = monthly_repayment * total_repayments; // [pounds]
+const rounded_total_amount_paid = Math.round(total_amount_paid / 10) * 10; // [pounds]
+
+// Return
+return {
+  monthly_repayment: monthly_repayment,
+  total_amount_paid: total_amount_paid,
+  rounded_total_amount_paid: rounded_total_amount_paid
+}; //Done
+
+[fin-0009]: Evaluating calculations...
+---------------- [fin-0009] numeric calculation results ----------------
+{
+  "monthly_repayment": 2294.9798664403893,
+  "total_amount_paid": 413096.37595927005,
+  "rounded_total_amount_paid": 413100
+}
+[fin-0009]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £10?
+
+### Calculations
+
+
+// Definitions
+const mortgage_amount = 300000; // [pounds]
+const mortgage_term = 15; // [years]
+const interest_rate = 0.045; // [decimal]
+const repayments_per_year = 12; // [months]
+
+// Calculations
+const monthly_interest_rate = interest_rate / repayments_per_year; // [decimal]
+const total_repayments = mortgage_term * repayments_per_year; // [months]
+const monthly_repayment = mortgage_amount * monthly_interest_rate * Math.pow(1 + monthly_interest_rate, total_repayments) / (Math.pow(1 + monthly_interest_rate, total_repayments) - 1); // [pounds]
+const total_amount_paid = monthly_repayment * total_repayments; // [pounds]
+const rounded_total_amount_paid = Math.round(total_amount_paid / 10) * 10; // [pounds]
+
+// Return
+return {
+  monthly_repayment: monthly_repayment,
+  total_amount_paid: total_amount_paid,
+  rounded_total_amount_paid: rounded_total_amount_paid
+}; //Done
+
+
+### Calculation results
+
+{
+  "monthly_repayment": 2294.9798664403893,
+  "total_amount_paid": 413096.37595927005,
+  "rounded_total_amount_paid": 413100
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 8
+We're in!
+---------------- [fin-rate-0001] calculations, question: Suppose you buy 100 shares of XYZ stock for $50 per share. One year later, you sell all 100 shares for $60 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock, as a percentage? ----------------
+
+// Definitions
+const initial_shares = 100; // [shares]
+const initial_price = 50; // [dollars/share]
+const final_price = 60; // [dollars/share]
+const dividends = 200; // [dollars]
+
+// Calculations
+const initial_investment = initial_shares * initial_price; // [dollars]
+const final_value = initial_shares * final_price + dividends; // [dollars]
+const profit = final_value - initial_investment; // [dollars]
+const rate_of_return = profit / initial_investment * 100; // [percent]
+
+// Return
+return {
+  initial_investment: initial_investment,
+  final_value: final_value,
+  profit: profit,
+  rate_of_return: rate_of_return
+}; //Done
+
+[fin-rate-0001]: Evaluating calculations...
+---------------- [fin-rate-0001] numeric calculation results ----------------
+{
+  "initial_investment": 5000,
+  "final_value": 6200,
+  "profit": 1200,
+  "rate_of_return": 24
+}
+[fin-rate-0001]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Suppose you buy 100 shares of XYZ stock for $50 per share. One year later, you sell all 100 shares for $60 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock, as a percentage?
+
+### Calculations
+
+
+// Definitions
+const initial_shares = 100; // [shares]
+const initial_price = 50; // [dollars/share]
+const final_price = 60; // [dollars/share]
+const dividends = 200; // [dollars]
+
+// Calculations
+const initial_investment = initial_shares * initial_price; // [dollars]
+const final_value = initial_shares * final_price + dividends; // [dollars]
+const profit = final_value - initial_investment; // [dollars]
+const rate_of_return = profit / initial_investment * 100; // [percent]
+
+// Return
+return {
+  initial_investment: initial_investment,
+  final_value: final_value,
+  profit: profit,
+  rate_of_return: rate_of_return
+}; //Done
+
+
+### Calculation results
+
+{
+  "initial_investment": 5000,
+  "final_value": 6200,
+  "profit": 1200,
+  "rate_of_return": 24
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 9
+We're in!
+---------------- [fin-rate-0002] calculations, question: Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock? Round to nearest percent. ----------------
+
+// Definitions
+const initial_shares = 121; // [shares]
+const initial_price = 53; // [dollars/share]
+const final_price = 68.4; // [dollars/share]
+const dividends = 200; // [dollars]
+
+// Calculations
+const initial_investment = initial_shares * initial_price; // [dollars]
+const final_value = initial_shares * final_price + dividends; // [dollars]
+const profit = final_value - initial_investment; // [dollars]
+const rate_of_return = profit / initial_investment; // [fraction]
+const rate_of_return_percent = Math.round(rate_of_return * 100); // [percent]
+
+// Return
+return {
+  initial_investment: initial_investment,
+  final_value: final_value,
+  profit: profit,
+  rate_of_return: rate_of_return,
+  rate_of_return_percent: rate_of_return_percent
+}; //Done
+
+[fin-rate-0002]: Evaluating calculations...
+---------------- [fin-rate-0002] numeric calculation results ----------------
+{
+  "initial_investment": 6413,
+  "final_value": 8476.400000000001,
+  "profit": 2063.4000000000015,
+  "rate_of_return": 0.32175268984874494,
+  "rate_of_return_percent": 32
+}
+[fin-rate-0002]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock? Round to nearest percent.
+
+### Calculations
+
+
+// Definitions
+const initial_shares = 121; // [shares]
+const initial_price = 53; // [dollars/share]
+const final_price = 68.4; // [dollars/share]
+const dividends = 200; // [dollars]
+
+// Calculations
+const initial_investment = initial_shares * initial_price; // [dollars]
+const final_value = initial_shares * final_price + dividends; // [dollars]
+const profit = final_value - initial_investment; // [dollars]
+const rate_of_return = profit / initial_investment; // [fraction]
+const rate_of_return_percent = Math.round(rate_of_return * 100); // [percent]
+
+// Return
+return {
+  initial_investment: initial_investment,
+  final_value: final_value,
+  profit: profit,
+  rate_of_return: rate_of_return,
+  rate_of_return_percent: rate_of_return_percent
+}; //Done
+
+
+### Calculation results
+
+{
+  "initial_investment": 6413,
+  "final_value": 8476.400000000001,
+  "profit": 2063.4000000000015,
+  "rate_of_return": 0.32175268984874494,
+  "rate_of_return_percent": 32
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 10
+We're in!
+---------------- [fin-rate-0003] calculations, question: Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock as a percentage, rounded to one decimal place? ----------------
+
+// Definitions
+const initial_shares = 121; // [shares]
+const initial_price = 53; // [dollars/share]
+const final_price = 68.4; // [dollars/share]
+const dividends = 200; // [dollars]
+
+// Calculations
+const initial_investment = initial_shares * initial_price; // [dollars]
+const final_value = initial_shares * final_price + dividends; // [dollars]
+const profit = final_value - initial_investment; // [dollars]
+const rate_of_return = profit / initial_investment * 100; // [percent]
+const rounded_rate_of_return = Math.round(rate_of_return * 10) / 10; // [percent]
+
+// Return
+return {
+  initial_investment: initial_investment,
+  final_value: final_value,
+  profit: profit,
+  rate_of_return: rate_of_return,
+  rounded_rate_of_return: rounded_rate_of_return
+}; //Done
+
+[fin-rate-0003]: Evaluating calculations...
+---------------- [fin-rate-0003] numeric calculation results ----------------
+{
+  "initial_investment": 6413,
+  "final_value": 8476.400000000001,
+  "profit": 2063.4000000000015,
+  "rate_of_return": 32.17526898487449,
+  "rounded_rate_of_return": 32.2
+}
+[fin-rate-0003]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock as a percentage, rounded to one decimal place?
+
+### Calculations
+
+
+// Definitions
+const initial_shares = 121; // [shares]
+const initial_price = 53; // [dollars/share]
+const final_price = 68.4; // [dollars/share]
+const dividends = 200; // [dollars]
+
+// Calculations
+const initial_investment = initial_shares * initial_price; // [dollars]
+const final_value = initial_shares * final_price + dividends; // [dollars]
+const profit = final_value - initial_investment; // [dollars]
+const rate_of_return = profit / initial_investment * 100; // [percent]
+const rounded_rate_of_return = Math.round(rate_of_return * 10) / 10; // [percent]
+
+// Return
+return {
+  initial_investment: initial_investment,
+  final_value: final_value,
+  profit: profit,
+  rate_of_return: rate_of_return,
+  rounded_rate_of_return: rounded_rate_of_return
+}; //Done
+
+
+### Calculation results
+
+{
+  "initial_investment": 6413,
+  "final_value": 8476.400000000001,
+  "profit": 2063.4000000000015,
+  "rate_of_return": 32.17526898487449,
+  "rounded_rate_of_return": 32.2
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 11
+We're in!
+---------------- [fin-rate-0004] calculations, question: Suppose a firm has Cost of equity 8.5%, Equity $1,983,800, Cost of debt 4.2% and Debt $100,422 and corporate tax rate of 30%. What is the firm's WACC? Give answer as a percentage to one decimal place. ----------------
+
+// Definitions
+const cost_of_equity = 0.085; // Cost of equity as a decimal
+const equity = 1983800; // Equity in dollars
+const cost_of_debt = 0.042; // Cost of debt as a decimal
+const debt = 100422; // Debt in dollars
+const tax_rate = 0.3; // Corporate tax rate as a decimal
+
+// Calculations
+const total_value = equity + debt; // Total value of the firm in dollars
+const equity_weight = equity / total_value; // Weight of equity in the capital structure as a decimal
+const debt_weight = debt / total_value; // Weight of debt in the capital structure as a decimal
+const after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate); // After-tax cost of debt as a decimal
+const wacc = equity_weight * cost_of_equity + debt_weight * after_tax_cost_of_debt; // Weighted average cost of capital as a decimal
+const wacc_percentage = wacc * 100; // Weighted average cost of capital as a percentage
+const wacc_rounded = Math.round(wacc_percentage * 10) / 10; // Weighted average cost of capital rounded to one decimal place
+
+// Return
+return {
+  total_value: total_value,
+  equity_weight: equity_weight,
+  debt_weight: debt_weight,
+  after_tax_cost_of_debt: after_tax_cost_of_debt,
+  wacc: wacc,
+  wacc_percentage: wacc_percentage,
+  wacc_rounded: wacc_rounded
+}; //Done
+
+[fin-rate-0004]: Evaluating calculations...
+---------------- [fin-rate-0004] numeric calculation results ----------------
+{
+  "total_value": 2084222,
+  "equity_weight": 0.9518179925171119,
+  "debt_weight": 0.048182007482888096,
+  "after_tax_cost_of_debt": 0.0294,
+  "wacc": 0.08232108038395142,
+  "wacc_percentage": 8.232108038395141,
+  "wacc_rounded": 8.2
+}
+[fin-rate-0004]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Suppose a firm has Cost of equity 8.5%, Equity $1,983,800, Cost of debt 4.2% and Debt $100,422 and corporate tax rate of 30%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+
+### Calculations
+
+
+// Definitions
+const cost_of_equity = 0.085; // Cost of equity as a decimal
+const equity = 1983800; // Equity in dollars
+const cost_of_debt = 0.042; // Cost of debt as a decimal
+const debt = 100422; // Debt in dollars
+const tax_rate = 0.3; // Corporate tax rate as a decimal
+
+// Calculations
+const total_value = equity + debt; // Total value of the firm in dollars
+const equity_weight = equity / total_value; // Weight of equity in the capital structure as a decimal
+const debt_weight = debt / total_value; // Weight of debt in the capital structure as a decimal
+const after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate); // After-tax cost of debt as a decimal
+const wacc = equity_weight * cost_of_equity + debt_weight * after_tax_cost_of_debt; // Weighted average cost of capital as a decimal
+const wacc_percentage = wacc * 100; // Weighted average cost of capital as a percentage
+const wacc_rounded = Math.round(wacc_percentage * 10) / 10; // Weighted average cost of capital rounded to one decimal place
+
+// Return
+return {
+  total_value: total_value,
+  equity_weight: equity_weight,
+  debt_weight: debt_weight,
+  after_tax_cost_of_debt: after_tax_cost_of_debt,
+  wacc: wacc,
+  wacc_percentage: wacc_percentage,
+  wacc_rounded: wacc_rounded
+}; //Done
+
+
+### Calculation results
+
+{
+  "total_value": 2084222,
+  "equity_weight": 0.9518179925171119,
+  "debt_weight": 0.048182007482888096,
+  "after_tax_cost_of_debt": 0.0294,
+  "wacc": 0.08232108038395142,
+  "wacc_percentage": 8.232108038395141,
+  "wacc_rounded": 8.2
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 12
+We're in!
+---------------- [fin-rate-0005] calculations, question: Suppose a firm has Cost of equity 4.2%, Equity $1934143, Cost of debt 4.2% and Debt $50,042 and corporate tax rate of 22%. What is the firm's WACC? Give answer as a percentage to one decimal place. ----------------
+
+// Definitions
+const cost_of_equity = 0.042; // cost of equity as a decimal
+const equity = 1934143; // equity in dollars
+const cost_of_debt = 0.042; // cost of debt as a decimal
+const debt = 50042; // debt in dollars
+const tax_rate = 0.22; // corporate tax rate as a decimal
+
+// Calculations
+const total_value = equity + debt; // total value of the firm in dollars
+const equity_weight = equity / total_value; // weight of equity in the capital structure
+const debt_weight = debt / total_value; // weight of debt in the capital structure
+const after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate); // cost of debt after tax deduction
+const wacc = equity_weight * cost_of_equity + debt_weight * after_tax_cost_of_debt; // weighted average cost of capital as a decimal
+
+// Comparisons
+// none
+
+// Return
+return {
+  total_value: total_value,
+  equity_weight: equity_weight,
+  debt_weight: debt_weight,
+  after_tax_cost_of_debt: after_tax_cost_of_debt,
+  wacc: wacc
+}; //Done
+
+[fin-rate-0005]: Evaluating calculations...
+---------------- [fin-rate-0005] numeric calculation results ----------------
+{
+  "total_value": 1984185,
+  "equity_weight": 0.9747795694453895,
+  "debt_weight": 0.02522043055461058,
+  "after_tax_cost_of_debt": 0.032760000000000004,
+  "wacc": 0.041766963221675404
+}
+[fin-rate-0005]:Generating answer...
+-------------------------prompt ------------------------
+# Question
+
+Answer the question below using a format like the following, giving a unit if appropriate:
+  931
+  49 (oranges)
+  Mr.Jones
+  1.37 (dollars)
+  154 (cents)
+  185 (minutes)
+  Yes
+  No
+  true
+  false
+
+If asked to write a ratio, write ratios in form 'N:M' and reduce ratios to simplest form.
+Do not write a sentence, just give the answer in one of the above formats. Do not give multiple answers.
+
+### Text of question
+
+Suppose a firm has Cost of equity 4.2%, Equity $1934143, Cost of debt 4.2% and Debt $50,042 and corporate tax rate of 22%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+
+### Calculations
+
+
+// Definitions
+const cost_of_equity = 0.042; // cost of equity as a decimal
+const equity = 1934143; // equity in dollars
+const cost_of_debt = 0.042; // cost of debt as a decimal
+const debt = 50042; // debt in dollars
+const tax_rate = 0.22; // corporate tax rate as a decimal
+
+// Calculations
+const total_value = equity + debt; // total value of the firm in dollars
+const equity_weight = equity / total_value; // weight of equity in the capital structure
+const debt_weight = debt / total_value; // weight of debt in the capital structure
+const after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate); // cost of debt after tax deduction
+const wacc = equity_weight * cost_of_equity + debt_weight * after_tax_cost_of_debt; // weighted average cost of capital as a decimal
+
+// Comparisons
+// none
+
+// Return
+return {
+  total_value: total_value,
+  equity_weight: equity_weight,
+  debt_weight: debt_weight,
+  after_tax_cost_of_debt: after_tax_cost_of_debt,
+  wacc: wacc
+}; //Done
+
+
+### Calculation results
+
+{
+  "total_value": 1984185,
+  "equity_weight": 0.9747795694453895,
+  "debt_weight": 0.02522043055461058,
+  "after_tax_cost_of_debt": 0.032760000000000004,
+  "wacc": 0.041766963221675404
+}
+
+# Answer
+
+Write a single one-line answer to the above question. Use the format
+
+ANSWER: <answer>
+
+Write your answer below.
+
+ANSWER: 
+--------------------------------------------------------
+Waiting for parallelism to drop to 30, currently 13
+We're in!
+----------completion choice--------------
+800 (pounds)
+-----------------------------------------
+----------completion choice--------------
+2300 (pounds)
+-----------------------------------------
+----------completion choice--------------
+413000 (pounds)
+-----------------------------------------
+----------completion choice--------------
+27%
+-----------------------------------------
+----------completion choice--------------
+73%
+-----------------------------------------
+----------completion choice--------------
+221000 (pounds)
+-----------------------------------------
+----------completion choice--------------
+244300 (pounds)
+-----------------------------------------
+----------completion choice--------------
+413100 (pounds)
+-----------------------------------------
+----------completion choice--------------
+413100 (pounds)
+-----------------------------------------
+----------completion choice--------------
+24 (percent)
+-----------------------------------------
+----------completion choice--------------
+32 (percent)
+-----------------------------------------
+----------completion choice--------------
+32.2 (percent)
+-----------------------------------------
+----------completion choice--------------
+8.2%
+-----------------------------------------
+----------completion choice--------------
+4.2%
+-----------------------------------------
+[fin-0001] actual expected: 800 (pounds)
+[fin-0001]: result_numbers: 800
+[fin-0001]: expected_numbers: 800
+CORRECT: [fin-0001, grade 8, type financial], expected: "800 (pounds)", actual: "800 (pounds)", question: A mortgage of £200,000 is taken out over 30 years at an interest rate of 3% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+yes: 1, count: 1, accuracy: 1
+    * writing request cache to .gpte/cache-eval-model-next-model2-v2
+[fin-0002] actual expected: 2300 (pounds)
+[fin-0002]: result_numbers: 2300
+[fin-0002]: expected_numbers: 2300
+CORRECT: [fin-0002, grade 8, type financial], expected: "2300", actual: "2300 (pounds)", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the monthly repayment rounded to the nearest £100?
+yes: 2, count: 2, accuracy: 1
+[fin-0003] actual expected: 413000 (pounds)
+[fin-0003]: result_numbers: 413000
+[fin-0003]: expected_numbers: 413000
+CORRECT: [fin-0003, grade 8, type financial], expected: "413000", actual: "413000 (pounds)", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £1000?
+yes: 3, count: 3, accuracy: 1
+[fin-0004] actual expected: 27%
+[fin-0004]: result_numbers: 27
+[fin-0004]: expected_numbers: 27
+CORRECT: [fin-0004, grade 8, type financial], expected: "27", actual: "27%", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is interest? Give answer as a whole number percentage e.g. "76%" without quotes.
+yes: 4, count: 4, accuracy: 1
+[fin-0005] actual expected: 73%
+[fin-0005]: result_numbers: 73
+[fin-0005]: expected_numbers: 73
+CORRECT: [fin-0005, grade 8, type financial], expected: "73", actual: "73%", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the total amount paid back, what proportion is principal? Give answer as a whole number percentage e.g. "76%" without quotes.
+yes: 5, count: 5, accuracy: 1
+[fin-0006] actual expected: 221000 (pounds)
+[fin-0006]: result_numbers: 221000
+[fin-0006]: expected_numbers: 123000
+FAIL: [fin-0006, grade 8, type financial], expected: "123000", actual: "221000 (pounds)", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the ending balance remaining on the mortgage after 10 years to the nearest £1000?
+yes: 5, count: 6, accuracy: 0.8333333333333334
+[fin-0007] actual expected: 244300 (pounds)
+[fin-0007]: result_numbers: 244300
+[fin-0007]: expected_numbers: 13200
+FAIL: [fin-0007, grade 8, type financial], expected: "13200", actual: "244300 (pounds)", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. Of the first 12 repayments, how much in total goes to paying interest (rather than principal), to the nearest £100?
+yes: 5, count: 7, accuracy: 0.7142857142857143
+[fin-0008] actual expected: 413100 (pounds)
+[fin-0008]: result_numbers: 413100
+[fin-0008]: expected_numbers: 413100
+CORRECT: [fin-0008, grade 8, type financial], expected: "413100", actual: "413100 (pounds)", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £100?
+yes: 6, count: 8, accuracy: 0.75
+[fin-0009] actual expected: 413100 (pounds)
+[fin-0009]: result_numbers: 413100
+[fin-0009]: expected_numbers: 413100
+CORRECT: [fin-0009, grade 8, type financial], expected: "413100", actual: "413100 (pounds)", question: A mortgage of £300,000 is taken out over 15 years at an interest rate of 4.5% with monthly repayments. What is the total amount paid back to the nearest £10?
+yes: 7, count: 9, accuracy: 0.7777777777777778
+[fin-rate-0001] actual expected: 24 (percent)
+[fin-rate-0001]: result_numbers: 24
+[fin-rate-0001]: expected_numbers: 24
+CORRECT: [fin-rate-0001, grade 8, type financial], expected: "24 (percent)", actual: "24 (percent)", question: Suppose you buy 100 shares of XYZ stock for $50 per share. One year later, you sell all 100 shares for $60 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock, as a percentage?
+yes: 8, count: 10, accuracy: 0.8
+[fin-rate-0002] actual expected: 32 (percent)
+[fin-rate-0002]: result_numbers: 32
+[fin-rate-0002]: expected_numbers: 32
+CORRECT: [fin-rate-0002, grade 8, type financial], expected: "32 (percent)", actual: "32 (percent)", question: Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock? Round to nearest percent.
+yes: 9, count: 11, accuracy: 0.8181818181818182
+[fin-rate-0003] actual expected: 32.2 (percent)
+[fin-rate-0003]: result_numbers: 32.2
+[fin-rate-0003]: expected_numbers: 32.2
+CORRECT: [fin-rate-0003, grade 8, type financial], expected: "32.2 (percent)", actual: "32.2 (percent)", question: Suppose you buy 121 shares of XYZ stock for $53 per share. One year later, you sell all shares for $68.4 per share. During the year, you also received $200 in dividends from the stock. What is the rate of return on this stock as a percentage, rounded to one decimal place?
+yes: 10, count: 12, accuracy: 0.8333333333333334
+[fin-rate-0004] actual expected: 8.2%
+[fin-rate-0004]: result_numbers: 8.2
+[fin-rate-0004]: expected_numbers: 8.2
+CORRECT: [fin-rate-0004, grade 8, type financial], expected: "8.2 (percent)", actual: "8.2%", question: Suppose a firm has Cost of equity 8.5%, Equity $1,983,800, Cost of debt 4.2% and Debt $100,422 and corporate tax rate of 30%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+yes: 11, count: 13, accuracy: 0.8461538461538461
+[fin-rate-0005] actual expected: 4.2%
+[fin-rate-0005]: result_numbers: 4.2
+[fin-rate-0005]: expected_numbers: 4.2
+CORRECT: [fin-rate-0005, grade 8, type financial], expected: "4.2 (percent)", actual: "4.2%", question: Suppose a firm has Cost of equity 4.2%, Equity $1934143, Cost of debt 4.2% and Debt $50,042 and corporate tax rate of 22%. What is the firm's WACC? Give answer as a percentage to one decimal place.
+yes: 12, count: 14, accuracy: 0.8571428571428571

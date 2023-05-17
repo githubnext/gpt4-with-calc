@@ -1,0 +1,31 @@
+This is an extract from the Microsoft annual report for 2022:
+
+Microsoft repurchased the following shares of common stock under the share repurchase programs:
+
+(In millions)	Shares		Amount		Shares		Amount		Shares		Amount
+Year Ended June 30,			2022				2021				2020
+First Quarter	21		$6,200		25		$5,270		29		$4,000
+Second Quarter	20		6,233		27		5,750		32		4,600
+Third Quarter	26		7,800		25		5,750		37		6,000
+Fourth Quarter	28		7,800		24		6,200		28		5,088
+
+This is an extract from the Google annual report for 2022:
+
+Share Repurchases
+In April 2022, the Board of Directors of Alphabet authorized the company to repurchase up to $70.0 billion of its
+Class A and Class C shares. As of December 31, 2022, $28.1 billion remains available for Class A and Class C share
+repurchases.
+The following table presents Class A and Class C shares repurchased and subsequently retired (in millions):
+Year Ended December 31, 2021 Year Ended December 31, 2022
+Shares Amount Shares Amount
+Class A share repurchases 24 $ 3,399 61 $ 6,719
+Class C share repurchases 383 46,875 469 52,577
+Total share repurchases 407 $ 50,274 530 $ 59,296
+Class A and Class C shares are repurchased in a manner deemed in the best interest of the company and its
+stockholders, taking into account the economic cost and prevailing market conditions, including the relative trading
+prices and volumes of the Class A and Class C shares. Repurchases are executed from time to time, subject to
+general business and market conditions and other investment opportunities, through open market purchases or
+privately negotiated transactions, including through Rule 10b5-1 plans. The repurchase program does not have an
+expiration date.
+
+Which company repurchased more a greater amount of shares, in total value, in 2021 and 2022 combined. What are the respective total amounts for the two companies?
