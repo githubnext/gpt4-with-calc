@@ -8,7 +8,7 @@ GPT-4 has trouble with calculating with numbers. We look at a technique to fix t
 
 > NOTE: The default model used when running this code is OpenAI's **`text-davinci-003`** and not GPT-4. The code can be adjusted to run against any completion API by changing the settings in [`src/engine/options.ts`](src/engine/options.ts) and [`src/engine/settings.ts`](src/engine/settings.ts).
 >
-> When writing this report, we evaluated the technique using the completion API of a private release of GPT-4. The public release of GPT-4 currently only provides a "chat" API. As a result some aspects of the technique described may need to be reworked because of this, hwoever we are providing the code and our investigation for reference. We believe the evaluation results remain valid although some variation in numbers is to be expected.
+> When writing this report, we evaluated the technique using the completion API of a private release of GPT-4. The public release of GPT-4 currently only provides a "chat" API. As a result some aspects of the technique described may need to be reworked because of this, however we are providing the code and our investigation for reference. We believe the evaluation results remain valid although some variation in numbers is to be expected.
 
 ## Requirements
 
